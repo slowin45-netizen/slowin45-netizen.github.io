@@ -13,7 +13,6 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* GELİŞMİŞ KOPYALAMA ENGELLEME (sağ tıklama, kısayollar, seçim, sürükleme) */
         body {
             font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
             min-height: 100vh;
@@ -200,7 +199,7 @@
             z-index: 3;
         }
 
-        /* BAŞLIK – logo sol ve sağda sabit (resimler aynı) */
+        /* BAŞLIK */
         .brand {
             text-align: center;
             padding: 0.9rem 1rem 0.5rem;
@@ -236,7 +235,7 @@
             100% { filter: drop-shadow(0 0 0px rgba(255,255,255,0)); }
         }
 
-        /* ANLIK KULLANICI SAYACI (1-10 arası, 5 dakikada bir değişir) */
+        /* ANLIK KULLANICI SAYACI */
         .counter-wrapper {
             display: flex;
             justify-content: center;
@@ -452,7 +451,6 @@
         <img src="https://www.image2url.com/r2/default/images/1780831184010-25ed2da6-254e-4168-9d41-8b518db61173.png" alt="Logo">
     </div>
 
-    <!-- ANLIK KULLANICI SAYACI (1-10 arası, 5 dakikada bir değişir) -->
     <div class="counter-wrapper">
         <div class="online-counter" id="onlineCounter">🟢 0 users online</div>
     </div>
@@ -503,43 +501,25 @@
 
 <script>
     (function() {
-        // ################## GELİŞMİŞ KOPYALAMA ENGELLEME ##################
+        // ########### SAĞ TIKLAMA VE SEÇİM ENGELLEME (KOPYALAMAYI ENGELLER, VPN'E İZİN VERİR) ###########
         document.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; });
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'F12' ||
-                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) ||
-                (e.ctrlKey && e.key === 'u') ||
-                (e.ctrlKey && e.key === 's') ||
-                (e.ctrlKey && e.key === 'c') ||
-                (e.metaKey && e.key === 'c')) {
-                e.preventDefault();
-                return false;
-            }
-        });
         document.addEventListener('selectstart', function(e) { e.preventDefault(); });
         document.addEventListener('dragstart', function(e) { e.preventDefault(); });
+        // NOT: Klavye kısayolları engellenmiyor (F12, Ctrl+U vb.) – bunlar zaten tarayıcı geliştirici araçlarıdır,
+        // ancak istenirse eklenebilir. Fakat VPN ile ilgisi yok. Kullanıcı sadece sağ tıklama engeli istedi,
+        // bu yüzden diğer engelleri kaldırdım.
 
-        // ################## ANLIK KULLANICI SAYACI (1-10 arası, 5 dakikada bir) ##################
+        // ########### ANLIK KULLANICI SAYACI (1-10 arası, 5 dakikada bir değişir) ###########
         const counterSpan = document.getElementById('onlineCounter');
-        let counterInterval = null;
-
-        function getRandomInt(min, max) {
-            return Math.floor(Math.random() * (max - min + 1) + min);
-        }
-
+        function getRandomInt(min, max) { return Math.floor(Math.random() * (max - min + 1) + min); }
         function updateCounter() {
-            // Kullanıcı sayısı 1 ile 10 arasında
             const randomUsers = getRandomInt(1, 10);
             counterSpan.innerHTML = `🟢 ${randomUsers} users online now`;
         }
+        updateCounter();
+        setInterval(updateCounter, 300000); // 5 dakika
 
-        updateCounter(); // İlk değer
-        counterInterval = setInterval(updateCounter, 300000); // 5 dakika = 300000 ms
-        window.addEventListener('beforeunload', function() {
-            if (counterInterval) clearInterval(counterInterval);
-        });
-
-        // ################## ZAR MEKANİĞİ ##################
+        // ########### ZAR MEKANİĞİ ###########
         const COLOR_SET = [
             { name: "KIRMIZI", hex: "#dd0000", short: "🔴" },
             { name: "TURUNCU", hex: "#fd8b06", short: "🟠" },
@@ -572,7 +552,6 @@
 
         const themeSelect = document.getElementById('themeSelect');
         const themeHint = document.getElementById('themeHint');
-
         const themes = [
             { id: "los", name: "Los Tralaleritos", unlock: 0, emoji: "🌊" },
             { id: "blue", name: "BLUE", unlock: 0, emoji: "🔵" },
@@ -711,6 +690,8 @@
         }
 
         diceTypeSelect.addEventListener('change', () => renderActiveDice(false));
+        document.getElementById('rollBtn').addEventListener('click', performRoll);
+        diceCountInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') performRoll(); });
 
         function initDemo() {
             currentColorSet = generateColorSet(4);
@@ -722,10 +703,6 @@
             updateThemeSelect();
             document.getElementById('diceContainer').classList.add('dice-visible');
         }
-
-        document.getElementById('rollBtn').addEventListener('click', performRoll);
-        diceCountInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') performRoll(); });
-
         initDemo();
     })();
 </script>
