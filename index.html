@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>ERAS DICE | Ultimate Dice Experience</title>
+    <title>ERAS DICE | PREMIUM DICE EXPERIENCE</title>
     <style>
         * {
             margin: 0;
@@ -25,141 +25,151 @@
             background: radial-gradient(circle at 30% 40%, #0a3a6a, #021a3a);
         }
 
-        /* ========== TEMA RENKLERİ ========== */
+        /* ========== TEMA RENKLERİ VE DOKULARI ========== */
         body.blue {
             --accent: #0ea5e9;
             --accent-glow: #0ea5e9cc;
             --btn-start: #0ea5e9;
             --btn-end: #0369a1;
-            --btn-hover: #38bdf8;
-            --grad-bg: radial-gradient(circle at 30% 40%, #0a3a6a, #021a3a);
             --card-bg: rgba(10, 40, 70, 0.85);
             --text-light: #e0f2fe;
             --border-color: #0ea5e9;
-            --theme-texture: repeating-linear-gradient(110deg, rgba(14,165,233,0.2) 0px, rgba(14,165,233,0.2) 2px, transparent 2px, transparent 20px), radial-gradient(circle at 20% 30%, rgba(14,165,233,0.2) 2px, transparent 2px);
+            --grad-bg: radial-gradient(circle at 30% 40%, #0a3a6a, #021a3a);
+            --title-gradient: linear-gradient(135deg, #fff, #0ea5e9, #38bdf8, #fff);
+            --theme-texture: repeating-linear-gradient(110deg, rgba(14,165,233,0.15) 0px, rgba(14,165,233,0.15) 2px, transparent 2px, transparent 20px), radial-gradient(circle at 20% 30%, rgba(14,165,233,0.2) 2px, transparent 2px);
+            --die-glow: 0 0 12px rgba(14,165,233,0.7);
+            --card-shadow: 0 0 30px rgba(14,165,233,0.4);
         }
         body.green {
             --accent: #10b981;
             --accent-glow: #10b981cc;
             --btn-start: #10b981;
             --btn-end: #047857;
-            --btn-hover: #34d399;
-            --grad-bg: radial-gradient(circle at 30% 40%, #0a3a1a, #021a0a);
             --card-bg: rgba(0, 50, 20, 0.85);
             --text-light: #d1fae5;
             --border-color: #10b981;
-            --theme-texture: repeating-linear-gradient(135deg, rgba(16,185,129,0.2) 0px, rgba(16,185,129,0.2) 2px, transparent 2px, transparent 20px), repeating-linear-gradient(0deg, rgba(0,0,0,0.08) 0px, rgba(0,0,0,0.08) 1px, transparent 1px, transparent 8px);
+            --grad-bg: radial-gradient(circle at 30% 40%, #0a3a1a, #021a0a);
+            --title-gradient: linear-gradient(135deg, #fff, #10b981, #34d399, #fff);
+            --theme-texture: repeating-linear-gradient(135deg, rgba(16,185,129,0.15) 0px, rgba(16,185,129,0.15) 2px, transparent 2px, transparent 20px), repeating-linear-gradient(0deg, rgba(0,0,0,0.08) 0px, rgba(0,0,0,0.08) 1px, transparent 1px, transparent 8px);
+            --die-glow: 0 0 12px rgba(16,185,129,0.7);
+            --card-shadow: 0 0 30px rgba(16,185,129,0.4);
         }
         body.red {
             --accent: #f43f5e;
             --accent-glow: #f43f5ecc;
             --btn-start: #f43f5e;
             --btn-end: #be123c;
-            --btn-hover: #fb7185;
-            --grad-bg: radial-gradient(circle at 30% 40%, #4a1a1a, #1a0505);
             --card-bg: rgba(70, 20, 20, 0.85);
             --text-light: #ffe0e0;
             --border-color: #f43f5e;
-            --theme-texture: repeating-linear-gradient(0deg, rgba(244,63,94,0.25) 0px, rgba(244,63,94,0.25) 2px, transparent 2px, transparent 14px), radial-gradient(circle at 60% 70%, rgba(244,63,94,0.2) 3px, transparent 3px);
+            --grad-bg: radial-gradient(circle at 30% 40%, #4a1a1a, #1a0505);
+            --title-gradient: linear-gradient(135deg, #fff, #f43f5e, #fb7185, #fff);
+            --theme-texture: repeating-linear-gradient(0deg, rgba(244,63,94,0.2) 0px, rgba(244,63,94,0.2) 2px, transparent 2px, transparent 14px), radial-gradient(circle at 60% 70%, rgba(244,63,94,0.15) 3px, transparent 3px);
+            --die-glow: 0 0 12px rgba(244,63,94,0.7);
+            --card-shadow: 0 0 30px rgba(244,63,94,0.4);
         }
         body.pink {
             --accent: #f472b6;
             --accent-glow: #f472b6cc;
             --btn-start: #f472b6;
             --btn-end: #db2777;
-            --btn-hover: #f9a8d4;
-            --grad-bg: radial-gradient(circle at 30% 40%, #3a1a2a, #1a0510);
             --card-bg: rgba(60, 20, 50, 0.85);
             --text-light: #fce7f3;
             --border-color: #f472b6;
-            --theme-texture: repeating-radial-gradient(circle at 20% 40%, rgba(244,114,182,0.25) 3px, transparent 3px), repeating-linear-gradient(45deg, rgba(244,114,182,0.12) 0px, rgba(244,114,182,0.12) 1px, transparent 1px, transparent 12px);
+            --grad-bg: radial-gradient(circle at 30% 40%, #3a1a2a, #1a0510);
+            --title-gradient: linear-gradient(135deg, #fff, #f472b6, #f9a8d4, #fff);
+            --theme-texture: repeating-radial-gradient(circle at 20% 40%, rgba(244,114,182,0.2) 3px, transparent 3px), repeating-linear-gradient(45deg, rgba(244,114,182,0.1) 0px, rgba(244,114,182,0.1) 1px, transparent 1px, transparent 12px);
+            --die-glow: 0 0 12px rgba(244,114,182,0.7);
+            --card-shadow: 0 0 30px rgba(244,114,182,0.4);
         }
         body.bw {
             --accent: #94a3b8;
             --accent-glow: #cbd5e1cc;
             --btn-start: #94a3b8;
             --btn-end: #64748b;
-            --btn-hover: #cbd5e1;
-            --grad-bg: radial-gradient(circle at 30% 40%, #2c3e50, #1a252f);
             --card-bg: rgba(30, 30, 40, 0.85);
             --text-light: #f5f6fa;
             --border-color: #94a3b8;
+            --grad-bg: radial-gradient(circle at 30% 40%, #2c3e50, #1a252f);
+            --title-gradient: linear-gradient(135deg, #fff, #cbd5e1, #94a3b8, #fff);
             --theme-texture: repeating-linear-gradient(90deg, rgba(148,163,184,0.2) 0px, rgba(148,163,184,0.2) 1px, transparent 1px, transparent 6px), repeating-linear-gradient(45deg, rgba(255,255,255,0.08) 0px, rgba(255,255,255,0.08) 1px, transparent 1px, transparent 20px);
+            --die-glow: 0 0 12px rgba(148,163,184,0.6);
+            --card-shadow: 0 0 30px rgba(148,163,184,0.3);
         }
         body.los {
             --accent: #00d2ff;
-            --accent-glow: #00d2ffcc;
+            --accent-glow: #00ffffcc;
             --btn-start: #00d2ff;
             --btn-end: #0077b6;
-            --btn-hover: #3ae2ff;
-            --grad-bg: radial-gradient(circle at 30% 40%, #023e8a, #03045e);
             --card-bg: rgba(0, 80, 110, 0.85);
             --text-light: #e0f7fa;
             --border-color: #00d2ff;
-            --theme-texture: none;
+            --grad-bg: radial-gradient(circle at 30% 40%, #023e8a, #03045e);
+            --title-gradient: linear-gradient(135deg, #fff, #00d2ff, #3ae2ff, #fff);
+            --theme-texture: repeating-linear-gradient(45deg, rgba(0,210,255,0.15) 0px, rgba(0,210,255,0.15) 1px, transparent 1px, transparent 12px);
+            --die-glow: 0 0 15px cyan;
+            --card-shadow: 0 0 30px cyan;
+            position: relative;
         }
+        body.los::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('https://www.image2url.com/r2/default/images/1780783552979-9d6290c8-daaa-4edb-b5f5-29bb9e2ef726.png');
+            background-size: 65px 65px;
+            background-repeat: repeat;
+            opacity: 0.35;
+            mix-blend-mode: overlay;
+            pointer-events: none;
+            z-index: 2;
+        }
+        body.los::after {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(0,255,255,0.08) 0%, transparent 80%);
+            animation: waterWave 12s infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+        @keyframes waterWave {
+            0% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.2); opacity: 0.6; }
+            100% { transform: scale(1); opacity: 0.3; }
+        }
+
         body.og {
             --accent: #f59e0b;
             --accent-glow: #f59e0baa;
             --btn-start: #f59e0b;
             --btn-end: #b45309;
-            --btn-hover: #fbbf24;
-            --grad-bg: radial-gradient(circle at 30% 40%, #4a2e1a, #1a0e05);
             --card-bg: rgba(60, 40, 20, 0.85);
             --text-light: #fef0d8;
             --border-color: #f59e0b;
-            --theme-texture: repeating-linear-gradient(45deg, rgba(245,158,11,0.15) 0px, rgba(245,158,11,0.15) 2px, transparent 2px, transparent 15px), repeating-linear-gradient(0deg, rgba(0,0,0,0.15) 0px, rgba(0,0,0,0.15) 1px, transparent 1px, transparent 8px);
-        }
-
-        /* Arka plan dokuları */
-        body.blue::before, body.green::before, body.red::before, body.pink::before, body.bw::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--theme-texture);
-            background-size: auto, auto;
-            background-repeat: repeat, repeat;
-            pointer-events: none;
-            z-index: 2;
-            mix-blend-mode: overlay;
-            opacity: 0.6;
-        }
-        body.los::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://www.image2url.com/r2/default/images/1780783552979-9d6290c8-daaa-4edb-b5f5-29bb9e2ef726.png');
-            background-size: 70px 70px;
-            background-repeat: repeat;
-            background-position: 0 0;
-            pointer-events: none;
-            z-index: 2;
-            opacity: 0.35;
-            mix-blend-mode: overlay;
+            --grad-bg: radial-gradient(circle at 30% 40%, #4a2e1a, #1a0e05);
+            --title-gradient: linear-gradient(135deg, #fff, #f59e0b, #fbbf24, #fff);
+            --theme-texture: repeating-linear-gradient(0deg, rgba(0,0,0,0.2) 0px, rgba(0,0,0,0.2) 1px, transparent 1px, transparent 4px), radial-gradient(circle at 30% 50%, rgba(245,158,11,0.2) 2px, transparent 2px);
+            --die-glow: 0 0 15px #f59e0b;
+            --card-shadow: 0 0 30px rgba(245,158,11,0.5);
         }
         body.og::before {
             content: "";
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: repeating-linear-gradient(0deg, rgba(0,0,0,0.2) 0px, rgba(0,0,0,0.2) 2px, transparent 2px, transparent 4px),
-                repeating-radial-gradient(circle at 20% 30%, rgba(0,0,0,0.1) 2px, transparent 2px, transparent 8px),
-                radial-gradient(ellipse at center, transparent 60%, rgba(0,0,0,0.4) 100%),
-                url('https://www.image2url.com/r2/default/images/1780831184010-25ed2da6-254e-4168-9d41-8b518db61173.png');
-            background-size: 100% 4px, 12px 12px, 100% 100%, 70px 70px;
-            background-repeat: repeat, repeat, no-repeat, repeat;
-            mix-blend-mode: multiply;
-            opacity: 1;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('https://www.image2url.com/r2/default/images/1780831184010-25ed2da6-254e-4168-9d41-8b518db61173.png');
+            background-size: 70px 70px;
+            background-repeat: repeat;
+            opacity: 0.3;
+            mix-blend-mode: soft-light;
+            pointer-events: none;
+            z-index: 2;
         }
 
+        /* ortak arka plan ışığı */
+        body {
+            background: var(--grad-bg);
+            color: var(--text-light);
+        }
         body::after {
             content: "";
             position: fixed;
@@ -174,13 +184,7 @@
             animation: rotateLight 60s linear infinite;
             mix-blend-mode: overlay;
         }
-        body.og::after { animation: rotateLight 90s linear infinite; mix-blend-mode: soft-light; }
         @keyframes rotateLight { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-        body {
-            background: var(--grad-bg);
-            color: var(--text-light);
-        }
 
         /* ANA KART */
         .guts-card {
@@ -190,57 +194,233 @@
             backdrop-filter: blur(16px);
             border-radius: 2rem;
             border: 2px solid var(--border-color);
-            box-shadow: 0 0 35px var(--accent-glow), 0 20px 40px -10px rgba(0,0,0,0.6);
+            box-shadow: var(--card-shadow), 0 20px 40px -10px rgba(0,0,0,0.6);
             overflow: hidden;
             display: flex;
             flex-direction: column;
             max-height: 95vh;
             position: relative;
             z-index: 3;
+            transition: box-shadow 0.3s, border-color 0.3s;
         }
 
         /* BAŞLIK */
         .brand {
             text-align: center;
-            padding: 0.9rem 1rem 0.5rem;
+            padding: 1.2rem 1rem;
             border-bottom: 3px solid var(--accent);
             background: rgba(0,0,0,0.2);
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-            flex-wrap: nowrap;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            position: relative;
         }
-        .brand img {
-            width: 45px;
-            height: 45px;
+        .brand-logo {
+            width: 60px;
+            height: 60px;
             object-fit: contain;
-            filter: drop-shadow(0 0 5px var(--accent-glow));
-            flex-shrink: 0;
+            filter: drop-shadow(0 0 10px var(--accent-glow));
+            transition: transform 0.2s, filter 0.2s;
+        }
+        .brand-logo:hover {
+            transform: scale(1.08);
+            filter: drop-shadow(0 0 18px var(--accent-glow));
         }
         .brand h1 {
-            font-size: 1.8rem;
+            font-size: 2.6rem;
             font-weight: 900;
-            letter-spacing: 2px;
-            background: linear-gradient(135deg, #fff, var(--accent), #fff);
+            letter-spacing: 5px;
+            background: var(--title-gradient);
+            background-size: 300% auto;
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            animation: themeGlow 2s ease-in-out infinite;
-            white-space: nowrap;
+            animation: titleShine 4s linear infinite, titlePulse 2s ease-in-out infinite;
+            text-shadow: 0 0 20px var(--accent-glow);
+            font-family: 'Poppins', 'Inter', sans-serif;
+            position: relative;
+            display: inline-block;
         }
-        @keyframes themeGlow {
-            0% { filter: drop-shadow(0 0 0px rgba(255,255,255,0)); }
-            50% { filter: drop-shadow(0 0 12px var(--accent-glow)); }
-            100% { filter: drop-shadow(0 0 0px rgba(255,255,255,0)); }
+        @keyframes titleShine {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 300% 50%; }
+        }
+        @keyframes titlePulse {
+            0% { filter: drop-shadow(0 0 5px rgba(255,255,255,0.3)); }
+            50% { filter: drop-shadow(0 0 25px var(--accent-glow)); }
+            100% { filter: drop-shadow(0 0 5px rgba(255,255,255,0.3)); }
+        }
+        .brand h1::before {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.4), rgba(255,255,255,0));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            z-index: -1;
+            filter: blur(8px);
+            opacity: 0.6;
         }
 
-        /* ANLIK KULLANICI SAYACI */
-        .counter-wrapper {
+        /* TOAST BİLDİRİM */
+        .toast-notify {
+            position: fixed;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%) translateY(30px);
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(20px);
+            border-left: 5px solid var(--accent, #0ea5e9);
+            border-radius: 20px;
+            padding: 12px 24px;
+            color: #fff;
+            font-weight: 600;
             display: flex;
-            justify-content: center;
-            margin-top: 0.2rem;
+            align-items: center;
+            gap: 14px;
+            font-size: 0.9rem;
+            z-index: 1000;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, opacity 0.3s;
+            opacity: 0;
+            visibility: hidden;
         }
+        .toast-notify.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+        .toast-notify button {
+            background: var(--accent, #0ea5e9);
+            border: none;
+            padding: 5px 12px;
+            border-radius: 40px;
+            font-weight: bold;
+            color: #000;
+            cursor: pointer;
+        }
+
+        /* KARŞILAMA MODAL - SADE, ŞIK, KALİTELİ */
+        .welcome-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(15px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0.3s, opacity 0.3s;
+        }
+        .welcome-modal.open {
+            visibility: visible;
+            opacity: 1;
+        }
+        .modal-card {
+            background: rgba(20, 25, 45, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--accent);
+            border-radius: 2rem;
+            max-width: 520px;
+            width: 90%;
+            padding: 2rem 1.8rem;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 25px 45px -12px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.1);
+            animation: modalFadeUp 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        @keyframes modalFadeUp {
+            from { transform: translateY(40px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .modal-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 1.2rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--accent);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+        .modal-icon img {
+            width: 55px;
+            height: 55px;
+            object-fit: contain;
+        }
+        .modal-card .thanks {
+            font-size: 1.4rem;
+            font-weight: 800;
+            background: var(--title-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.75rem;
+            letter-spacing: 1px;
+        }
+        .modal-card p {
+            font-size: 1rem;
+            line-height: 1.5;
+            margin: 0.8rem 0;
+            font-weight: 500;
+            color: #f0f0f0;
+        }
+        .modal-highlight {
+            background: rgba(255,255,255,0.1);
+            border-radius: 60px;
+            padding: 0.6rem 1.2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin: 1rem auto 0.5rem;
+            border: 1px solid var(--accent);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .modal-highlight svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--accent);
+        }
+        .close-modal {
+            background: linear-gradient(135deg, var(--btn-start), var(--btn-end));
+            border: none;
+            padding: 10px 32px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1rem;
+            color: white;
+            cursor: pointer;
+            margin-top: 1.2rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            letter-spacing: 1px;
+        }
+        .close-modal:hover {
+            transform: scale(1.02);
+            filter: brightness(1.05);
+        }
+        .close-modal:active { transform: scale(0.97); }
+        .modal-smallnote {
+            font-size: 0.7rem;
+            opacity: 0.6;
+            margin-top: 1rem;
+        }
+
+        .counter-wrapper { display: flex; justify-content: center; margin-top: 0.2rem; }
         .online-counter {
             text-align: center;
             margin: 0.5rem auto 0;
@@ -251,11 +431,9 @@
             font-weight: 700;
             color: #ffd966;
             border: 1px solid var(--accent);
-            display: inline-block;
             backdrop-filter: blur(4px);
         }
 
-        /* KONTROLLER */
         .control-bar {
             display: flex;
             justify-content: center;
@@ -290,7 +468,6 @@
         }
         input { width: 70px; text-align: center; }
 
-        /* ZAR ALANI */
         .dice-container {
             margin: 0.3rem 1rem;
             background: rgba(0,0,0,0.2);
@@ -299,19 +476,21 @@
             min-height: 190px;
             max-height: 320px;
             overflow-y: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-        .dice-container::-webkit-scrollbar { width: 5px; }
-        .dice-container::-webkit-scrollbar-track { background: rgba(0,0,0,0.5); border-radius: 10px; }
-        .dice-container::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
         .dice-grid {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 1rem;
             align-items: center;
+            gap: 1rem;
+            width: 100%;
+            margin: 0 auto;
         }
 
-        /* ZAR */
+        /* ZAR STİLİ - SAYI ZARLARINDA DAİRE YOK (FIX) */
         .premium-die {
             width: 95px;
             height: 95px;
@@ -320,10 +499,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: transform 0.1s, filter 0.1s;
-            box-shadow: 0 5px 10px -2px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+            transition: transform 0.2s, filter 0.2s, box-shadow 0.2s;
+            box-shadow: 0 5px 15px -2px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.15);
             position: relative;
             flex-shrink: 0;
+            backdrop-filter: blur(2px);
         }
         .premium-die::before {
             content: "";
@@ -332,10 +512,11 @@
             left: 4px;
             right: 4px;
             bottom: 4px;
-            border: 2px solid rgba(255,255,255,0.9);
+            border: 2px solid rgba(255,255,255,0.8);
             border-radius: 16px;
             pointer-events: none;
         }
+        /* Renk zarlarında daire var (görsel bütünlük için) */
         .premium-die::after {
             content: "";
             position: absolute;
@@ -343,23 +524,33 @@
             left: 50%;
             width: 14px;
             height: 14px;
-            background: rgba(255,255,255,0.85);
+            background: rgba(255,255,255,0.9);
             border-radius: 50%;
             transform: translate(-50%, -50%);
             pointer-events: none;
+            box-shadow: 0 0 5px rgba(0,0,0,0.3);
         }
-        .color-premium { background: var(--die-color); box-shadow: 0 5px 10px -2px rgba(0,0,0,0.5), inset 0 0 15px rgba(255,255,255,0.2); }
-        .number-premium { background: #0a0a0a; font-size: 2rem; font-weight: 800; color: var(--accent); text-shadow: 0 0 5px rgba(0,0,0,0.5); }
-        .premium-die:hover { transform: scale(1.02); filter: brightness(1.05); }
+        /* Sayı zarlarında daireyi tamamen kaldır */
+        .number-premium::after {
+            display: none !important;
+        }
+        /* LOS ve OG temalarında renk zarlarındaki daire de kalkar (özel durum) */
+        body.los .color-premium::after,
+        body.og .color-premium::after {
+            display: none;
+        }
+        .color-premium { background: var(--die-color); box-shadow: var(--die-glow), inset 0 0 10px rgba(255,255,255,0.3); }
+        .number-premium { background: #0a0a0a; font-size: 2rem; font-weight: 800; color: var(--accent); text-shadow: 0 0 8px var(--accent-glow); }
+        .premium-die:hover { transform: scale(1.03); filter: brightness(1.08); }
 
-        @keyframes diceSpin3D {
-            0% { transform: rotate(0deg); }
-            25% { transform: rotate(90deg); }
-            50% { transform: rotate(180deg); }
-            75% { transform: rotate(270deg); }
-            100% { transform: rotate(360deg); }
+        @keyframes diceSpin {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+            100% { transform: rotate(360deg) scale(1); }
         }
-        .spinning { animation: diceSpin3D 0.45s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards !important; }
+        .spinning {
+            animation: diceSpin 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards !important;
+        }
 
         .action { text-align: center; margin: 0.5rem 0; }
         .roll-btn {
@@ -390,7 +581,7 @@
         .color-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem; }
         .color-item {
             background: rgba(0,0,0,0.6);
-            padding: 0.25rem 1rem;
+            padding: 0.3rem 1.2rem;
             border-radius: 50px;
             font-size: 0.8rem;
             font-weight: 600;
@@ -398,14 +589,23 @@
             border: 1px solid var(--accent);
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
+            transition: all 0.2s;
+            cursor: default;
         }
+        .color-item:hover {
+            transform: translateY(-2px);
+            background: var(--accent);
+            color: #000;
+            border-color: #fff;
+        }
+
         .history-panel {
             margin: 0.3rem 1rem 0.6rem;
             background: rgba(0,0,0,0.2);
             border-radius: 1.2rem;
             padding: 0.6rem;
-            max-height: 150px;
+            max-height: 130px;
             overflow-y: auto;
         }
         .history-title {
@@ -428,27 +628,69 @@
             text-align: center;
             border-left: 3px solid var(--accent);
         }
-        .theme-hint { text-align: center; font-size: 0.6rem; margin-bottom: 0.5rem; }
+        .theme-hint { text-align: center; font-size: 0.65rem; margin-bottom: 0.5rem; opacity: 0.9; letter-spacing: 0.5px; }
         .dice-hidden .premium-die { opacity: 0; visibility: hidden; transition: 0.15s; }
         .dice-visible .premium-die { opacity: 1; visibility: visible; transition: 0.15s; }
+
+        /* TikTok butonu (sağ üstteki kutucuk) */
+        .tiktok-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(8px);
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--accent);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            cursor: pointer;
+        }
+        .tiktok-btn:hover {
+            transform: scale(1.1);
+            background: var(--accent);
+            border-color: #fff;
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+        .tiktok-btn svg {
+            width: 28px;
+            height: 28px;
+            fill: #fff;
+            transition: fill 0.3s;
+        }
+        .tiktok-btn:hover svg {
+            fill: #000;
+        }
 
         @media (max-width: 750px) {
             .premium-die { width: 75px; height: 75px; border-radius: 18px; }
             .premium-die::before { border-width: 1.5px; border-radius: 14px; top: 3px; left: 3px; right: 3px; bottom: 3px; }
-            .premium-die::after { width: 10px; height: 10px; }
             .roll-btn { font-size: 1rem; padding: 6px 24px; }
-            .brand h1 { font-size: 1.3rem; white-space: normal; }
-            .brand img { width: 35px; height: 35px; }
+            .brand h1 { font-size: 1.7rem; letter-spacing: 3px; }
+            .brand-logo { width: 45px; height: 45px; }
             .online-counter { font-size: 0.75rem; padding: 0.2rem 0.8rem; }
+            .color-item { padding: 0.2rem 0.8rem; font-size: 0.7rem; }
+            .tiktok-btn { width: 40px; height: 40px; top: 15px; right: 15px; }
+            .tiktok-btn svg { width: 24px; height: 24px; }
+            .modal-card { padding: 1.5rem 1rem; }
+            .modal-card .thanks { font-size: 1.2rem; }
+            .modal-card p { font-size: 0.85rem; }
+            .modal-icon { width: 55px; height: 55px; }
+            .modal-icon img { width: 40px; height: 40px; }
         }
     </style>
 </head>
 <body class="blue">
 <div class="guts-card">
     <div class="brand">
-        <img src="https://www.image2url.com/r2/default/images/1780831184010-25ed2da6-254e-4168-9d41-8b518db61173.png" alt="Logo">
-        <h1>⚡ ERAS DICE ⚡</h1>
-        <img src="https://www.image2url.com/r2/default/images/1780831184010-25ed2da6-254e-4168-9d41-8b518db61173.png" alt="Logo">
+        <img class="brand-logo" src="https://www.image2url.com/r2/default/images/1780849493933-0f3dbde5-ef61-42b3-a998-b3fdb5f362d6.webp" alt="Logo">
+        <h1 data-text="ERAS DICE">ERAS DICE</h1>
+        <img class="brand-logo" src="https://www.image2url.com/r2/default/images/1780849493933-0f3dbde5-ef61-42b3-a998-b3fdb5f362d6.webp" alt="Logo">
     </div>
 
     <div class="counter-wrapper">
@@ -499,27 +741,74 @@
     <div class="theme-hint" id="themeHint"></div>
 </div>
 
+<!-- KARŞILAMA MODAL - İSTENEN METİN, SADE VE ŞIK TASARIM -->
+<div id="welcomeModal" class="welcome-modal">
+    <div class="modal-card">
+        <div class="modal-icon">
+            <img src="https://www.image2url.com/r2/default/images/1780852160014-833b5895-7426-482a-8fd4-4e2f09d286f9.webp" alt="Icon">
+        </div>
+        <div class="thanks">✨ SİTEYİ ZİYARET ETTİĞİNİZ İÇİN TEŞEKKÜRLER ✨</div>
+        <p>⚡ DAHA İYİ BİR DENEYİM İÇİN UĞRAŞIYORUZ ⚡</p>
+        <div class="modal-highlight">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M448 209.91a210.06 210.06 0 01-122.77-39.25v178.72A162.55 162.55 0 11185 188.31v89.89a74.62 74.62 0 1052.23 71.18V0h88a121.18 121.18 0 001.86 22.17A122.18 122.18 0 00381 102.39a121.43 121.43 0 0067 20.14Z"/></svg>
+            <span>BUNUN GİBİ SİTELERE MERAKINIZ VAR İSE SAĞ ÜSTEKİ KUTUCUĞA TIKLAYIN.</span>
+        </div>
+        <button class="close-modal" id="closeModalBtn">🚀 DEVAM ET</button>
+        <div class="modal-smallnote">(Bu mesaj sadece bir kez görünür)</div>
+    </div>
+</div>
+
+<!-- TOAST -->
+<div id="welcomeToast" class="toast-notify">
+    <span>✨</span>
+    <span>Hoş geldin! Zar at, renkleri keşfet, 100 atışta OG temasını aç!</span>
+    <button id="toastCloseBtn">Kapat</button>
+</div>
+
+<!-- TikTok Butonu (sağ üst kutucuk) -->
+<a href="https://www.tiktok.com/@bencezalarlaevliyimbebkk" target="_blank" rel="noopener noreferrer" class="tiktok-btn">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+        <path d="M448 209.91a210.06 210.06 0 01-122.77-39.25v178.72A162.55 162.55 0 11185 188.31v89.89a74.62 74.62 0 1052.23 71.18V0h88a121.18 121.18 0 001.86 22.17A122.18 122.18 0 00381 102.39a121.43 121.43 0 0067 20.14Z"/>
+    </svg>
+</a>
+
 <script>
     (function() {
-        // ########### SAĞ TIKLAMA VE SEÇİM ENGELLEME (KOPYALAMAYI ENGELLER, VPN'E İZİN VERİR) ###########
-        document.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; });
-        document.addEventListener('selectstart', function(e) { e.preventDefault(); });
-        document.addEventListener('dragstart', function(e) { e.preventDefault(); });
-        // NOT: Klavye kısayolları engellenmiyor (F12, Ctrl+U vb.) – bunlar zaten tarayıcı geliştirici araçlarıdır,
-        // ancak istenirse eklenebilir. Fakat VPN ile ilgisi yok. Kullanıcı sadece sağ tıklama engeli istedi,
-        // bu yüzden diğer engelleri kaldırdım.
+        // Engellemeler
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.addEventListener('selectstart', e => e.preventDefault());
+        document.addEventListener('dragstart', e => e.preventDefault());
 
-        // ########### ANLIK KULLANICI SAYACI (1-10 arası, 5 dakikada bir değişir) ###########
+        // Modal (sadece ilk ziyaret)
+        if (!sessionStorage.getItem('erasWelcomeSeen')) {
+            const modal = document.getElementById('welcomeModal');
+            modal.classList.add('open');
+            document.getElementById('closeModalBtn').onclick = () => {
+                modal.classList.remove('open');
+            };
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) modal.classList.remove('open');
+            });
+            sessionStorage.setItem('erasWelcomeSeen', '1');
+        }
+
+        // Toast
+        if (!sessionStorage.getItem('erasDiceToast')) {
+            const toast = document.getElementById('welcomeToast');
+            setTimeout(() => toast.classList.add('show'), 800);
+            document.getElementById('toastCloseBtn').onclick = () => toast.classList.remove('show');
+            setTimeout(() => toast.classList.remove('show'), 6000);
+            sessionStorage.setItem('erasDiceToast', '1');
+        }
+
+        // Online sayaç
         const counterSpan = document.getElementById('onlineCounter');
         function getRandomInt(min, max) { return Math.floor(Math.random() * (max - min + 1) + min); }
-        function updateCounter() {
-            const randomUsers = getRandomInt(1, 10);
-            counterSpan.innerHTML = `🟢 ${randomUsers} users online now`;
-        }
+        function updateCounter() { counterSpan.innerHTML = `🟢 ${getRandomInt(1, 10)} users online now`; }
         updateCounter();
-        setInterval(updateCounter, 300000); // 5 dakika
+        setInterval(updateCounter, 300000);
 
-        // ########### ZAR MEKANİĞİ ###########
+        // Zar renkleri
         const COLOR_SET = [
             { name: "KIRMIZI", hex: "#dd0000", short: "🔴" },
             { name: "TURUNCU", hex: "#fd8b06", short: "🟠" },
@@ -528,7 +817,6 @@
             { name: "MAVİ",   hex: "#1e00d9", short: "🔵" },
             { name: "MOR",    hex: "#430083", short: "🟣" }
         ];
-
         const LOS_IMAGE_URL = "https://www.image2url.com/r2/default/images/1780783552979-9d6290c8-daaa-4edb-b5f5-29bb9e2ef726.png";
         const OG_IMAGE_URL = "https://www.image2url.com/r2/default/images/1780831184010-25ed2da6-254e-4168-9d41-8b518db61173.png";
 
@@ -545,22 +833,23 @@
         function unlockAudio() {
             if (audioUnlocked) return;
             rollAudio.load();
-            rollAudio.play().then(() => { rollAudio.pause(); rollAudio.currentTime = 0; audioUnlocked = true; }).catch(() => {});
+            rollAudio.play().then(() => { rollAudio.pause(); rollAudio.currentTime = 0; audioUnlocked = true; }).catch(()=>{});
         }
         document.body.addEventListener('click', unlockAudio, { once: true });
-        function playSound() { rollAudio.currentTime = 0; rollAudio.play().catch(e=>console.log); }
+        function playSound() { if(audioUnlocked) { rollAudio.currentTime = 0; rollAudio.play().catch(e=>console.log); } }
 
-        const themeSelect = document.getElementById('themeSelect');
-        const themeHint = document.getElementById('themeHint');
         const themes = [
-            { id: "los", name: "Los Tralaleritos", unlock: 0, emoji: "🌊" },
             { id: "blue", name: "BLUE", unlock: 0, emoji: "🔵" },
             { id: "green", name: "GREEN", unlock: 0, emoji: "🟢" },
             { id: "red", name: "RED", unlock: 0, emoji: "🔴" },
             { id: "pink", name: "PINK", unlock: 0, emoji: "💗" },
             { id: "bw", name: "B&W", unlock: 0, emoji: "☯️" },
+            { id: "los", name: "Los Tralaleritos", unlock: 0, emoji: "🌊" },
             { id: "og", name: "OG", unlock: 100, emoji: "🔮" }
         ];
+
+        const themeSelect = document.getElementById('themeSelect');
+        const themeHint = document.getElementById('themeHint');
 
         function updateThemeSelect() {
             const currentVal = themeSelect.value;
@@ -572,20 +861,18 @@
                 if (t.unlock > 0 && totalRolls < t.unlock) {
                     label = '🔒 ' + label + ` (${t.unlock} rolls)`;
                     opt.disabled = true;
-                } else {
-                    opt.disabled = false;
                 }
                 opt.textContent = label;
                 themeSelect.appendChild(opt);
             }
             let found = false;
-            for (let i = 0; i < themeSelect.options.length; i++) {
+            for (let i=0;i<themeSelect.options.length;i++) {
                 if (themeSelect.options[i].value === currentVal && !themeSelect.options[i].disabled) {
                     themeSelect.selectedIndex = i; found = true; break;
                 }
             }
             if (!found) {
-                for (let i = 0; i < themeSelect.options.length; i++) {
+                for (let i=0;i<themeSelect.options.length;i++) {
                     if (!themeSelect.options[i].disabled) { themeSelect.selectedIndex = i; break; }
                 }
             }
@@ -594,6 +881,7 @@
             if (totalRolls < 100) themeHint.innerText = "🔮 100 rolls to unlock OG theme";
             else themeHint.innerText = "🎉 ALL THEMES UNLOCKED! 🎉";
         }
+
         themeSelect.addEventListener('change', (e) => {
             document.body.className = e.target.value;
             renderActiveDice(false);
@@ -601,18 +889,18 @@
 
         const diceCountInput = document.getElementById('diceCountInput');
         function updateDiceCount() {
-            let val = parseInt(diceCountInput.value, 10);
+            let val = parseInt(diceCountInput.value,10);
             if (isNaN(val)) val = 4;
-            val = Math.min(80, Math.max(1, val));
+            val = Math.min(80,Math.max(1,val));
             diceCountInput.value = val;
         }
         diceCountInput.addEventListener('input', updateDiceCount);
         diceCountInput.addEventListener('change', updateDiceCount);
 
         function getRandomColor() { return { ...COLOR_SET[Math.floor(Math.random() * COLOR_SET.length)] }; }
-        function getRandomNumber() { return Math.floor(Math.random() * 6) + 1; }
-        function generateColorSet(cnt) { let arr = []; for (let i=0;i<cnt;i++) arr.push(getRandomColor()); return arr; }
-        function generateNumberSet(cnt) { let arr = []; for (let i=0;i<cnt;i++) arr.push(getRandomNumber()); return arr; }
+        function getRandomNumber() { return Math.floor(Math.random()*6)+1; }
+        function generateColorSet(cnt) { let arr=[]; for(let i=0;i<cnt;i++) arr.push(getRandomColor()); return arr; }
+        function generateNumberSet(cnt) { let arr=[]; for(let i=0;i<cnt;i++) arr.push(getRandomNumber()); return arr; }
 
         const diceTypeSelect = document.getElementById('diceTypeSelect');
         const diceGrid = document.getElementById('diceGrid');
@@ -626,11 +914,11 @@
                 for (let d of currentColorSet) {
                     if (currentTheme === 'los') {
                         html += `<div class="premium-die color-premium" style="--die-color: ${d.hex};">
-                                    <img src="${LOS_IMAGE_URL}" style="width:55px; height:55px; object-fit:contain; position:relative; z-index:2; border-radius:12px;">
+                                    <img src="${LOS_IMAGE_URL}" style="width:55px; height:55px; object-fit:contain; border-radius:12px;">
                                 </div>`;
                     } else if (currentTheme === 'og') {
                         html += `<div class="premium-die color-premium" style="--die-color: ${d.hex};">
-                                    <img src="${OG_IMAGE_URL}" style="width:55px; height:55px; object-fit:contain; position:relative; z-index:2; border-radius:12px;">
+                                    <img src="${OG_IMAGE_URL}" style="width:55px; height:55px; object-fit:contain; border-radius:12px;">
                                 </div>`;
                     } else {
                         html += `<div class="premium-die color-premium" style="--die-color: ${d.hex};"></div>`;
@@ -667,9 +955,12 @@
             if (isRolling) return;
             isRolling = true;
             const activeType = diceTypeSelect.value;
-            const count = parseInt(diceCountInput.value, 10);
-            if (activeType === 'color') currentColorSet = generateColorSet(count);
-            else currentNumberSet = generateNumberSet(count);
+            const count = parseInt(diceCountInput.value,10);
+            if (activeType === 'color') {
+                currentColorSet = generateColorSet(count);
+            } else {
+                currentNumberSet = generateNumberSet(count);
+            }
 
             const container = document.getElementById('diceContainer');
             container.classList.add('dice-hidden');
@@ -683,10 +974,9 @@
                 if (activeType === 'color') addToHistory(currentColorSet);
                 container.classList.remove('dice-hidden');
                 container.classList.add('dice-visible');
-                document.getElementById('rollBtn').style.transform = '';
                 isRolling = false;
                 rollTimeout = null;
-            }, 540);
+            }, 480);
         }
 
         diceTypeSelect.addEventListener('change', () => renderActiveDice(false));
