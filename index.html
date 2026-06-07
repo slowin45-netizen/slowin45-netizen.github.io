@@ -10,8 +10,10 @@
             padding: 0;
             box-sizing: border-box;
             user-select: none;
+            -webkit-tap-highlight-color: transparent;
         }
 
+        /* GELİŞMİŞ KOPYALAMA ENGELLEME (sağ tıklama, kısayollar, seçim, sürükleme) */
         body {
             font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
             min-height: 100vh;
@@ -21,6 +23,7 @@
             padding: 1rem;
             transition: background 0.3s ease;
             position: relative;
+            background: radial-gradient(circle at 30% 40%, #0a3a6a, #021a3a);
         }
 
         /* ========== TEMA RENKLERİ ========== */
@@ -84,7 +87,6 @@
             --border-color: #94a3b8;
             --theme-texture: repeating-linear-gradient(90deg, rgba(148,163,184,0.2) 0px, rgba(148,163,184,0.2) 1px, transparent 1px, transparent 6px), repeating-linear-gradient(45deg, rgba(255,255,255,0.08) 0px, rgba(255,255,255,0.08) 1px, transparent 1px, transparent 20px);
         }
-        /* Los Tralaleritos – Deniz mavisi, ESKI RESIM (zar üstü ve arka plan) */
         body.los {
             --accent: #00d2ff;
             --accent-glow: #00d2ffcc;
@@ -97,7 +99,6 @@
             --border-color: #00d2ff;
             --theme-texture: none;
         }
-        /* OG – Vintage, SON ATILAN RESIM (zar üstü ve arka plan) */
         body.og {
             --accent: #f59e0b;
             --accent-glow: #f59e0baa;
@@ -111,7 +112,7 @@
             --theme-texture: repeating-linear-gradient(45deg, rgba(245,158,11,0.15) 0px, rgba(245,158,11,0.15) 2px, transparent 2px, transparent 15px), repeating-linear-gradient(0deg, rgba(0,0,0,0.15) 0px, rgba(0,0,0,0.15) 1px, transparent 1px, transparent 8px);
         }
 
-        /* Arka plan dokuları (diğer temalar) */
+        /* Arka plan dokuları */
         body.blue::before, body.green::before, body.red::before, body.pink::before, body.bw::before {
             content: "";
             position: fixed;
@@ -127,8 +128,6 @@
             mix-blend-mode: overlay;
             opacity: 0.6;
         }
-
-        /* Los Tralaleritos özel arka plan (ESKI RESIM tekrarı) */
         body.los::before {
             content: "";
             position: fixed;
@@ -137,16 +136,14 @@
             width: 100%;
             height: 100%;
             background-image: url('https://www.image2url.com/r2/default/images/1780783552979-9d6290c8-daaa-4edb-b5f5-29bb9e2ef726.png');
-            background-size: 65px 65px;
+            background-size: 70px 70px;
             background-repeat: repeat;
             background-position: 0 0;
             pointer-events: none;
             z-index: 2;
-            opacity: 0.4;
+            opacity: 0.35;
             mix-blend-mode: overlay;
         }
-
-        /* OG teması özel arka plan (SON RESIM tekrarı) */
         body.og::before {
             content: "";
             position: fixed;
@@ -154,29 +151,16 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('https://www.image2url.com/r2/default/images/1780831184010-25ed2da6-254e-4168-9d41-8b518db61173.png');
-            background-size: 65px 65px;
-            background-repeat: repeat;
-            background-position: 0 0;
-            pointer-events: none;
-            z-index: 2;
-            opacity: 0.4;
-            mix-blend-mode: multiply;
-        }
-        /* OG ekstra vintage efekti */
-        body.og::before {
-            background-image: 
-                repeating-linear-gradient(0deg, rgba(0,0,0,0.2) 0px, rgba(0,0,0,0.2) 2px, transparent 2px, transparent 4px),
+            background-image: repeating-linear-gradient(0deg, rgba(0,0,0,0.2) 0px, rgba(0,0,0,0.2) 2px, transparent 2px, transparent 4px),
                 repeating-radial-gradient(circle at 20% 30%, rgba(0,0,0,0.1) 2px, transparent 2px, transparent 8px),
                 radial-gradient(ellipse at center, transparent 60%, rgba(0,0,0,0.4) 100%),
                 url('https://www.image2url.com/r2/default/images/1780831184010-25ed2da6-254e-4168-9d41-8b518db61173.png');
-            background-size: 100% 4px, 12px 12px, 100% 100%, 65px 65px;
+            background-size: 100% 4px, 12px 12px, 100% 100%, 70px 70px;
             background-repeat: repeat, repeat, no-repeat, repeat;
             mix-blend-mode: multiply;
             opacity: 1;
         }
 
-        /* Hareketli ışık efekti */
         body::after {
             content: "";
             position: fixed;
@@ -191,16 +175,8 @@
             animation: rotateLight 60s linear infinite;
             mix-blend-mode: overlay;
         }
-
-        body.og::after {
-            animation: rotateLight 90s linear infinite;
-            mix-blend-mode: soft-light;
-        }
-
-        @keyframes rotateLight {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+        body.og::after { animation: rotateLight 90s linear infinite; mix-blend-mode: soft-light; }
+        @keyframes rotateLight { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
         body {
             background: var(--grad-bg);
@@ -217,7 +193,6 @@
             border: 2px solid var(--border-color);
             box-shadow: 0 0 35px var(--accent-glow), 0 20px 40px -10px rgba(0,0,0,0.6);
             overflow: hidden;
-            transition: all 0.3s;
             display: flex;
             flex-direction: column;
             max-height: 95vh;
@@ -225,21 +200,27 @@
             z-index: 3;
         }
 
-        /* BAŞLIK – ERAS DICE + sağda resim */
+        /* BAŞLIK – logo sol ve sağda sabit (resimler aynı) */
         .brand {
             text-align: center;
             padding: 0.9rem 1rem 0.5rem;
             border-bottom: 3px solid var(--accent);
-            flex-shrink: 0;
             background: rgba(0,0,0,0.2);
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 10px;
+            flex-wrap: nowrap;
+        }
+        .brand img {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 5px var(--accent-glow));
+            flex-shrink: 0;
         }
         .brand h1 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 900;
             letter-spacing: 2px;
             background: linear-gradient(135deg, #fff, var(--accent), #fff);
@@ -247,17 +228,32 @@
             background-clip: text;
             color: transparent;
             animation: themeGlow 2s ease-in-out infinite;
-        }
-        .brand-img {
-            width: 48px;
-            height: 48px;
-            object-fit: contain;
-            filter: drop-shadow(0 0 5px var(--accent-glow));
+            white-space: nowrap;
         }
         @keyframes themeGlow {
             0% { filter: drop-shadow(0 0 0px rgba(255,255,255,0)); }
             50% { filter: drop-shadow(0 0 12px var(--accent-glow)); }
             100% { filter: drop-shadow(0 0 0px rgba(255,255,255,0)); }
+        }
+
+        /* ANLIK KULLANICI SAYACI (1-10 arası, 5 dakikada bir değişir) */
+        .counter-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-top: 0.2rem;
+        }
+        .online-counter {
+            text-align: center;
+            margin: 0.5rem auto 0;
+            padding: 0.3rem 1rem;
+            background: rgba(0,0,0,0.5);
+            border-radius: 60px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #ffd966;
+            border: 1px solid var(--accent);
+            display: inline-block;
+            backdrop-filter: blur(4px);
         }
 
         /* KONTROLLER */
@@ -270,7 +266,6 @@
             padding: 0.4rem 0.8rem;
             background: rgba(0,0,0,0.3);
             border-radius: 80px;
-            flex-shrink: 0;
         }
         .ctrl {
             display: flex;
@@ -282,12 +277,7 @@
             backdrop-filter: blur(4px);
             border: 1px solid var(--accent);
         }
-        .ctrl label {
-            font-size: 0.7rem;
-            font-weight: 700;
-            color: var(--accent);
-            letter-spacing: 0.5px;
-        }
+        .ctrl label { font-size: 0.7rem; font-weight: 700; color: var(--accent); }
         select, input {
             background: #1a1a2a;
             border: 1px solid var(--accent);
@@ -299,14 +289,7 @@
             cursor: pointer;
             font-size: 0.75rem;
         }
-        select:focus, input:focus {
-            border-color: #fff;
-            box-shadow: 0 0 0 2px var(--accent);
-        }
-        input {
-            width: 70px;
-            text-align: center;
-        }
+        input { width: 70px; text-align: center; }
 
         /* ZAR ALANI */
         .dice-container {
@@ -317,22 +300,10 @@
             min-height: 190px;
             max-height: 320px;
             overflow-y: auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-shrink: 1;
         }
-        .dice-container::-webkit-scrollbar {
-            width: 5px;
-        }
-        .dice-container::-webkit-scrollbar-track {
-            background: rgba(0,0,0,0.5);
-            border-radius: 10px;
-        }
-        .dice-container::-webkit-scrollbar-thumb {
-            background: var(--accent);
-            border-radius: 10px;
-        }
+        .dice-container::-webkit-scrollbar { width: 5px; }
+        .dice-container::-webkit-scrollbar-track { background: rgba(0,0,0,0.5); border-radius: 10px; }
+        .dice-container::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
         .dice-grid {
             display: flex;
             flex-wrap: wrap;
@@ -341,7 +312,7 @@
             align-items: center;
         }
 
-        /* ZAR – sabit beyaz çentik ve daire */
+        /* ZAR */
         .premium-die {
             width: 95px;
             height: 95px;
@@ -362,7 +333,7 @@
             left: 4px;
             right: 4px;
             bottom: 4px;
-            border: 2px solid rgba(255, 255, 255, 0.9);
+            border: 2px solid rgba(255,255,255,0.9);
             border-radius: 16px;
             pointer-events: none;
         }
@@ -373,26 +344,14 @@
             left: 50%;
             width: 14px;
             height: 14px;
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255,255,255,0.85);
             border-radius: 50%;
             transform: translate(-50%, -50%);
             pointer-events: none;
         }
-        .color-premium {
-            background: var(--die-color);
-            box-shadow: 0 5px 10px -2px rgba(0,0,0,0.5), inset 0 0 15px rgba(255,255,255,0.2);
-        }
-        .number-premium {
-            background: #0a0a0a;
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--accent);
-            text-shadow: 0 0 5px rgba(0,0,0,0.5);
-        }
-        .premium-die:hover {
-            transform: scale(1.02);
-            filter: brightness(1.05);
-        }
+        .color-premium { background: var(--die-color); box-shadow: 0 5px 10px -2px rgba(0,0,0,0.5), inset 0 0 15px rgba(255,255,255,0.2); }
+        .number-premium { background: #0a0a0a; font-size: 2rem; font-weight: 800; color: var(--accent); text-shadow: 0 0 5px rgba(0,0,0,0.5); }
+        .premium-die:hover { transform: scale(1.02); filter: brightness(1.05); }
 
         @keyframes diceSpin3D {
             0% { transform: rotate(0deg); }
@@ -401,16 +360,9 @@
             75% { transform: rotate(270deg); }
             100% { transform: rotate(360deg); }
         }
-        .spinning {
-            animation: diceSpin3D 0.45s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards !important;
-        }
+        .spinning { animation: diceSpin3D 0.45s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards !important; }
 
-        /* BUTON */
-        .action {
-            text-align: center;
-            margin: 0.5rem 0;
-            flex-shrink: 0;
-        }
+        .action { text-align: center; margin: 0.5rem 0; }
         .roll-btn {
             background: linear-gradient(135deg, var(--btn-start), var(--btn-end));
             border: none;
@@ -425,29 +377,18 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            letter-spacing: 1px;
         }
-        .roll-btn:active {
-            transform: scale(0.97);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-        }
+        .roll-btn:active { transform: scale(0.97); }
 
-        /* RENK LİSTESİ */
         .color-section {
             margin: 0.3rem 1rem;
             background: rgba(0,0,0,0.2);
             border-radius: 1.2rem;
             padding: 0.6rem;
             text-align: center;
-            flex-shrink: 0;
             border: 1px solid var(--accent);
         }
-        .color-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.8rem;
-        }
+        .color-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem; }
         .color-item {
             background: rgba(0,0,0,0.6);
             padding: 0.25rem 1rem;
@@ -460,8 +401,6 @@
             align-items: center;
             gap: 6px;
         }
-
-        /* GEÇMİŞ */
         .history-panel {
             margin: 0.3rem 1rem 0.6rem;
             background: rgba(0,0,0,0.2);
@@ -469,18 +408,6 @@
             padding: 0.6rem;
             max-height: 150px;
             overflow-y: auto;
-            flex-shrink: 0;
-        }
-        .history-panel::-webkit-scrollbar {
-            width: 4px;
-        }
-        .history-panel::-webkit-scrollbar-track {
-            background: rgba(0,0,0,0.5);
-            border-radius: 10px;
-        }
-        .history-panel::-webkit-scrollbar-thumb {
-            background: var(--accent);
-            border-radius: 10px;
         }
         .history-title {
             font-size: 0.75rem;
@@ -488,14 +415,8 @@
             text-align: center;
             color: var(--accent);
             margin-bottom: 0.4rem;
-            letter-spacing: 1px;
         }
-        .history-list {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            align-items: center;
-        }
+        .history-list { display: flex; flex-direction: column; gap: 5px; align-items: center; }
         .history-row {
             background: rgba(0,0,0,0.45);
             padding: 5px 12px;
@@ -506,49 +427,34 @@
             width: 90%;
             max-width: 380px;
             text-align: center;
-            letter-spacing: 1px;
             border-left: 3px solid var(--accent);
-            backdrop-filter: blur(4px);
         }
-
-        .theme-hint {
-            text-align: center;
-            font-size: 0.6rem;
-            color: var(--text-dim);
-            margin-bottom: 0.5rem;
-            padding: 0 0.5rem;
-            flex-shrink: 0;
-        }
-
-        .dice-hidden .premium-die {
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.15s ease;
-        }
-        .dice-visible .premium-die {
-            opacity: 1;
-            visibility: visible;
-            transition: opacity 0.15s ease;
-        }
+        .theme-hint { text-align: center; font-size: 0.6rem; margin-bottom: 0.5rem; }
+        .dice-hidden .premium-die { opacity: 0; visibility: hidden; transition: 0.15s; }
+        .dice-visible .premium-die { opacity: 1; visibility: visible; transition: 0.15s; }
 
         @media (max-width: 750px) {
             .premium-die { width: 75px; height: 75px; border-radius: 18px; }
             .premium-die::before { border-width: 1.5px; border-radius: 14px; top: 3px; left: 3px; right: 3px; bottom: 3px; }
             .premium-die::after { width: 10px; height: 10px; }
             .roll-btn { font-size: 1rem; padding: 6px 24px; }
-            .brand h1 { font-size: 1.5rem; }
-            .brand-img { width: 38px; height: 38px; }
-            .color-item { font-size: 0.7rem; padding: 0.2rem 0.8rem; }
-            body.los::before, body.og::before { background-size: 45px 45px; }
+            .brand h1 { font-size: 1.3rem; white-space: normal; }
+            .brand img { width: 35px; height: 35px; }
+            .online-counter { font-size: 0.75rem; padding: 0.2rem 0.8rem; }
         }
     </style>
 </head>
 <body class="blue">
 <div class="guts-card">
     <div class="brand">
-        <img class="brand-img" src="https://www.image2url.com/r2/default/images/1780831184010-25ed2da6-254e-4168-9d41-8b518db61173.png" alt="ERAS DICE Logo">
-        <h1> ERAS DICE </h1>
-        <img class="brand-img" src="https://www.image2url.com/r2/default/images/1780831184010-25ed2da6-254e-4168-9d41-8b518db61173.png" alt="ERAS DICE Logo">
+        <img src="https://www.image2url.com/r2/default/images/1780831184010-25ed2da6-254e-4168-9d41-8b518db61173.png" alt="Logo">
+        <h1>⚡ ERAS DICE ⚡</h1>
+        <img src="https://www.image2url.com/r2/default/images/1780831184010-25ed2da6-254e-4168-9d41-8b518db61173.png" alt="Logo">
+    </div>
+
+    <!-- ANLIK KULLANICI SAYACI (1-10 arası, 5 dakikada bir değişir) -->
+    <div class="counter-wrapper">
+        <div class="online-counter" id="onlineCounter">🟢 0 users online</div>
     </div>
 
     <div class="control-bar">
@@ -596,232 +502,232 @@
 </div>
 
 <script>
-    const COLOR_SET = [
-        { name: "KIRMIZI", hex: "#dd0000", short: "🔴" },
-        { name: "TURUNCU", hex: "#fd8b06", short: "🟠" },
-        { name: "SARI",   hex: "#fdd706", short: "🟡" },
-        { name: "YEŞİL",  hex: "#03c100", short: "🟢" },
-        { name: "MAVİ",   hex: "#1e00d9", short: "🔵" },
-        { name: "MOR",    hex: "#430083", short: "🟣" }
-    ];
-
-    // Los Tralaleritos teması için ESKI RESIM (zar üstünde)
-    const LOS_IMAGE_URL = "https://www.image2url.com/r2/default/images/1780783552979-9d6290c8-daaa-4edb-b5f5-29bb9e2ef726.png";
-    // OG teması için SON RESIM (zar üstünde)
-    const OG_IMAGE_URL = "https://www.image2url.com/r2/default/images/1780831184010-25ed2da6-254e-4168-9d41-8b518db61173.png";
-
-    let totalRolls = 0;
-    let colorHistory = [];
-    let currentColorSet = [];
-    let currentNumberSet = [];
-    let isRolling = false;
-    let rollTimeout = null;
-
-    const rollAudio = new Audio('https://www.image2url.com/r2/default/audio/1780681449818-f8cfecd4-0f2c-4fa4-a12a-1a602ba3e1c9.mp3');
-    rollAudio.preload = 'auto';
-    let audioUnlocked = false;
-    function unlockAudio() {
-        if (audioUnlocked) return;
-        rollAudio.load();
-        rollAudio.play().then(() => {
-            rollAudio.pause();
-            rollAudio.currentTime = 0;
-            audioUnlocked = true;
-        }).catch(() => {});
-    }
-    document.body.addEventListener('click', unlockAudio, { once: true });
-    function playSound() {
-        rollAudio.currentTime = 0;
-        rollAudio.play().catch(e => console.log("ses"));
-    }
-
-    const themeSelect = document.getElementById('themeSelect');
-    const themeHint = document.getElementById('themeHint');
-
-    const themes = [
-        { id: "los", name: "Los Tralaleritos", unlock: 0, emoji: "🌊" },
-        { id: "blue", name: "BLUE", unlock: 0, emoji: "🔵" },
-        { id: "green", name: "GREEN", unlock: 0, emoji: "🟢" },
-        { id: "red", name: "RED", unlock: 0, emoji: "🔴" },
-        { id: "pink", name: "PINK", unlock: 0, emoji: "💗" },
-        { id: "bw", name: "B&W", unlock: 0, emoji: "☯️" },
-        { id: "og", name: "OG", unlock: 00, emoji: "🔮" }
-    ];
-
-    function updateThemeSelect() {
-        const currentVal = themeSelect.value;
-        themeSelect.innerHTML = '';
-        for (let t of themes) {
-            const opt = document.createElement('option');
-            opt.value = t.id;
-            let label = t.emoji + ' ' + t.name;
-            if (t.unlock > 0 && totalRolls < t.unlock) {
-                label = '🔒 ' + label + ` (${t.unlock} rolls)`;
-                opt.disabled = true;
-            } else {
-                opt.disabled = false;
+    (function() {
+        // ################## GELİŞMİŞ KOPYALAMA ENGELLEME ##################
+        document.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12' ||
+                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) ||
+                (e.ctrlKey && e.key === 'u') ||
+                (e.ctrlKey && e.key === 's') ||
+                (e.ctrlKey && e.key === 'c') ||
+                (e.metaKey && e.key === 'c')) {
+                e.preventDefault();
+                return false;
             }
-            opt.textContent = label;
-            themeSelect.appendChild(opt);
+        });
+        document.addEventListener('selectstart', function(e) { e.preventDefault(); });
+        document.addEventListener('dragstart', function(e) { e.preventDefault(); });
+
+        // ################## ANLIK KULLANICI SAYACI (1-10 arası, 5 dakikada bir) ##################
+        const counterSpan = document.getElementById('onlineCounter');
+        let counterInterval = null;
+
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) + min);
         }
-        let found = false;
-        for (let i = 0; i < themeSelect.options.length; i++) {
-            if (themeSelect.options[i].value === currentVal && !themeSelect.options[i].disabled) {
-                themeSelect.selectedIndex = i;
-                found = true;
-                break;
+
+        function updateCounter() {
+            // Kullanıcı sayısı 1 ile 10 arasında
+            const randomUsers = getRandomInt(1, 10);
+            counterSpan.innerHTML = `🟢 ${randomUsers} users online now`;
+        }
+
+        updateCounter(); // İlk değer
+        counterInterval = setInterval(updateCounter, 300000); // 5 dakika = 300000 ms
+        window.addEventListener('beforeunload', function() {
+            if (counterInterval) clearInterval(counterInterval);
+        });
+
+        // ################## ZAR MEKANİĞİ ##################
+        const COLOR_SET = [
+            { name: "KIRMIZI", hex: "#dd0000", short: "🔴" },
+            { name: "TURUNCU", hex: "#fd8b06", short: "🟠" },
+            { name: "SARI",   hex: "#fdd706", short: "🟡" },
+            { name: "YEŞİL",  hex: "#03c100", short: "🟢" },
+            { name: "MAVİ",   hex: "#1e00d9", short: "🔵" },
+            { name: "MOR",    hex: "#430083", short: "🟣" }
+        ];
+
+        const LOS_IMAGE_URL = "https://www.image2url.com/r2/default/images/1780783552979-9d6290c8-daaa-4edb-b5f5-29bb9e2ef726.png";
+        const OG_IMAGE_URL = "https://www.image2url.com/r2/default/images/1780831184010-25ed2da6-254e-4168-9d41-8b518db61173.png";
+
+        let totalRolls = 0;
+        let colorHistory = [];
+        let currentColorSet = [];
+        let currentNumberSet = [];
+        let isRolling = false;
+        let rollTimeout = null;
+
+        const rollAudio = new Audio('https://www.image2url.com/r2/default/audio/1780681449818-f8cfecd4-0f2c-4fa4-a12a-1a602ba3e1c9.mp3');
+        rollAudio.preload = 'auto';
+        let audioUnlocked = false;
+        function unlockAudio() {
+            if (audioUnlocked) return;
+            rollAudio.load();
+            rollAudio.play().then(() => { rollAudio.pause(); rollAudio.currentTime = 0; audioUnlocked = true; }).catch(() => {});
+        }
+        document.body.addEventListener('click', unlockAudio, { once: true });
+        function playSound() { rollAudio.currentTime = 0; rollAudio.play().catch(e=>console.log); }
+
+        const themeSelect = document.getElementById('themeSelect');
+        const themeHint = document.getElementById('themeHint');
+
+        const themes = [
+            { id: "los", name: "Los Tralaleritos", unlock: 0, emoji: "🌊" },
+            { id: "blue", name: "BLUE", unlock: 0, emoji: "🔵" },
+            { id: "green", name: "GREEN", unlock: 0, emoji: "🟢" },
+            { id: "red", name: "RED", unlock: 0, emoji: "🔴" },
+            { id: "pink", name: "PINK", unlock: 0, emoji: "💗" },
+            { id: "bw", name: "B&W", unlock: 0, emoji: "☯️" },
+            { id: "og", name: "OG", unlock: 100, emoji: "🔮" }
+        ];
+
+        function updateThemeSelect() {
+            const currentVal = themeSelect.value;
+            themeSelect.innerHTML = '';
+            for (let t of themes) {
+                const opt = document.createElement('option');
+                opt.value = t.id;
+                let label = t.emoji + ' ' + t.name;
+                if (t.unlock > 0 && totalRolls < t.unlock) {
+                    label = '🔒 ' + label + ` (${t.unlock} rolls)`;
+                    opt.disabled = true;
+                } else {
+                    opt.disabled = false;
+                }
+                opt.textContent = label;
+                themeSelect.appendChild(opt);
             }
-        }
-        if (!found) {
+            let found = false;
             for (let i = 0; i < themeSelect.options.length; i++) {
-                if (!themeSelect.options[i].disabled) {
-                    themeSelect.selectedIndex = i;
-                    break;
+                if (themeSelect.options[i].value === currentVal && !themeSelect.options[i].disabled) {
+                    themeSelect.selectedIndex = i; found = true; break;
                 }
             }
-        }
-        document.body.className = themeSelect.value;
-        renderActiveDice(false);
-        if (totalRolls < 100) themeHint.innerText = "🔮 100 rolls to unlock OG theme";
-        else themeHint.innerText = "🎉 ALL THEMES UNLOCKED! 🎉";
-    }
-
-    themeSelect.addEventListener('change', (e) => {
-        document.body.className = e.target.value;
-        renderActiveDice(false);
-    });
-
-    const diceCountInput = document.getElementById('diceCountInput');
-    function updateDiceCount() {
-        let val = parseInt(diceCountInput.value, 10);
-        if (isNaN(val)) val = 4;
-        val = Math.min(80, Math.max(1, val));
-        diceCountInput.value = val;
-    }
-    diceCountInput.addEventListener('input', updateDiceCount);
-    diceCountInput.addEventListener('change', updateDiceCount);
-
-    function getRandomColor() { return { ...COLOR_SET[Math.floor(Math.random() * COLOR_SET.length)] }; }
-    function getRandomNumber() { return Math.floor(Math.random() * 6) + 1; }
-    function generateColorSet(count) { let arr = []; for (let i = 0; i < count; i++) arr.push(getRandomColor()); return arr; }
-    function generateNumberSet(count) { let arr = []; for (let i = 0; i < count; i++) arr.push(getRandomNumber()); return arr; }
-
-    const diceTypeSelect = document.getElementById('diceTypeSelect');
-    const diceGrid = document.getElementById('diceGrid');
-
-    function renderActiveDice(withSpin = false) {
-        const activeType = diceTypeSelect.value;
-        const currentTheme = document.body.className;
-        if (activeType === 'color') {
-            if (!currentColorSet.length) {
-                diceGrid.innerHTML = '<div style="width:100%; text-align:center;">⚡</div>';
-                return;
-            }
-            let html = '';
-            for (let d of currentColorSet) {
-                // Los Tralaleritos teması: eski resim (küçük deniz canlısı)
-                if (currentTheme === 'los') {
-                    html += `<div class="premium-die color-premium" style="--die-color: ${d.hex};">
-                                <img src="${LOS_IMAGE_URL}" class="dice-image" style="width: 55px; height: 55px; object-fit: contain; position: relative; z-index: 2; border-radius: 12px;">
-                            </div>`;
-                } 
-                // OG teması: son resim (logo)
-                else if (currentTheme === 'og') {
-                    html += `<div class="premium-die color-premium" style="--die-color: ${d.hex};">
-                                <img src="${OG_IMAGE_URL}" class="dice-image" style="width: 55px; height: 55px; object-fit: contain; position: relative; z-index: 2; border-radius: 12px;">
-                            </div>`;
-                }
-                else {
-                    html += `<div class="premium-die color-premium" style="--die-color: ${d.hex};"></div>`;
+            if (!found) {
+                for (let i = 0; i < themeSelect.options.length; i++) {
+                    if (!themeSelect.options[i].disabled) { themeSelect.selectedIndex = i; break; }
                 }
             }
-            diceGrid.innerHTML = html;
-        } else {
-            if (!currentNumberSet.length) {
-                diceGrid.innerHTML = '<div style="width:100%; text-align:center;">⚡</div>';
-                return;
+            document.body.className = themeSelect.value;
+            renderActiveDice(false);
+            if (totalRolls < 100) themeHint.innerText = "🔮 100 rolls to unlock OG theme";
+            else themeHint.innerText = "🎉 ALL THEMES UNLOCKED! 🎉";
+        }
+        themeSelect.addEventListener('change', (e) => {
+            document.body.className = e.target.value;
+            renderActiveDice(false);
+        });
+
+        const diceCountInput = document.getElementById('diceCountInput');
+        function updateDiceCount() {
+            let val = parseInt(diceCountInput.value, 10);
+            if (isNaN(val)) val = 4;
+            val = Math.min(80, Math.max(1, val));
+            diceCountInput.value = val;
+        }
+        diceCountInput.addEventListener('input', updateDiceCount);
+        diceCountInput.addEventListener('change', updateDiceCount);
+
+        function getRandomColor() { return { ...COLOR_SET[Math.floor(Math.random() * COLOR_SET.length)] }; }
+        function getRandomNumber() { return Math.floor(Math.random() * 6) + 1; }
+        function generateColorSet(cnt) { let arr = []; for (let i=0;i<cnt;i++) arr.push(getRandomColor()); return arr; }
+        function generateNumberSet(cnt) { let arr = []; for (let i=0;i<cnt;i++) arr.push(getRandomNumber()); return arr; }
+
+        const diceTypeSelect = document.getElementById('diceTypeSelect');
+        const diceGrid = document.getElementById('diceGrid');
+
+        function renderActiveDice(withSpin = false) {
+            const activeType = diceTypeSelect.value;
+            const currentTheme = document.body.className;
+            if (activeType === 'color') {
+                if (!currentColorSet.length) { diceGrid.innerHTML = '<div style="width:100%;text-align:center;">⚡</div>'; return; }
+                let html = '';
+                for (let d of currentColorSet) {
+                    if (currentTheme === 'los') {
+                        html += `<div class="premium-die color-premium" style="--die-color: ${d.hex};">
+                                    <img src="${LOS_IMAGE_URL}" style="width:55px; height:55px; object-fit:contain; position:relative; z-index:2; border-radius:12px;">
+                                </div>`;
+                    } else if (currentTheme === 'og') {
+                        html += `<div class="premium-die color-premium" style="--die-color: ${d.hex};">
+                                    <img src="${OG_IMAGE_URL}" style="width:55px; height:55px; object-fit:contain; position:relative; z-index:2; border-radius:12px;">
+                                </div>`;
+                    } else {
+                        html += `<div class="premium-die color-premium" style="--die-color: ${d.hex};"></div>`;
+                    }
+                }
+                diceGrid.innerHTML = html;
+            } else {
+                if (!currentNumberSet.length) { diceGrid.innerHTML = '<div style="width:100%;text-align:center;">⚡</div>'; return; }
+                let html = '';
+                for (let num of currentNumberSet) {
+                    html += `<div class="premium-die number-premium">${num}</div>`;
+                }
+                diceGrid.innerHTML = html;
             }
-            let html = '';
-            for (let num of currentNumberSet) {
-                html += `<div class="premium-die number-premium">${num}</div>`;
+            if (withSpin) {
+                document.querySelectorAll('.premium-die').forEach(die => {
+                    die.classList.add('spinning');
+                    setTimeout(() => die.classList.remove('spinning'), 450);
+                });
             }
-            diceGrid.innerHTML = html;
-        }
-        if (withSpin) {
-            const diceElements = document.querySelectorAll('.premium-die');
-            diceElements.forEach(die => {
-                die.classList.add('spinning');
-                setTimeout(() => die.classList.remove('spinning'), 450);
-            });
-        }
-    }
-
-    function addToHistory(diceSet) {
-        if (!diceSet.length) return;
-        const shortStr = diceSet.map(d => d.short).join(' ');
-        colorHistory.unshift(shortStr);
-        if (colorHistory.length > 5) colorHistory.pop();
-        const historyDiv = document.getElementById('historyList');
-        if (colorHistory.length === 0) {
-            historyDiv.innerHTML = '<div class="history-row">—</div>';
-            return;
-        }
-        let html = '';
-        for (let i = 0; i < colorHistory.length; i++) {
-            html += `<div class="history-row">${i+1}. ${colorHistory[i]}</div>`;
-        }
-        historyDiv.innerHTML = html;
-    }
-
-    async function performRoll() {
-        if (isRolling) return;
-        isRolling = true;
-
-        const activeType = diceTypeSelect.value;
-        const count = parseInt(diceCountInput.value, 10);
-        
-        if (activeType === 'color') {
-            currentColorSet = generateColorSet(count);
-        } else {
-            currentNumberSet = generateNumberSet(count);
         }
 
-        const container = document.getElementById('diceContainer');
-        container.classList.add('dice-hidden');
-        container.classList.remove('dice-visible');
-        playSound();
+        function addToHistory(diceSet) {
+            if (!diceSet.length) return;
+            const shortStr = diceSet.map(d=>d.short).join(' ');
+            colorHistory.unshift(shortStr);
+            if (colorHistory.length > 5) colorHistory.pop();
+            const historyDiv = document.getElementById('historyList');
+            if (colorHistory.length === 0) { historyDiv.innerHTML = '<div class="history-row">—</div>'; return; }
+            historyDiv.innerHTML = colorHistory.map((item,i)=>`<div class="history-row">${i+1}. ${item}</div>`).join('');
+        }
 
-        if (rollTimeout) clearTimeout(rollTimeout);
-        rollTimeout = setTimeout(() => {
-            totalRolls++;
+        async function performRoll() {
+            if (isRolling) return;
+            isRolling = true;
+            const activeType = diceTypeSelect.value;
+            const count = parseInt(diceCountInput.value, 10);
+            if (activeType === 'color') currentColorSet = generateColorSet(count);
+            else currentNumberSet = generateNumberSet(count);
+
+            const container = document.getElementById('diceContainer');
+            container.classList.add('dice-hidden');
+            container.classList.remove('dice-visible');
+            playSound();
+            if (rollTimeout) clearTimeout(rollTimeout);
+            rollTimeout = setTimeout(() => {
+                totalRolls++;
+                updateThemeSelect();
+                renderActiveDice(true);
+                if (activeType === 'color') addToHistory(currentColorSet);
+                container.classList.remove('dice-hidden');
+                container.classList.add('dice-visible');
+                document.getElementById('rollBtn').style.transform = '';
+                isRolling = false;
+                rollTimeout = null;
+            }, 540);
+        }
+
+        diceTypeSelect.addEventListener('change', () => renderActiveDice(false));
+
+        function initDemo() {
+            currentColorSet = generateColorSet(4);
+            currentNumberSet = generateNumberSet(4);
+            renderActiveDice(false);
+            addToHistory(currentColorSet);
+            updateDiceCount();
+            totalRolls = 0;
             updateThemeSelect();
-            renderActiveDice(true);
-            if (activeType === 'color') addToHistory(currentColorSet);
-            container.classList.remove('dice-hidden');
-            container.classList.add('dice-visible');
-            document.getElementById('rollBtn').style.transform = '';
-            isRolling = false;
-            rollTimeout = null;
-        }, 540);
-    }
+            document.getElementById('diceContainer').classList.add('dice-visible');
+        }
 
-    diceTypeSelect.addEventListener('change', () => renderActiveDice(false));
+        document.getElementById('rollBtn').addEventListener('click', performRoll);
+        diceCountInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') performRoll(); });
 
-    function initDemo() {
-        currentColorSet = generateColorSet(4);
-        currentNumberSet = generateNumberSet(4);
-        renderActiveDice(false);
-        addToHistory(currentColorSet);
-        updateDiceCount();
-        totalRolls = 0;
-        updateThemeSelect();
-        document.getElementById('diceContainer').classList.add('dice-visible');
-    }
-
-    document.getElementById('rollBtn').addEventListener('click', performRoll);
-    diceCountInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') performRoll(); });
-
-    initDemo();
+        initDemo();
+    })();
 </script>
 </body>
 </html>
