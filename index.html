@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>ERAS DICE | KALİTE TESADÜF DEĞİLDİR!
-    
-    </title>
+    <title>ERAS DICE | KALİTE TESADÜF DEĞİLDİR</title>
     <style>
         * {
             margin: 0;
@@ -16,18 +14,18 @@
         }
 
         body {
-            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 1rem;
-            transition: background 0.3s ease;
+            padding: 1.2rem;
+            transition: all 0.3s ease;
             position: relative;
             background: radial-gradient(circle at 30% 40%, #0a3a6a, #021a3a);
         }
 
-        /* ========== TEMA RENKLERİ VE DOKULARI ========== */
+        /* ========== TEMA RENKLERİ VE DOKULARI (KALİTE ODAKLI) ========== */
         body.blue {
             --accent: #0ea5e9;
             --accent-glow: #0ea5e9cc;
@@ -38,37 +36,8 @@
             --border-color: #0ea5e9;
             --grad-bg: radial-gradient(circle at 30% 40%, #0a3a6a, #021a3a);
             --title-gradient: linear-gradient(135deg, #fff, #0ea5e9, #38bdf8, #fff);
-            --theme-texture: repeating-linear-gradient(110deg, rgba(14,165,233,0.15) 0px, rgba(14,165,233,0.15) 2px, transparent 2px, transparent 20px), radial-gradient(circle at 20% 30%, rgba(14,165,233,0.2) 2px, transparent 2px);
             --die-glow: 0 0 12px rgba(14,165,233,0.7);
-            --card-shadow: 0 0 30px rgba(14,165,233,0.4);
-        }
-        body.green {
-            --accent: #10b981;
-            --accent-glow: #10b981cc;
-            --btn-start: #10b981;
-            --btn-end: #047857;
-            --card-bg: rgba(0, 50, 20, 0.85);
-            --text-light: #d1fae5;
-            --border-color: #10b981;
-            --grad-bg: radial-gradient(circle at 30% 40%, #0a3a1a, #021a0a);
-            --title-gradient: linear-gradient(135deg, #fff, #10b981, #34d399, #fff);
-            --theme-texture: repeating-linear-gradient(135deg, rgba(16,185,129,0.15) 0px, rgba(16,185,129,0.15) 2px, transparent 2px, transparent 20px), repeating-linear-gradient(0deg, rgba(0,0,0,0.08) 0px, rgba(0,0,0,0.08) 1px, transparent 1px, transparent 8px);
-            --die-glow: 0 0 12px rgba(16,185,129,0.7);
-            --card-shadow: 0 0 30px rgba(16,185,129,0.4);
-        }
-        body.red {
-            --accent: #f43f5e;
-            --accent-glow: #f43f5ecc;
-            --btn-start: #f43f5e;
-            --btn-end: #be123c;
-            --card-bg: rgba(70, 20, 20, 0.85);
-            --text-light: #ffe0e0;
-            --border-color: #f43f5e;
-            --grad-bg: radial-gradient(circle at 30% 40%, #4a1a1a, #1a0505);
-            --title-gradient: linear-gradient(135deg, #fff, #f43f5e, #fb7185, #fff);
-            --theme-texture: repeating-linear-gradient(0deg, rgba(244,63,94,0.2) 0px, rgba(244,63,94,0.2) 2px, transparent 2px, transparent 14px), radial-gradient(circle at 60% 70%, rgba(244,63,94,0.15) 3px, transparent 3px);
-            --die-glow: 0 0 12px rgba(244,63,94,0.7);
-            --card-shadow: 0 0 30px rgba(244,63,94,0.4);
+            --card-shadow: 0 20px 35px -10px rgba(0,0,0,0.5);
         }
         body.pink {
             --accent: #f472b6;
@@ -80,9 +49,8 @@
             --border-color: #f472b6;
             --grad-bg: radial-gradient(circle at 30% 40%, #3a1a2a, #1a0510);
             --title-gradient: linear-gradient(135deg, #fff, #f472b6, #f9a8d4, #fff);
-            --theme-texture: repeating-radial-gradient(circle at 20% 40%, rgba(244,114,182,0.2) 3px, transparent 3px), repeating-linear-gradient(45deg, rgba(244,114,182,0.1) 0px, rgba(244,114,182,0.1) 1px, transparent 1px, transparent 12px);
             --die-glow: 0 0 12px rgba(244,114,182,0.7);
-            --card-shadow: 0 0 30px rgba(244,114,182,0.4);
+            --card-shadow: 0 20px 35px -10px rgba(0,0,0,0.5);
         }
         body.bw {
             --accent: #94a3b8;
@@ -94,10 +62,10 @@
             --border-color: #94a3b8;
             --grad-bg: radial-gradient(circle at 30% 40%, #2c3e50, #1a252f);
             --title-gradient: linear-gradient(135deg, #fff, #cbd5e1, #94a3b8, #fff);
-            --theme-texture: repeating-linear-gradient(90deg, rgba(148,163,184,0.2) 0px, rgba(148,163,184,0.2) 1px, transparent 1px, transparent 6px), repeating-linear-gradient(45deg, rgba(255,255,255,0.08) 0px, rgba(255,255,255,0.08) 1px, transparent 1px, transparent 20px);
             --die-glow: 0 0 12px rgba(148,163,184,0.6);
-            --card-shadow: 0 0 30px rgba(148,163,184,0.3);
+            --card-shadow: 0 20px 35px -10px rgba(0,0,0,0.5);
         }
+
         body.los {
             --accent: #00d2ff;
             --accent-glow: #00ffffcc;
@@ -108,28 +76,27 @@
             --border-color: #00d2ff;
             --grad-bg: radial-gradient(circle at 30% 40%, #023e8a, #03045e);
             --title-gradient: linear-gradient(135deg, #fff, #00d2ff, #3ae2ff, #fff);
-            --theme-texture: repeating-linear-gradient(45deg, rgba(0,210,255,0.15) 0px, rgba(0,210,255,0.15) 1px, transparent 1px, transparent 12px);
             --die-glow: 0 0 15px cyan;
-            --card-shadow: 0 0 30px cyan;
+            --card-shadow: 0 20px 35px -10px rgba(0,0,0,0.5);
             position: relative;
         }
         body.los::before {
             content: "";
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url('https://www.image2url.com/r2/default/images/1780783552979-9d6290c8-daaa-4edb-b5f5-29bb9e2ef726.png');
-            background-size: 65px 65px;
-            background-repeat: repeat;
-            opacity: 0.35;
-            mix-blend-mode: overlay;
+            background-image: url('https://www.image2url.com/r2/default/images/1781103773150-7c4d5b5e-d810-458e-ac70-18013b2e71d5.webp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.85;
             pointer-events: none;
-            z-index: 2;
+            z-index: 0;
         }
         body.los::after {
             content: '';
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 50%, rgba(0,255,255,0.08) 0%, transparent 80%);
+            background: radial-gradient(circle at 50% 50%, rgba(0,255,255,0.15) 0%, transparent 80%);
             animation: waterWave 12s infinite;
             pointer-events: none;
             z-index: 1;
@@ -150,29 +117,89 @@
             --border-color: #f59e0b;
             --grad-bg: radial-gradient(circle at 30% 40%, #4a2e1a, #1a0e05);
             --title-gradient: linear-gradient(135deg, #fff, #f59e0b, #fbbf24, #fff);
-            --theme-texture: repeating-linear-gradient(0deg, rgba(0,0,0,0.2) 0px, rgba(0,0,0,0.2) 1px, transparent 1px, transparent 4px), radial-gradient(circle at 30% 50%, rgba(245,158,11,0.2) 2px, transparent 2px);
             --die-glow: 0 0 15px #f59e0b;
-            --card-shadow: 0 0 30px rgba(245,158,11,0.5);
+            --card-shadow: 0 20px 35px -10px rgba(0,0,0,0.5);
+            position: relative;
         }
         body.og::before {
             content: "";
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url('https://www.image2url.com/r2/default/images/1780831184010-25ed2da6-254e-4168-9d41-8b518db61173.png');
-            background-size: 70px 70px;
-            background-repeat: repeat;
-            opacity: 0.3;
-            mix-blend-mode: soft-light;
+            background-image: url('https://www.image2url.com/r2/default/images/1781104754551-68d8f9b1-1dae-4501-8aa5-a1b6bbe58e6a.webp');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #1a0e05;
+            opacity: 1;
             pointer-events: none;
-            z-index: 2;
+            z-index: 0;
         }
 
-        /* ortak arka plan ışığı */
-        body {
-            background: var(--grad-bg);
-            color: var(--text-light);
+        body.skibidi {
+            --accent: #ffffff;
+            --accent-glow: #ffffffaa;
+            --btn-start: #e0e0e0;
+            --btn-end: #b0b0b0;
+            --card-bg: rgba(245, 245, 245, 0.9);
+            --text-light: #333333;
+            --border-color: #cccccc;
+            --grad-bg: radial-gradient(circle at 30% 40%, #f5f5f5, #e0e0e0);
+            --title-gradient: linear-gradient(135deg, #555, #aaa, #555);
+            --die-glow: 0 0 12px rgba(0,0,0,0.2);
+            --card-shadow: 0 20px 35px -10px rgba(0,0,0,0.2);
+            position: relative;
         }
-        body::after {
+        body.skibidi::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('https://www.image2url.com/r2/default/images/1781103429363-378bff4e-2c7d-4de8-a7c3-0693ab7d645b.webp');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #f5f5f5;
+            opacity: 0.6;
+            pointer-events: none;
+            z-index: 0;
+        }
+        body.skibidi .guts-card {
+            background: rgba(245, 245, 245, 0.92);
+            backdrop-filter: none;
+        }
+
+        body.meowl {
+            --accent: #ffaa44;
+            --accent-glow: #ffaa44cc;
+            --btn-start: #ffaa44;
+            --btn-end: #cc7722;
+            --card-bg: rgba(0,0,0,0.7);
+            --text-light: #fff4e0;
+            --border-color: #ffaa44;
+            --title-gradient: linear-gradient(135deg, #fff, #ffaa44, #ffcc88, #fff);
+            --die-glow: 0 0 12px #ffaa44;
+            --card-shadow: 0 20px 35px -10px rgba(0,0,0,0.5);
+            position: relative;
+        }
+        body.meowl::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('https://www.image2url.com/r2/default/images/1781103530732-4d1341c8-4320-4558-9da6-96ecb885500e.webp');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #1a0e05;
+            opacity: 1;
+            pointer-events: none;
+            z-index: 0;
+        }
+        body.meowl .guts-card {
+            background: rgba(0,0,0,0.78);
+            backdrop-filter: blur(8px);
+        }
+
+        /* Ortak arka plan ışığı (blue, pink, bw için) */
+        body.blue::after, body.pink::after, body.bw::after {
             content: "";
             position: fixed;
             top: -20%;
@@ -188,6 +215,11 @@
         }
         @keyframes rotateLight { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
+        body {
+            background: var(--grad-bg);
+            color: var(--text-light);
+        }
+
         /* ANA KART */
         .guts-card {
             max-width: 1100px;
@@ -196,14 +228,14 @@
             backdrop-filter: blur(16px);
             border-radius: 2rem;
             border: 2px solid var(--border-color);
-            box-shadow: var(--card-shadow), 0 20px 40px -10px rgba(0,0,0,0.6);
+            box-shadow: var(--card-shadow), 0 0 0 1px rgba(255,255,255,0.05) inset;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             max-height: 95vh;
             position: relative;
             z-index: 3;
-            transition: box-shadow 0.3s, border-color 0.3s;
+            transition: all 0.3s ease;
         }
 
         /* BAŞLIK */
@@ -224,7 +256,7 @@
             height: 60px;
             object-fit: contain;
             filter: drop-shadow(0 0 10px var(--accent-glow));
-            transition: transform 0.2s, filter 0.2s;
+            transition: transform 0.2s ease, filter 0.2s ease;
         }
         .brand-logo:hover {
             transform: scale(1.08);
@@ -250,9 +282,9 @@
             100% { background-position: 300% 50%; }
         }
         @keyframes titlePulse {
-            0% { filter: drop-shadow(0 0 5px rgba(255,255,255,0.3)); }
-            50% { filter: drop-shadow(0 0 25px var(--accent-glow)); }
-            100% { filter: drop-shadow(0 0 5px rgba(255,255,255,0.3)); }
+            0% { filter: drop-shadow(0 0 2px rgba(255,255,255,0.2)); }
+            50% { filter: drop-shadow(0 0 20px var(--accent-glow)); }
+            100% { filter: drop-shadow(0 0 2px rgba(255,255,255,0.2)); }
         }
         .brand h1::before {
             content: attr(data-text);
@@ -261,12 +293,12 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(255,255,255,0.4), rgba(255,255,255,0));
+            background: linear-gradient(135deg, rgba(255,255,255,0.3), rgba(255,255,255,0));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             z-index: -1;
-            filter: blur(8px);
+            filter: blur(10px);
             opacity: 0.6;
         }
 
@@ -289,7 +321,7 @@
             font-size: 0.9rem;
             z-index: 1000;
             box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-            transition: transform 0.3s ease, opacity 0.3s;
+            transition: all 0.3s ease;
             opacity: 0;
             visibility: hidden;
         }
@@ -306,9 +338,10 @@
             font-weight: bold;
             color: #000;
             cursor: pointer;
+            transition: 0.1s;
         }
 
-        /* KARŞILAMA MODAL - SADE, ŞIK, KALİTELİ */
+        /* KARŞILAMA MODAL */
         .welcome-modal {
             position: fixed;
             top: 0;
@@ -323,7 +356,7 @@
             z-index: 2000;
             visibility: hidden;
             opacity: 0;
-            transition: visibility 0.3s, opacity 0.3s;
+            transition: all 0.3s ease;
         }
         .welcome-modal.open {
             visibility: visible;
@@ -409,11 +442,6 @@
             margin-top: 1.2rem;
             transition: all 0.2s ease;
             box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-            letter-spacing: 1px;
-        }
-        .close-modal:hover {
-            transform: scale(1.02);
-            filter: brightness(1.05);
         }
         .close-modal:active { transform: scale(0.97); }
         .modal-smallnote {
@@ -434,6 +462,7 @@
             color: #ffd966;
             border: 1px solid var(--accent);
             backdrop-filter: blur(4px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
         .control-bar {
@@ -445,6 +474,7 @@
             padding: 0.4rem 0.8rem;
             background: rgba(0,0,0,0.3);
             border-radius: 80px;
+            backdrop-filter: blur(4px);
         }
         .ctrl {
             display: flex;
@@ -455,6 +485,11 @@
             border-radius: 60px;
             backdrop-filter: blur(4px);
             border: 1px solid var(--accent);
+            transition: all 0.2s;
+        }
+        .ctrl:hover {
+            background: rgba(0,0,0,0.7);
+            transform: translateY(-1px);
         }
         .ctrl label { font-size: 0.7rem; font-weight: 700; color: var(--accent); }
         select, input {
@@ -467,7 +502,9 @@
             outline: none;
             cursor: pointer;
             font-size: 0.75rem;
+            transition: all 0.2s;
         }
+        select:hover, input:hover { transform: scale(1.02); }
         input { width: 70px; text-align: center; }
 
         .dice-container {
@@ -482,6 +519,10 @@
             justify-content: center;
             align-items: center;
         }
+        .dice-container::-webkit-scrollbar { width: 5px; }
+        .dice-container::-webkit-scrollbar-track { background: rgba(0,0,0,0.5); border-radius: 10px; }
+        .dice-container::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
+
         .dice-grid {
             display: flex;
             flex-wrap: wrap;
@@ -492,17 +533,17 @@
             margin: 0 auto;
         }
 
-        /* ZAR STİLİ - SAYI ZARLARINDA DAİRE YOK (FIX) */
+        /* ZAR STİLİ - YUMUŞAK VE PREMİUM */
         .premium-die {
             width: 95px;
             height: 95px;
             background: #0a0a0a;
-            border-radius: 20px;
+            border-radius: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: transform 0.2s, filter 0.2s, box-shadow 0.2s;
-            box-shadow: 0 5px 15px -2px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.15);
+            transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            box-shadow: 0 10px 20px -5px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
             position: relative;
             flex-shrink: 0;
             backdrop-filter: blur(2px);
@@ -514,11 +555,10 @@
             left: 4px;
             right: 4px;
             bottom: 4px;
-            border: 2px solid rgba(255,255,255,0.8);
-            border-radius: 16px;
+            border: 2px solid rgba(255,255,255,0.85);
+            border-radius: 20px;
             pointer-events: none;
         }
-        /* Renk zarlarında daire var (görsel bütünlük için) */
         .premium-die::after {
             content: "";
             position: absolute;
@@ -532,66 +572,63 @@
             pointer-events: none;
             box-shadow: 0 0 5px rgba(0,0,0,0.3);
         }
-        /* Sayı zarlarında daireyi tamamen kaldır */
-        .number-premium::after {
-            display: none !important;
-        }
-        /* LOS ve OG temalarında renk zarlarındaki daire de kalkar (özel durum) */
+        .number-premium::after { display: none !important; }
+        body.skibidi .color-premium::after,
+        body.meowl .color-premium::after,
         body.los .color-premium::after,
-        body.og .color-premium::after {
-            display: none;
-        }
-        .color-premium { background: var(--die-color); box-shadow: var(--die-glow), inset 0 0 10px rgba(255,255,255,0.3); }
+        body.og .color-premium::after { display: none; }
+
+        .color-premium { background: var(--die-color); box-shadow: var(--die-glow), inset 0 0 15px rgba(255,255,255,0.3); }
         .number-premium { background: #0a0a0a; font-size: 2rem; font-weight: 800; color: var(--accent); text-shadow: 0 0 8px var(--accent-glow); }
-        .premium-die:hover { transform: scale(1.03); filter: brightness(1.08); }
+        .premium-die:hover { transform: scale(1.04) translateY(-3px); filter: brightness(1.05); }
 
         @keyframes diceSpin {
             0% { transform: rotate(0deg) scale(1); }
-            50% { transform: rotate(180deg) scale(1.1); }
+            50% { transform: rotate(180deg) scale(1.08); }
             100% { transform: rotate(360deg) scale(1); }
         }
-        .spinning {
-            animation: diceSpin 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards !important;
-        }
+        .spinning { animation: diceSpin 0.45s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards !important; }
 
-        .action { text-align: center; margin: 0.5rem 0; }
+        .action { text-align: center; margin: 0.7rem 0; }
         .roll-btn {
             background: linear-gradient(135deg, var(--btn-start), var(--btn-end));
             border: none;
-            padding: 10px 34px;
+            padding: 12px 38px;
             border-radius: 60px;
             font-weight: 800;
             font-size: 1.2rem;
             color: #fff;
             cursor: pointer;
-            transition: 0.1s;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+            transition: 0.15s linear;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            letter-spacing: 1px;
         }
-        .roll-btn:active { transform: scale(0.97); }
+        .roll-btn:active { transform: scale(0.96); }
+        .roll-btn:hover { filter: brightness(1.05); transform: translateY(-2px); }
 
         .color-section {
             margin: 0.3rem 1rem;
             background: rgba(0,0,0,0.2);
             border-radius: 1.2rem;
-            padding: 0.6rem;
+            padding: 0.5rem;
             text-align: center;
             border: 1px solid var(--accent);
         }
-        .color-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem; }
+        .color-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
         .color-item {
             background: rgba(0,0,0,0.6);
-            padding: 0.3rem 1.2rem;
+            padding: 0.2rem 0.8rem;
             border-radius: 50px;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             font-weight: 600;
             color: #fff;
             border: 1px solid var(--accent);
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 5px;
             transition: all 0.2s;
             cursor: default;
         }
@@ -629,17 +666,19 @@
             max-width: 380px;
             text-align: center;
             border-left: 3px solid var(--accent);
+            transition: 0.1s;
         }
-        .theme-hint { text-align: center; font-size: 0.65rem; margin-bottom: 0.5rem; opacity: 0.9; letter-spacing: 0.5px; }
-        .dice-hidden .premium-die { opacity: 0; visibility: hidden; transition: 0.15s; }
-        .dice-visible .premium-die { opacity: 1; visibility: visible; transition: 0.15s; }
 
-        /* TikTok butonu (sağ üstteki kutucuk) */
+        .theme-hint { text-align: center; font-size: 0.65rem; margin: 0.3rem 0 0.6rem; opacity: 0.8; letter-spacing: 0.5px; }
+        .dice-hidden .premium-die { opacity: 0; visibility: hidden; transition: 0.15s; }
+        .dice-visible .premium-die { opacity: 1; visibility: visible; transition: 0.2s; }
+
+        /* TikTok butonu */
         .tiktok-btn {
             position: fixed;
             top: 20px;
             right: 20px;
-            background: rgba(0,0,0,0.6);
+            background: rgba(0,0,0,0.65);
             backdrop-filter: blur(8px);
             border-radius: 50%;
             width: 48px;
@@ -648,8 +687,8 @@
             align-items: center;
             justify-content: center;
             border: 1px solid var(--accent);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.25s ease;
             z-index: 1000;
             cursor: pointer;
         }
@@ -657,33 +696,28 @@
             transform: scale(1.1);
             background: var(--accent);
             border-color: #fff;
-            box-shadow: 0 0 15px var(--accent-glow);
+            box-shadow: 0 0 20px var(--accent-glow);
         }
         .tiktok-btn svg {
             width: 28px;
             height: 28px;
             fill: #fff;
-            transition: fill 0.3s;
+            transition: fill 0.2s;
         }
-        .tiktok-btn:hover svg {
-            fill: #000;
-        }
+        .tiktok-btn:hover svg { fill: #000; }
 
         @media (max-width: 750px) {
             .premium-die { width: 75px; height: 75px; border-radius: 18px; }
             .premium-die::before { border-width: 1.5px; border-radius: 14px; top: 3px; left: 3px; right: 3px; bottom: 3px; }
-            .roll-btn { font-size: 1rem; padding: 6px 24px; }
+            .roll-btn { font-size: 1rem; padding: 8px 24px; }
             .brand h1 { font-size: 1.7rem; letter-spacing: 3px; }
             .brand-logo { width: 45px; height: 45px; }
-            .online-counter { font-size: 0.75rem; padding: 0.2rem 0.8rem; }
-            .color-item { padding: 0.2rem 0.8rem; font-size: 0.7rem; }
-            .tiktok-btn { width: 40px; height: 40px; top: 15px; right: 15px; }
+            .online-counter { font-size: 0.75rem; }
+            .color-item { padding: 0.15rem 0.6rem; font-size: 0.65rem; }
+            .tiktok-btn { width: 42px; height: 42px; top: 12px; right: 12px; }
             .tiktok-btn svg { width: 24px; height: 24px; }
             .modal-card { padding: 1.5rem 1rem; }
             .modal-card .thanks { font-size: 1.2rem; }
-            .modal-card p { font-size: 0.85rem; }
-            .modal-icon { width: 55px; height: 55px; }
-            .modal-icon img { width: 40px; height: 40px; }
         }
     </style>
 </head>
@@ -700,101 +734,36 @@
     </div>
 
     <div class="control-bar">
-        <div class="ctrl">
-            <label>🎲 TYPE</label>
-            <select id="diceTypeSelect">
-                <option value="color">🌈 COLOR</option>
-                <option value="number">🔢 NUMBER</option>
-            </select>
-        </div>
-        <div class="ctrl">
-            <label>🔢 COUNT</label>
-            <input type="number" id="diceCountInput" min="1" max="80" value="4">
-        </div>
-        <div class="ctrl">
-            <label>🎨 THEME</label>
-            <select id="themeSelect"></select>
-        </div>
+        <div class="ctrl"><label>🎲 TYPE</label><select id="diceTypeSelect"><option value="color">🌈 COLOR</option><option value="number">🔢 NUMBER</option></select></div>
+        <div class="ctrl"><label>🔢 COUNT</label><input type="number" id="diceCountInput" min="1" max="80" value="4"></div>
+        <div class="ctrl"><label>🎨 THEME</label><select id="themeSelect"></select></div>
     </div>
 
-    <div class="dice-container" id="diceContainer">
-        <div class="dice-grid" id="diceGrid"></div>
-    </div>
-
-    <div class="action">
-        <button class="roll-btn" id="rollBtn">🎲 ROLL AGAIN! 🎲</button>
-    </div>
-
-    <div class="color-section">
-        <div class="color-list">
-            <span class="color-item">🔴 KIRMIZI</span>
-            <span class="color-item">🟠 TURUNCU</span>
-            <span class="color-item">🟡 SARI</span>
-            <span class="color-item">🟢 YEŞİL</span>
-            <span class="color-item">🔵 MAVİ</span>
-            <span class="color-item">🟣 MOR</span>
-        </div>
-    </div>
-
-    <div class="history-panel">
-        <div class="history-title">📜 LAST 5 ROLLS</div>
-        <div class="history-list" id="historyList"></div>
-    </div>
+    <div class="dice-container" id="diceContainer"><div class="dice-grid" id="diceGrid"></div></div>
+    <div class="action"><button class="roll-btn" id="rollBtn">🎲 ROLL AGAIN! 🎲</button></div>
+    <div class="color-section"><div class="color-list"><span class="color-item">🔴 KIRMIZI</span><span class="color-item">🟠 TURUNCU</span><span class="color-item">🟡 SARI</span><span class="color-item">🟢 YEŞİL</span><span class="color-item">🔵 MAVİ</span><span class="color-item">🟣 MOR</span></div></div>
+    <div class="history-panel"><div class="history-title">📜 LAST 5 ROLLS</div><div class="history-list" id="historyList"></div></div>
     <div class="theme-hint" id="themeHint"></div>
 </div>
 
-<!-- KARŞILAMA MODAL - İSTENEN METİN, SADE VE ŞIK TASARIM -->
-<div id="welcomeModal" class="welcome-modal">
-    <div class="modal-card">
-        <div class="modal-icon">
-            <img src="https://www.image2url.com/r2/default/images/1780852160014-833b5895-7426-482a-8fd4-4e2f09d286f9.webp" alt="Icon">
-        </div>
-        <div class="thanks">✨ SİTEYİ ZİYARET ETTİĞİNİZ İÇİN TEŞEKKÜRLER ✨</div>
-        <p>⚡ DAHA İYİ BİR DENEYİM İÇİN UĞRAŞIYORUZ ⚡</p>
-        <div class="modal-highlight">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M448 209.91a210.06 210.06 0 01-122.77-39.25v178.72A162.55 162.55 0 11185 188.31v89.89a74.62 74.62 0 1052.23 71.18V0h88a121.18 121.18 0 001.86 22.17A122.18 122.18 0 00381 102.39a121.43 121.43 0 0067 20.14Z"/></svg>
-            <span>BUNUN GİBİ SİTELERE MERAKINIZ VAR İSE SAĞ ÜSTEKİ KUTUCUĞA TIKLAYIN.</span>
-        </div>
-        <button class="close-modal" id="closeModalBtn">🚀 DEVAM ET</button>
-        <div class="modal-smallnote">(Bu mesaj sadece bir kez görünür)</div>
-    </div>
-</div>
-
-<!-- TOAST -->
-<div id="welcomeToast" class="toast-notify">
-    <span>✨</span>
-    <span>Hoş geldin! Zar at, renkleri keşfet, 100 atışta OG temasını aç!</span>
-    <button id="toastCloseBtn">Kapat</button>
-</div>
-
-<!-- TikTok Butonu (sağ üst kutucuk) -->
-<a href="https://www.tiktok.com/@erasmus_w" target="_blank" rel="noopener noreferrer" class="tiktok-btn">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-        <path d="M448 209.91a210.06 210.06 0 01-122.77-39.25v178.72A162.55 162.55 0 11185 188.31v89.89a74.62 74.62 0 1052.23 71.18V0h88a121.18 121.18 0 001.86 22.17A122.18 122.18 0 00381 102.39a121.43 121.43 0 0067 20.14Z"/>
-    </svg>
-</a>
+<!-- MODAL VE TOAST -->
+<div id="welcomeModal" class="welcome-modal"><div class="modal-card"><div class="modal-icon"><img src="https://www.image2url.com/r2/default/images/1780852160014-833b5895-7426-482a-8fd4-4e2f09d286f9.webp" alt="Icon"></div><div class="thanks">✨ SİTEYİ ZİYARET ETTİĞİNİZ İÇİN TEŞEKKÜRLER ✨</div><p>⚡ DAHA İYİ BİR DENEYİM İÇİN UĞRAŞIYORUZ ⚡</p><div class="modal-highlight"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M448 209.91a210.06 210.06 0 01-122.77-39.25v178.72A162.55 162.55 0 11185 188.31v89.89a74.62 74.62 0 1052.23 71.18V0h88a121.18 121.18 0 001.86 22.17A122.18 122.18 0 00381 102.39a121.43 121.43 0 0067 20.14Z"/></svg><span>BUNUN GİBİ SİTELERE MERAKINIZ VAR İSE SAĞ ÜSTEKİ KUTUCUĞA TIKLAYIN.</span></div><button class="close-modal" id="closeModalBtn">🚀 DEVAM ET</button><div class="modal-smallnote">(Bu mesaj sadece bir kez görünür)</div></div></div>
+<div id="welcomeToast" class="toast-notify"><span>✨</span><span>Hoş geldin! Zar at, renkleri keşfet, 10 atışta OG temasını aç!</span><button id="toastCloseBtn">Kapat</button></div>
+<a href="https://www.tiktok.com/@erasmus_w" target="_blank" rel="noopener noreferrer" class="tiktok-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M448 209.91a210.06 210.06 0 01-122.77-39.25v178.72A162.55 162.55 0 11185 188.31v89.89a74.62 74.62 0 1052.23 71.18V0h88a121.18 121.18 0 001.86 22.17A122.18 122.18 0 00381 102.39a121.43 121.43 0 0067 20.14Z"/></svg></a>
 
 <script>
     (function() {
-        // Engellemeler
         document.addEventListener('contextmenu', e => e.preventDefault());
         document.addEventListener('selectstart', e => e.preventDefault());
         document.addEventListener('dragstart', e => e.preventDefault());
 
-        // Modal (sadece ilk ziyaret)
         if (!sessionStorage.getItem('erasWelcomeSeen')) {
             const modal = document.getElementById('welcomeModal');
             modal.classList.add('open');
-            document.getElementById('closeModalBtn').onclick = () => {
-                modal.classList.remove('open');
-            };
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) modal.classList.remove('open');
-            });
+            document.getElementById('closeModalBtn').onclick = () => modal.classList.remove('open');
+            modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('open'); });
             sessionStorage.setItem('erasWelcomeSeen', '1');
         }
-
-        // Toast
         if (!sessionStorage.getItem('erasDiceToast')) {
             const toast = document.getElementById('welcomeToast');
             setTimeout(() => toast.classList.add('show'), 800);
@@ -803,56 +772,38 @@
             sessionStorage.setItem('erasDiceToast', '1');
         }
 
-        // Online sayaç
         const counterSpan = document.getElementById('onlineCounter');
-        function getRandomInt(min, max) { return Math.floor(Math.random() * (max - min + 1) + min); }
-        function updateCounter() { counterSpan.innerHTML = `🟢 ${getRandomInt(1, 10)} users online now`; }
+        function getRandomInt(min,max){ return Math.floor(Math.random()*(max-min+1)+min); }
+        function updateCounter(){ counterSpan.innerHTML = `🟢 ${getRandomInt(1,10)} users online now`; }
         updateCounter();
         setInterval(updateCounter, 300000);
 
-        // Zar renkleri
         const COLOR_SET = [
-            { name: "KIRMIZI", hex: "#dd0000", short: "🔴" },
-            { name: "TURUNCU", hex: "#fd8b06", short: "🟠" },
-            { name: "SARI",   hex: "#fdd706", short: "🟡" },
-            { name: "YEŞİL",  hex: "#03c100", short: "🟢" },
-            { name: "MAVİ",   hex: "#1e00d9", short: "🔵" },
-            { name: "MOR",    hex: "#430083", short: "🟣" }
+            { name: "KIRMIZI", hex: "#dd0000", short: "🔴" }, { name: "TURUNCU", hex: "#fd8b06", short: "🟠" },
+            { name: "SARI",   hex: "#fdd706", short: "🟡" }, { name: "YEŞİL",  hex: "#03c100", short: "🟢" },
+            { name: "MAVİ",   hex: "#1e00d9", short: "🔵" }, { name: "MOR",    hex: "#430083", short: "🟣" }
         ];
         const LOS_IMAGE_URL = "https://www.image2url.com/r2/default/images/1780783552979-9d6290c8-daaa-4edb-b5f5-29bb9e2ef726.png";
         const OG_IMAGE_URL = "https://www.image2url.com/r2/default/images/1780831184010-25ed2da6-254e-4168-9d41-8b518db61173.png";
+        const SKIBIDI_DICE_IMG = "https://www.image2url.com/r2/default/images/1781103357777-be8c7a3b-02d8-4d5f-962e-c039b40266f6.webp";
+        const MEOWL_DICE_IMG = "https://www.image2url.com/r2/default/images/1781103502397-1ffbcbb8-7248-41b4-ad0a-bbccf0b5385d.webp";
 
-        let totalRolls = 0;
-        let colorHistory = [];
-        let currentColorSet = [];
-        let currentNumberSet = [];
-        let isRolling = false;
-        let rollTimeout = null;
-
+        let totalRolls = 0, colorHistory = [], currentColorSet = [], currentNumberSet = [], isRolling = false, rollTimeout = null;
         const rollAudio = new Audio('https://www.image2url.com/r2/default/audio/1780681449818-f8cfecd4-0f2c-4fa4-a12a-1a602ba3e1c9.mp3');
         rollAudio.preload = 'auto';
         let audioUnlocked = false;
-        function unlockAudio() {
-            if (audioUnlocked) return;
-            rollAudio.load();
-            rollAudio.play().then(() => { rollAudio.pause(); rollAudio.currentTime = 0; audioUnlocked = true; }).catch(()=>{});
-        }
+        function unlockAudio() { if (!audioUnlocked) { rollAudio.load(); rollAudio.play().then(()=>{rollAudio.pause(); rollAudio.currentTime=0; audioUnlocked=true;}).catch(()=>{}); } }
         document.body.addEventListener('click', unlockAudio, { once: true });
-        function playSound() { if(audioUnlocked) { rollAudio.currentTime = 0; rollAudio.play().catch(e=>console.log); } }
+        function playSound() { if(audioUnlocked) { rollAudio.currentTime=0; rollAudio.play().catch(e=>console.log); } }
 
         const themes = [
-            { id: "blue", name: "BLUE", unlock: 0, emoji: "🔵" },
-            { id: "green", name: "GREEN", unlock: 0, emoji: "🟢" },
-            { id: "red", name: "RED", unlock: 0, emoji: "🔴" },
-            { id: "pink", name: "PINK", unlock: 0, emoji: "💗" },
-            { id: "bw", name: "B&W", unlock: 0, emoji: "☯️" },
-            { id: "los", name: "Los Tralaleritos", unlock: 0, emoji: "🌊" },
-            { id: "og", name: "OG", unlock: 100, emoji: "🔮" }
+            { id: "blue", name: "BLUE", unlock: 0, emoji: "🔵" }, { id: "pink", name: "PINK", unlock: 0, emoji: "💗" },
+            { id: "bw", name: "B&W", unlock: 0, emoji: "☯️" }, { id: "los", name: "Los Tralaleritos", unlock: 0, emoji: "🌊" },
+            { id: "skibidi", name: "Skibidi Toilet", unlock: 0, emoji: "🚽" }, { id: "meowl", name: "MEOWL", unlock: 0, emoji: "🐱" },
+            { id: "og", name: "OG", unlock: 10, emoji: "🔮" }
         ];
-
         const themeSelect = document.getElementById('themeSelect');
         const themeHint = document.getElementById('themeHint');
-
         function updateThemeSelect() {
             const currentVal = themeSelect.value;
             themeSelect.innerHTML = '';
@@ -860,44 +811,22 @@
                 const opt = document.createElement('option');
                 opt.value = t.id;
                 let label = t.emoji + ' ' + t.name;
-                if (t.unlock > 0 && totalRolls < t.unlock) {
-                    label = '🔒 ' + label + ` (${t.unlock} rolls)`;
-                    opt.disabled = true;
-                }
+                if (t.unlock > 0 && totalRolls < t.unlock) { label = '🔒 ' + label + ` (${t.unlock} rolls)`; opt.disabled = true; }
                 opt.textContent = label;
                 themeSelect.appendChild(opt);
             }
             let found = false;
-            for (let i=0;i<themeSelect.options.length;i++) {
-                if (themeSelect.options[i].value === currentVal && !themeSelect.options[i].disabled) {
-                    themeSelect.selectedIndex = i; found = true; break;
-                }
-            }
-            if (!found) {
-                for (let i=0;i<themeSelect.options.length;i++) {
-                    if (!themeSelect.options[i].disabled) { themeSelect.selectedIndex = i; break; }
-                }
-            }
+            for (let i=0;i<themeSelect.options.length;i++) if (themeSelect.options[i].value === currentVal && !themeSelect.options[i].disabled) { themeSelect.selectedIndex = i; found=true; break; }
+            if (!found) for (let i=0;i<themeSelect.options.length;i++) if (!themeSelect.options[i].disabled) { themeSelect.selectedIndex = i; break; }
             document.body.className = themeSelect.value;
             renderActiveDice(false);
-            if (totalRolls < 100) themeHint.innerText = "🔮 100 rolls to unlock OG theme";
-            else themeHint.innerText = "🎉 ALL THEMES UNLOCKED! 🎉";
+            themeHint.innerText = totalRolls < 10 ? "🔮 10 rolls to unlock OG theme" : "🎉 ALL THEMES UNLOCKED! 🎉";
         }
-
-        themeSelect.addEventListener('change', (e) => {
-            document.body.className = e.target.value;
-            renderActiveDice(false);
-        });
+        themeSelect.addEventListener('change', (e) => { document.body.className = e.target.value; renderActiveDice(false); });
 
         const diceCountInput = document.getElementById('diceCountInput');
-        function updateDiceCount() {
-            let val = parseInt(diceCountInput.value,10);
-            if (isNaN(val)) val = 4;
-            val = Math.min(80,Math.max(1,val));
-            diceCountInput.value = val;
-        }
-        diceCountInput.addEventListener('input', updateDiceCount);
-        diceCountInput.addEventListener('change', updateDiceCount);
+        function updateDiceCount() { let val = parseInt(diceCountInput.value,10); if (isNaN(val)) val = 4; val = Math.min(80,Math.max(1,val)); diceCountInput.value = val; }
+        diceCountInput.addEventListener('input', updateDiceCount); diceCountInput.addEventListener('change', updateDiceCount);
 
         function getRandomColor() { return { ...COLOR_SET[Math.floor(Math.random() * COLOR_SET.length)] }; }
         function getRandomNumber() { return Math.floor(Math.random()*6)+1; }
@@ -914,33 +843,20 @@
                 if (!currentColorSet.length) { diceGrid.innerHTML = '<div style="width:100%;text-align:center;">⚡</div>'; return; }
                 let html = '';
                 for (let d of currentColorSet) {
-                    if (currentTheme === 'los') {
-                        html += `<div class="premium-die color-premium" style="--die-color: ${d.hex};">
-                                    <img src="${LOS_IMAGE_URL}" style="width:55px; height:55px; object-fit:contain; border-radius:12px;">
-                                </div>`;
-                    } else if (currentTheme === 'og') {
-                        html += `<div class="premium-die color-premium" style="--die-color: ${d.hex};">
-                                    <img src="${OG_IMAGE_URL}" style="width:55px; height:55px; object-fit:contain; border-radius:12px;">
-                                </div>`;
-                    } else {
-                        html += `<div class="premium-die color-premium" style="--die-color: ${d.hex};"></div>`;
-                    }
+                    if (currentTheme === 'los') html += `<div class="premium-die color-premium" style="--die-color: ${d.hex};"><img src="${LOS_IMAGE_URL}" style="width:55px; height:55px; object-fit:contain; border-radius:12px;"></div>`;
+                    else if (currentTheme === 'og') html += `<div class="premium-die color-premium" style="--die-color: ${d.hex};"><img src="${OG_IMAGE_URL}" style="width:55px; height:55px; object-fit:contain; border-radius:12px;"></div>`;
+                    else if (currentTheme === 'skibidi') html += `<div class="premium-die color-premium" style="--die-color: ${d.hex};"><img src="${SKIBIDI_DICE_IMG}" style="width:55px; height:55px; object-fit:contain; border-radius:12px;"></div>`;
+                    else if (currentTheme === 'meowl') html += `<div class="premium-die color-premium" style="--die-color: ${d.hex};"><img src="${MEOWL_DICE_IMG}" style="width:55px; height:55px; object-fit:contain; border-radius:12px;"></div>`;
+                    else html += `<div class="premium-die color-premium" style="--die-color: ${d.hex};"></div>`;
                 }
                 diceGrid.innerHTML = html;
             } else {
                 if (!currentNumberSet.length) { diceGrid.innerHTML = '<div style="width:100%;text-align:center;">⚡</div>'; return; }
                 let html = '';
-                for (let num of currentNumberSet) {
-                    html += `<div class="premium-die number-premium">${num}</div>`;
-                }
+                for (let num of currentNumberSet) html += `<div class="premium-die number-premium">${num}</div>`;
                 diceGrid.innerHTML = html;
             }
-            if (withSpin) {
-                document.querySelectorAll('.premium-die').forEach(die => {
-                    die.classList.add('spinning');
-                    setTimeout(() => die.classList.remove('spinning'), 450);
-                });
-            }
+            if (withSpin) document.querySelectorAll('.premium-die').forEach(die => { die.classList.add('spinning'); setTimeout(() => die.classList.remove('spinning'), 450); });
         }
 
         function addToHistory(diceSet) {
@@ -949,8 +865,8 @@
             colorHistory.unshift(shortStr);
             if (colorHistory.length > 5) colorHistory.pop();
             const historyDiv = document.getElementById('historyList');
-            if (colorHistory.length === 0) { historyDiv.innerHTML = '<div class="history-row">—</div>'; return; }
-            historyDiv.innerHTML = colorHistory.map((item,i)=>`<div class="history-row">${i+1}. ${item}</div>`).join('');
+            if (!colorHistory.length) historyDiv.innerHTML = '<div class="history-row">—</div>';
+            else historyDiv.innerHTML = colorHistory.map((item,i)=>`<div class="history-row">${i+1}. ${item}</div>`).join('');
         }
 
         async function performRoll() {
@@ -958,11 +874,8 @@
             isRolling = true;
             const activeType = diceTypeSelect.value;
             const count = parseInt(diceCountInput.value,10);
-            if (activeType === 'color') {
-                currentColorSet = generateColorSet(count);
-            } else {
-                currentNumberSet = generateNumberSet(count);
-            }
+            if (activeType === 'color') currentColorSet = generateColorSet(count);
+            else currentNumberSet = generateNumberSet(count);
 
             const container = document.getElementById('diceContainer');
             container.classList.add('dice-hidden');
