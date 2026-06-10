@@ -740,7 +740,7 @@
     </div>
 
     <div class="dice-container" id="diceContainer"><div class="dice-grid" id="diceGrid"></div></div>
-    <div class="action"><button class="roll-btn" id="rollBtn"> 🤙ROLL AGAIN!👊 </button></div>
+    <div class="action"><button class="roll-btn" id="rollBtn"> 👊ROLL AGAIN!👊 </button></div>
     <div class="color-section"><div class="color-list"><span class="color-item">🔴 KIRMIZI</span><span class="color-item">🟠 TURUNCU</span><span class="color-item">🟡 SARI</span><span class="color-item">🟢 YEŞİL</span><span class="color-item">🔵 MAVİ</span><span class="color-item">🟣 MOR</span></div></div>
     <div class="history-panel"><div class="history-title">📜 LAST 5 ROLLS</div><div class="history-list" id="historyList"></div></div>
     <div class="theme-hint" id="themeHint"></div>
@@ -783,7 +783,7 @@
             { name: "SARI",   hex: "#fdd706", short: "🟡" }, { name: "YEŞİL",  hex: "#03c100", short: "🟢" },
             { name: "MAVİ",   hex: "#1e00d9", short: "🔵" }, { name: "MOR",    hex: "#430083", short: "🟣" }
         ];
-        const LOS_IMAGE_URL = "https://www.image2url.com/r2/default/images/1780783552979-9d6290c8-daaa-4edb-b5f5-29bb9e2ef726.png";
+        const LOS_IMAGE_URL = "https://user13567.na.imgto.link/public/20260610/ekran-g-r-nt-s-2026-06-10-200913.avif"
         const OG_IMAGE_URL = "https://www.image2url.com/r2/default/images/1780831184010-25ed2da6-254e-4168-9d41-8b518db61173.png";
         const SKIBIDI_DICE_IMG = "https://www.image2url.com/r2/default/images/1781103357777-be8c7a3b-02d8-4d5f-962e-c039b40266f6.webp";
         const MEOWL_DICE_IMG = "https://www.image2url.com/r2/default/images/1781103502397-1ffbcbb8-7248-41b4-ad0a-bbccf0b5385d.webp";
@@ -820,7 +820,7 @@
             if (!found) for (let i=0;i<themeSelect.options.length;i++) if (!themeSelect.options[i].disabled) { themeSelect.selectedIndex = i; break; }
             document.body.className = themeSelect.value;
             renderActiveDice(false);
-            themeHint.innerText = totalRolls < 10 ? "🔮 10 rolls to unlock OG theme" : "🎉 ALL THEMES UNLOCKED! 🎉";
+            themeHint.innerText = totalRolls < 10 ? "🐘 10 rolls to unlock OG theme" : "🎉 ALL THEMES UNLOCKED! 🎉";
         }
         themeSelect.addEventListener('change', (e) => { document.body.className = e.target.value; renderActiveDice(false); });
 
