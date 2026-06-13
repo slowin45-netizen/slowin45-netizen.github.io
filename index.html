@@ -355,7 +355,7 @@
             width: 100%;
         }
 
-        /* ZAR TASARIMI - ESKİ YUVARLAK HALİ */
+        /* ZAR TASARIMI */
         .premium-die {
             width: 95px;
             height: 95px;
@@ -438,7 +438,7 @@
             border: 1px solid var(--accent);
         }
 
-        /* GEÇMİŞ PANELİ - LAST 3 ROLLS ESKI YUVARLAK TASARIM */
+        /* GEÇMİŞ PANELİ */
         .history-panel {
             margin: 0.3rem 1rem 0.5rem;
             background: rgba(0,0,0,0.25);
@@ -615,7 +615,7 @@
             sessionStorage.setItem('erasDiceToast', '1');
         }
 
-        // ---------- KRİPTOGRAFİK RASTGELE ----------
+        // ---------- RENK TANIMLARI ----------
         const COLOR_SET = [
             { name: "KIRMIZI", hex: "#dd0000", short: "🔴" },
             { name: "TURUNCU", hex: "#fd8b06", short: "🟠" },
@@ -625,13 +625,83 @@
             { name: "MOR",    hex: "#430083", short: "🟣" }
         ];
 
+        // Gerçek rastgele sayı üretici (kriptografik)
         function secureRandomInt(max) {
             const array = new Uint32Array(1);
             window.crypto.getRandomValues(array);
             return array[0] % max;
         }
-        function getRandomColor() { return { ...COLOR_SET[secureRandomInt(COLOR_SET.length)] }; }
-        function getRandomNumber() { return secureRandomInt(6) + 1; }
+
+        // ***** YENİ ALGORİTMA: AKILLI DENGELİ DAĞILIM (TEKRARLARI NEREDEYSE TAMAMEN ENGELLER) *****
+        // Son 20 zarlık renk geçmişini tutar, en az görülen renkleri seçer.
+        let lastSingleRollsHistory = []; // her bir tek zarın renginin indeksini tutar (son 20)
+
+        function generateBalancedColorSet(count) {
+            const results = [];
+            // Bu atış içinde seçilen renklerin sayısını tut (çoklu tekrarı önlemek için)
+            const usedInCurrentSet = {};
+            // Maksimum aynı renk sayısı: count 4 ise max 2, count 6 ise max 3, daha az tekrar için sıkı tutuyoruz
+            const maxPerColor = Math.max(1, Math.floor(count / 2));
+            
+            for (let i = 0; i < count; i++) {
+                // 1. Adım: Son geçmişe göre her rengin görülme sıklığını hesapla
+                const freq = Array(COLOR_SET.length).fill(0);
+                for (let idx of lastSingleRollsHistory) {
+                    freq[idx]++;
+                }
+                // En küçük frekansı bul (minimum görülen renkler)
+                let minFreq = Math.min(...freq);
+                // Aday renkler: frekansı minFreq olanlar (en az görülenler)
+                let candidates = [];
+                for (let j = 0; j < freq.length; j++) {
+                    if (freq[j] === minFreq) candidates.push(j);
+                }
+                
+                // 2. Adayların içinden, bu set içinde zaten maxPerColor'a ulaşmış olanları ele
+                let available = candidates.filter(idx => (usedInCurrentSet[idx] || 0) < maxPerColor);
+                if (available.length === 0) {
+                    // Eğer tüm adaylar set içinde sınıra ulaştıysa, tüm renkler arasından maxPerColor'a ulaşmamış olanları al
+                    available = [];
+                    for (let j = 0; j < COLOR_SET.length; j++) {
+                        if ((usedInCurrentSet[j] || 0) < maxPerColor) available.push(j);
+                    }
+                    // Hâlâ yoksa (ki mümkün değil) tüm renkler
+                    if (available.length === 0) {
+                        for (let j = 0; j < COLOR_SET.length; j++) available.push(j);
+                    }
+                }
+                
+                // 3. Adaylardan rastgele birini seç (kriptografik)
+                const randomIndex = secureRandomInt(available.length);
+                const selectedIdx = available[randomIndex];
+                
+                // Seçilen rengi ekle
+                results.push({ ...COLOR_SET[selectedIdx] });
+                usedInCurrentSet[selectedIdx] = (usedInCurrentSet[selectedIdx] || 0) + 1;
+                
+                // Geçmişe ekle (bu atıştaki her bir zar için ayrı ayrı)
+                lastSingleRollsHistory.push(selectedIdx);
+                // Geçmişi son 20 ile sınırla
+                while (lastSingleRollsHistory.length > 20) {
+                    lastSingleRollsHistory.shift();
+                }
+            }
+            
+            return results;
+        }
+
+        function generateColorSet(cnt) {
+            return generateBalancedColorSet(cnt);
+        }
+
+        function getRandomNumber() {
+            return secureRandomInt(6) + 1;
+        }
+        function generateNumberSet(cnt) {
+            let arr = [];
+            for (let i = 0; i < cnt; i++) arr.push(getRandomNumber());
+            return arr;
+        }
 
         // ---------- GÖRSELLER ----------
         const LOS_IMAGE_URL = "https://user13567.na.imgto.link/public/20260610/ekran-g-r-nt-s-2026-06-10-200913.avif";
@@ -708,9 +778,6 @@
         diceCountInput.addEventListener('input', updateDiceCount);
         diceCountInput.addEventListener('change', updateDiceCount);
 
-        function generateColorSet(cnt) { let arr=[]; for(let i=0;i<cnt;i++) arr.push(getRandomColor()); return arr; }
-        function generateNumberSet(cnt) { let arr=[]; for(let i=0;i<cnt;i++) arr.push(getRandomNumber()); return arr; }
-
         const diceTypeSelect = document.getElementById('diceTypeSelect');
         const diceGrid = document.getElementById('diceGrid');
 
@@ -742,7 +809,6 @@
             }
         }
 
-        // Geçmiş: sadece renk modunda ve son 3
         function addToHistory(diceSet) {
             if (!diceSet.length) return;
             const shortStr = diceSet.map(d => d.short).join(' ');
@@ -786,7 +852,6 @@
             currentColorSet = generateColorSet(4);
             currentNumberSet = generateNumberSet(4);
             renderActiveDice(false);
-            // Başlangıçta geçmiş boş olsun
             colorHistory = [];
             const historyDiv = document.getElementById('historyList');
             historyDiv.innerHTML = '<div class="history-row">—</div>';
@@ -794,6 +859,8 @@
             totalRolls = 0;
             updateThemeSelect();
             document.getElementById('diceContainer').classList.add('dice-visible');
+            // Geçmişi sıfırla
+            lastSingleRollsHistory = [];
         }
         initDemo();
 
