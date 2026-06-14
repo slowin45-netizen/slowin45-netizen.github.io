@@ -24,58 +24,58 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* ========== TEMA RENKLERİ ========== */
+        /* ========== TEMA RENKLERİ VE DOKULARI ========== */
         body.blue {
             --accent: #0ea5e9;
             --accent-glow: #0ea5e9cc;
             --btn-start: #0ea5e9;
             --btn-end: #0369a1;
-            --card-bg: rgba(10, 40, 70, 0.78);
+            --card-bg: rgba(10, 40, 70, 0.85);
             --text-light: #e0f2fe;
             --border-color: #0ea5e9;
             --grad-bg: radial-gradient(ellipse at 30% 40%, #0a3a6a, #021a3a);
             --title-gradient: linear-gradient(135deg, #fff, #0ea5e9, #38bdf8, #fff);
-            --die-glow: 0 0 12px rgba(14,165,233,0.6);
-            --card-shadow: 0 20px 35px -12px rgba(0,0,0,0.4);
+            --die-glow: 0 0 12px rgba(14,165,233,0.7);
+            --card-shadow: 0 20px 35px -10px rgba(0,0,0,0.5);
         }
         body.pink {
             --accent: #f472b6;
             --accent-glow: #f472b6cc;
             --btn-start: #f472b6;
             --btn-end: #db2777;
-            --card-bg: rgba(60, 20, 50, 0.78);
+            --card-bg: rgba(60, 20, 50, 0.85);
             --text-light: #fce7f3;
             --border-color: #f472b6;
             --grad-bg: radial-gradient(ellipse at 30% 40%, #3a1a2a, #1a0510);
             --title-gradient: linear-gradient(135deg, #fff, #f472b6, #f9a8d4, #fff);
-            --die-glow: 0 0 12px rgba(244,114,182,0.6);
-            --card-shadow: 0 20px 35px -12px rgba(0,0,0,0.4);
+            --die-glow: 0 0 12px rgba(244,114,182,0.7);
+            --card-shadow: 0 20px 35px -10px rgba(0,0,0,0.5);
         }
         body.bw {
             --accent: #94a3b8;
             --accent-glow: #cbd5e1cc;
             --btn-start: #94a3b8;
             --btn-end: #64748b;
-            --card-bg: rgba(30, 30, 40, 0.78);
+            --card-bg: rgba(30, 30, 40, 0.85);
             --text-light: #f5f6fa;
             --border-color: #94a3b8;
             --grad-bg: radial-gradient(ellipse at 30% 40%, #2c3e50, #1a252f);
             --title-gradient: linear-gradient(135deg, #fff, #cbd5e1, #94a3b8, #fff);
-            --die-glow: 0 0 12px rgba(148,163,184,0.5);
-            --card-shadow: 0 20px 35px -12px rgba(0,0,0,0.4);
+            --die-glow: 0 0 12px rgba(148,163,184,0.6);
+            --card-shadow: 0 20px 35px -10px rgba(0,0,0,0.5);
         }
         body.los {
             --accent: #00d2ff;
-            --accent-glow: #00ffffaa;
+            --accent-glow: #00ffffcc;
             --btn-start: #00d2ff;
             --btn-end: #0077b6;
-            --card-bg: rgba(0, 80, 110, 0.78);
+            --card-bg: rgba(0, 80, 110, 0.85);
             --text-light: #e0f7fa;
             --border-color: #00d2ff;
             --grad-bg: radial-gradient(ellipse at 30% 40%, #023e8a, #03045e);
             --title-gradient: linear-gradient(135deg, #fff, #00d2ff, #3ae2ff, #fff);
             --die-glow: 0 0 15px cyan;
-            --card-shadow: 0 20px 35px -12px rgba(0,0,0,0.4);
+            --card-shadow: 0 20px 35px -10px rgba(0,0,0,0.5);
             position: relative;
         }
         body.los::before {
@@ -86,7 +86,7 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            opacity: 0.85;
+            opacity: 0.9;
             pointer-events: none;
             z-index: 0;
         }
@@ -94,28 +94,29 @@
             content: '';
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 50%, rgba(0,255,255,0.1) 0%, transparent 80%);
+            background: radial-gradient(circle at 50% 50%, rgba(0,255,255,0.15) 0%, transparent 80%);
             animation: waterWave 12s infinite;
             pointer-events: none;
             z-index: 1;
         }
         @keyframes waterWave {
             0% { transform: scale(1); opacity: 0.3; }
-            50% { transform: scale(1.15); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.6; }
             100% { transform: scale(1); opacity: 0.3; }
         }
+        /* OG (elephant) TEMASI - ARKA PLAN RESMİ DÜZELTİLDİ (contain, ortalanmış) */
         body.og {
             --accent: #f59e0b;
             --accent-glow: #f59e0baa;
             --btn-start: #f59e0b;
             --btn-end: #b45309;
-            --card-bg: rgba(60, 40, 20, 0.78);
+            --card-bg: rgba(60, 40, 20, 0.85);
             --text-light: #fef0d8;
             --border-color: #f59e0b;
             --grad-bg: radial-gradient(ellipse at 30% 40%, #4a2e1a, #1a0e05);
             --title-gradient: linear-gradient(135deg, #fff, #f59e0b, #fbbf24, #fff);
             --die-glow: 0 0 15px #f59e0b;
-            --card-shadow: 0 20px 35px -12px rgba(0,0,0,0.4);
+            --card-shadow: 0 20px 35px -10px rgba(0,0,0,0.5);
             position: relative;
         }
         body.og::before {
@@ -131,6 +132,7 @@
             pointer-events: none;
             z-index: 0;
         }
+        /* SKIBIDI TEMASI - ARKA PLAN RESMİ DÜZELTİLDİ */
         body.skibidi {
             --accent: #ffffff;
             --accent-glow: #ffffffaa;
@@ -142,7 +144,7 @@
             --grad-bg: radial-gradient(ellipse at 30% 40%, #f5f5f5, #e0e0e0);
             --title-gradient: linear-gradient(135deg, #555, #aaa, #555);
             --die-glow: 0 0 12px rgba(0,0,0,0.2);
-            --card-shadow: 0 20px 35px -12px rgba(0,0,0,0.15);
+            --card-shadow: 0 20px 35px -10px rgba(0,0,0,0.15);
             position: relative;
         }
         body.skibidi::before {
@@ -154,7 +156,7 @@
             background-position: center;
             background-repeat: no-repeat;
             background-color: #f5f5f5;
-            opacity: 0.6;
+            opacity: 0.9;
             pointer-events: none;
             z-index: 0;
         }
@@ -162,6 +164,7 @@
             background: rgba(245, 245, 245, 0.95);
             backdrop-filter: none;
         }
+        /* MEOWL TEMASI - ARKA PLAN RESMİ DÜZELTİLDİ */
         body.meowl {
             --accent: #ffaa44;
             --accent-glow: #ffaa44cc;
@@ -173,7 +176,7 @@
             --grad-bg: radial-gradient(ellipse at 30% 40%, #4a2e1a, #1a0e05);
             --title-gradient: linear-gradient(135deg, #fff, #ffaa44, #ffcc88, #fff);
             --die-glow: 0 0 15px #ffaa44;
-            --card-shadow: 0 20px 35px -12px rgba(0,0,0,0.4);
+            --card-shadow: 0 20px 35px -10px rgba(0,0,0,0.5);
             position: relative;
         }
         body.meowl::before {
@@ -194,6 +197,38 @@
             backdrop-filter: blur(8px);
         }
 
+        /* AKİDE ŞEKERİ TEMASI */
+        body.akide {
+            --accent: #2c2c2c;
+            --accent-glow: #4a4a4acc;
+            --btn-start: #3a3a3a;
+            --btn-end: #1a1a1a;
+            --card-bg: rgba(0, 0, 0, 0.85);
+            --text-light: #f0f0f0;
+            --border-color: #444;
+            --grad-bg: #000000;
+            --title-gradient: linear-gradient(135deg, #fff, #aaa, #fff);
+            --die-glow: 0 0 10px rgba(255,255,255,0.3);
+            --card-shadow: 0 20px 35px -10px rgba(0,0,0,0.6);
+            position: relative;
+        }
+        body.akide::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('https://www.image2url.com/r2/default/images/1781395387199-f2edb0f6-cad5-46bc-9986-f217b3b76e9d.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.9;
+            pointer-events: none;
+            z-index: 0;
+        }
+        body.akide .guts-card {
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(6px);
+        }
+
         body {
             background: var(--grad-bg);
             color: var(--text-light);
@@ -211,7 +246,7 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            max-height: 90vh;
+            max-height: 95vh;
             position: relative;
             z-index: 3;
         }
@@ -233,6 +268,7 @@
             height: 50px;
             object-fit: contain;
             filter: drop-shadow(0 0 8px var(--accent-glow));
+            transition: 0.1s;
         }
         .brand h1 {
             font-size: 2.2rem;
@@ -246,7 +282,7 @@
             text-shadow: 0 0 15px var(--accent-glow);
         }
 
-        /* TOAST */
+        /* TOAST BİLDİRİM */
         .toast-notify {
             position: fixed; bottom: 20px; left: 50%;
             transform: translateX(-50%) translateY(30px);
@@ -306,7 +342,7 @@
             flex-wrap: wrap;
             gap: 0.8rem;
             margin: 0.8rem 1rem;
-            padding: 0.4rem 1rem;
+            padding: 0.4rem 0.8rem;
             background: rgba(0,0,0,0.3);
             border-radius: 80px;
             backdrop-filter: blur(8px);
@@ -319,8 +355,18 @@
             padding: 0.3rem 1rem;
             border-radius: 60px;
             border: 1px solid var(--accent);
+            transition: all 0.2s;
         }
-        .ctrl label { font-size: 0.7rem; font-weight: 600; color: var(--accent); }
+        .ctrl:hover {
+            background: rgba(0,0,0,0.8);
+            transform: translateY(-2px);
+        }
+        .ctrl label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--accent);
+            letter-spacing: 0.5px;
+        }
         select, input {
             background: #1a1a2a;
             border: 1px solid var(--accent);
@@ -331,7 +377,9 @@
             outline: none;
             cursor: pointer;
             font-size: 0.75rem;
+            transition: 0.1s;
         }
+        select:hover, input:hover { border-color: #fff; transform: scale(1.02); }
         input { width: 60px; text-align: center; }
 
         /* ZAR ALANI */
@@ -339,7 +387,7 @@
             margin: 0.5rem 1rem;
             background: rgba(0,0,0,0.2);
             border-radius: 1.5rem;
-            padding: 1rem;
+            padding: 0.8rem;
             min-height: 220px;
             max-height: 340px;
             overflow-y: auto;
@@ -351,8 +399,10 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
+            align-items: center;
             gap: 1rem;
             width: 100%;
+            margin: 0 auto;
         }
 
         /* ZAR TASARIMI */
@@ -364,42 +414,53 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: 0.1s linear;
-            box-shadow: 0 12px 22px -10px rgba(0,0,0,0.5);
+            transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            box-shadow: 0 10px 20px -5px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
             position: relative;
+            flex-shrink: 0;
+            backdrop-filter: blur(2px);
         }
         .premium-die::before {
             content: "";
             position: absolute;
-            inset: 4px;
-            border: 2px solid rgba(255,255,255,0.9);
+            top: 4px;
+            left: 4px;
+            right: 4px;
+            bottom: 4px;
+            border: 2px solid rgba(255,255,255,0.85);
             border-radius: 20px;
             pointer-events: none;
         }
         .premium-die::after {
             content: "";
             position: absolute;
-            top: 50%; left: 50%;
-            width: 14px; height: 14px;
+            top: 50%;
+            left: 50%;
+            width: 14px;
+            height: 14px;
             background: rgba(255,255,255,0.9);
             border-radius: 50%;
             transform: translate(-50%, -50%);
             pointer-events: none;
+            box-shadow: 0 0 5px rgba(0,0,0,0.3);
         }
         .number-premium::after { display: none; }
         body.skibidi .color-premium::after,
         body.meowl .color-premium::after,
         body.los .color-premium::after,
-        body.og .color-premium::after { display: none; }
-        .color-premium { background: var(--die-color); box-shadow: var(--die-glow), inset 0 0 10px rgba(255,255,255,0.3); }
+        body.og .color-premium::after,
+        body.akide .color-premium::after { display: none; }
+
+        .color-premium { background: var(--die-color); box-shadow: var(--die-glow), inset 0 0 15px rgba(255,255,255,0.3); }
         .number-premium { background: #0a0a0a; font-size: 2rem; font-weight: 800; color: var(--accent); text-shadow: 0 0 8px var(--accent-glow); }
+        .premium-die:hover { transform: scale(1.03); filter: brightness(1.05); }
 
         @keyframes diceSpin {
             0% { transform: rotate(0deg) scale(1); }
             50% { transform: rotate(180deg) scale(1.08); }
             100% { transform: rotate(360deg) scale(1); }
         }
-        .spinning { animation: diceSpin 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards !important; }
+        .spinning { animation: diceSpin 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards !important; }
 
         .action { text-align: center; margin: 0.5rem 0 0.3rem; }
         .roll-btn {
@@ -419,7 +480,16 @@
         }
         .roll-btn:active { transform: scale(0.96); }
 
-        /* RENK LİSTESİ */
+        /* AKİDE BUTON ÖZEL */
+        body.akide .roll-btn span:not(.roll-btn-icon) { display: none; }
+        body.akide .roll-btn::before {
+            content: "🍈 KAVUNLAR GÖKTEN İNMEZ! 🍈";
+            font-size: 1rem;
+        }
+        body.akide .roll-btn svg, 
+        body.akide .roll-btn .roll-btn-icon { display: none; }
+
+        /* RENK LİSTESİ - SADE, HİÇBİR EFEKT YOK */
         .color-section {
             margin: 0.3rem 1rem;
             background: rgba(0,0,0,0.2);
@@ -427,18 +497,32 @@
             padding: 0.4rem;
             text-align: center;
         }
-        .color-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.4rem; }
+        .color-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+        }
         .color-item {
-            background: rgba(0,0,0,0.6);
-            padding: 0.2rem 0.9rem;
-            border-radius: 30px;
-            font-size: 0.7rem;
+            background: rgba(0, 0, 0, 0.55);
+            padding: 0.2rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
             font-weight: 500;
             color: #fff;
-            border: 1px solid var(--accent);
+            border: 1px solid rgba(255,255,255,0.2);
+            cursor: default;
+            transition: none;
+            backdrop-filter: blur(2px);
+        }
+        /* Hiçbir hover veya aktif efekti yok - tamamen sade */
+        .color-item:hover {
+            background: rgba(0, 0, 0, 0.55);
+            color: #fff;
+            transform: none;
+            border-color: rgba(255,255,255,0.2);
         }
 
-        /* GEÇMİŞ PANELİ */
         .history-panel {
             margin: 0.3rem 1rem 0.5rem;
             background: rgba(0,0,0,0.25);
@@ -495,7 +579,7 @@
             border-left-width: 5px;
         }
 
-        .theme-hint { text-align: center; font-size: 0.6rem; margin-bottom: 0.2rem; opacity: 0.7; }
+        .theme-hint { text-align: center; font-size: 0.65rem; margin-bottom: 0.2rem; opacity: 0.8; }
         .dice-hidden .premium-die { opacity: 0; visibility: hidden; }
         .dice-visible .premium-die { opacity: 1; visibility: visible; }
 
@@ -508,6 +592,7 @@
             display: flex; align-items: center; justify-content: center;
             border: 1px solid var(--accent);
             z-index: 1000;
+            transition: 0.1s;
         }
         .tiktok-btn:active { transform: scale(0.95); background: var(--accent); }
         .tiktok-btn svg { width: 24px; height: 24px; fill: #fff; }
@@ -518,7 +603,7 @@
             font-size: 0.6rem;
             padding: 0.5rem 0.8rem 0.6rem;
             border-top: 1px solid rgba(255,255,255,0.15);
-            margin-top: 0.1rem;
+            margin-top: 0.2rem;
             color: rgba(255,255,255,0.6);
         }
         .footer-credit span { font-weight: 600; color: var(--accent); }
@@ -531,36 +616,49 @@
             .brand-logo { width: 40px; height: 40px; }
             .ctrl { padding: 0.2rem 0.8rem; gap: 6px; }
             select, input { font-size: 0.65rem; padding: 2px 8px; }
-            .color-item { font-size: 0.6rem; padding: 0.1rem 0.7rem; }
+            .color-item { font-size: 0.7rem; padding: 0.15rem 0.8rem; }
             .history-row { font-size: 0.75rem; padding: 5px 12px; width: 90%; }
+            body.akide .roll-btn::before { font-size: 0.8rem; }
         }
     </style>
 </head>
 <body class="blue">
 <div class="guts-card">
     <div class="brand">
-        <img class="brand-logo" src="https://user13567.na.imgto.link/public/20260610/default-signore-carapace.avif" alt="Logo">
+        <img class="brand-logo" id="brandLogoLeft" src="https://www.image2url.com/r2/default/images/1781420313808-362db246-e0f8-483d-bdb8-ab24a314e568.jpg" alt="Logo">
         <h1 data-text="ERAS DICE">ERAS DICE</h1>
-        <img class="brand-logo" src="https://user13567.na.imgto.link/public/20260610/default-signore-carapace.avif" alt="Logo">
+        <img class="brand-logo" id="brandLogoRight" src="https://www.image2url.com/r2/default/images/1781420313808-362db246-e0f8-483d-bdb8-ab24a314e568.jpg" alt="Logo">
     </div>
 
     <div class="control-bar">
-        <div class="ctrl"><label>🎲 TYPE</label><select id="diceTypeSelect"><option value="color">🌈 COLOR</option><option value="number">🔢 NUMBER</option></select></div>
-        <div class="ctrl"><label>🔢 COUNT</label><input type="number" id="diceCountInput" min="1" max="80" value="4"></div>
-        <div class="ctrl"><label>🎨 THEME</label><select id="themeSelect"></select></div>
+        <div class="ctrl"><label> TYPE</label><select id="diceTypeSelect"><option value="color"> COLOR</option><option value="number"> NUMBER</option></select></div>
+        <div class="ctrl"><label> COUNT</label><input type="number" id="diceCountInput" min="1" max="80" value="4"></div>
+        <div class="ctrl"><label> THEME</label><select id="themeSelect"></select></div>
     </div>
 
     <div class="dice-container" id="diceContainer"><div class="dice-grid" id="diceGrid"></div></div>
-    <div class="action"><button class="roll-btn" id="rollBtn">🎲 ROLL AGAIN! 🎲</button></div>
-    <div class="color-section"><div class="color-list"><span class="color-item">🔴 KIRMIZI</span><span class="color-item">🟠 TURUNCU</span><span class="color-item">🟡 SARI</span><span class="color-item">🟢 YEŞİL</span><span class="color-item">🔵 MAVİ</span><span class="color-item">🟣 MOR</span></div></div>
+    <div class="action"><button class="roll-btn" id="rollBtn"><span class="roll-btn-icon"></span> <span>ROLL AGAIN!</span></button></div>
+    
+    <!-- SADE RENK LİSTESİ - HİÇBİR EFEKT YOK -->
+    <div class="color-section">
+        <div class="color-list">
+            <span class="color-item">🔴 KIRMIZI</span>
+            <span class="color-item">🟠 TURUNCU</span>
+            <span class="color-item">🟡 SARI</span>
+            <span class="color-item">🟢 YEŞİL</span>
+            <span class="color-item">🔵 MAVİ</span>
+            <span class="color-item">🟣 MOR</span>
+        </div>
+    </div>
+
     <div class="history-panel"><div class="history-title">📜 LAST 3 ROLLS</div><div class="history-list" id="historyList"></div></div>
     <div class="theme-hint" id="themeHint"></div>
-    <div class="footer-credit">made by <span>erasmus</span> | version <span>3.2</span></div>
+    <div class="footer-credit">made by <span>erasmus</span> | version <span>4.0</span></div>
 </div>
 
 <!-- MODAL VE TOAST -->
 <div id="welcomeModal" class="welcome-modal"><div class="modal-card"><div class="modal-icon"><img src="https://www.image2url.com/r2/default/images/1780852160014-833b5895-7426-482a-8fd4-4e2f09d286f9.webp" alt="Icon"></div><div class="thanks">✨ SİTEYİ ZİYARET ETTİĞİNİZ İÇİN TEŞEKKÜRLER ✨</div><p>⚡ DAHA İYİ BİR DENEYİM İÇİN UĞRAŞIYORUZ ⚡</p><div class="modal-highlight"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M448 209.91a210.06 210.06 0 01-122.77-39.25v178.72A162.55 162.55 0 11185 188.31v89.89a74.62 74.62 0 1052.23 71.18V0h88a121.18 121.18 0 001.86 22.17A122.18 122.18 0 00381 102.39a121.43 121.43 0 0067 20.14Z"/></svg><span>BUNUN GİBİ SİTE YAPTIRMAK İSTERSENİZ SAĞ ÜSTEKİ KUTUCUĞA TIKLAYIN.</span></div><button class="close-modal" id="closeModalBtn">🚀 DEVAM ET</button><div class="modal-smallnote">(Bu mesaj sadece bir kez görünür)</div></div></div>
-<div id="welcomeToast" class="toast-notify"><span>✨</span><span>Hoş geldin! Zar at, renkleri keşfet, 10 atışta OG temasını aç!</span><button id="toastCloseBtn">Kapat</button></div>
+<div id="welcomeToast" class="toast-notify"><span>✨</span><span>Hoş geldin! Zar at, renkleri keşfet, 10 atışta elephant temasını aç!</span><button id="toastCloseBtn">Kapat</button></div>
 <a href="https://www.tiktok.com/@erasmus_w" target="_blank" rel="noopener noreferrer" class="tiktok-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M448 209.91a210.06 210.06 0 01-122.77-39.25v178.72A162.55 162.55 0 11185 188.31v89.89a74.62 74.62 0 1052.23 71.18V0h88a121.18 121.18 0 001.86 22.17A122.18 122.18 0 00381 102.39a121.43 121.43 0 0067 20.14Z"/></svg></a>
 
 <script>
@@ -615,7 +713,7 @@
             sessionStorage.setItem('erasDiceToast', '1');
         }
 
-        // ---------- RENK TANIMLARI ----------
+        // ---------- RENK SETİ ----------
         const COLOR_SET = [
             { name: "KIRMIZI", hex: "#dd0000", short: "🔴" },
             { name: "TURUNCU", hex: "#fd8b06", short: "🟠" },
@@ -625,68 +723,46 @@
             { name: "MOR",    hex: "#430083", short: "🟣" }
         ];
 
-        // Gerçek rastgele sayı üretici (kriptografik)
+        // KRİPTOGRAFİK RASTGELE
         function secureRandomInt(max) {
             const array = new Uint32Array(1);
             window.crypto.getRandomValues(array);
             return array[0] % max;
         }
 
-        // ***** YENİ ALGORİTMA: AKILLI DENGELİ DAĞILIM (TEKRARLARI NEREDEYSE TAMAMEN ENGELLER) *****
-        // Son 20 zarlık renk geçmişini tutar, en az görülen renkleri seçer.
-        let lastSingleRollsHistory = []; // her bir tek zarın renginin indeksini tutar (son 20)
+        // DENGELİ RASTGELE ALGORİTMASI
+        let lastSingleRollsHistory = [];
 
         function generateBalancedColorSet(count) {
             const results = [];
-            // Bu atış içinde seçilen renklerin sayısını tut (çoklu tekrarı önlemek için)
             const usedInCurrentSet = {};
-            // Maksimum aynı renk sayısı: count 4 ise max 2, count 6 ise max 3, daha az tekrar için sıkı tutuyoruz
             const maxPerColor = Math.max(1, Math.floor(count / 2));
             
             for (let i = 0; i < count; i++) {
-                // 1. Adım: Son geçmişe göre her rengin görülme sıklığını hesapla
                 const freq = Array(COLOR_SET.length).fill(0);
-                for (let idx of lastSingleRollsHistory) {
-                    freq[idx]++;
-                }
-                // En küçük frekansı bul (minimum görülen renkler)
+                for (let idx of lastSingleRollsHistory) freq[idx]++;
                 let minFreq = Math.min(...freq);
-                // Aday renkler: frekansı minFreq olanlar (en az görülenler)
                 let candidates = [];
                 for (let j = 0; j < freq.length; j++) {
                     if (freq[j] === minFreq) candidates.push(j);
                 }
-                
-                // 2. Adayların içinden, bu set içinde zaten maxPerColor'a ulaşmış olanları ele
                 let available = candidates.filter(idx => (usedInCurrentSet[idx] || 0) < maxPerColor);
                 if (available.length === 0) {
-                    // Eğer tüm adaylar set içinde sınıra ulaştıysa, tüm renkler arasından maxPerColor'a ulaşmamış olanları al
                     available = [];
                     for (let j = 0; j < COLOR_SET.length; j++) {
                         if ((usedInCurrentSet[j] || 0) < maxPerColor) available.push(j);
                     }
-                    // Hâlâ yoksa (ki mümkün değil) tüm renkler
                     if (available.length === 0) {
                         for (let j = 0; j < COLOR_SET.length; j++) available.push(j);
                     }
                 }
-                
-                // 3. Adaylardan rastgele birini seç (kriptografik)
                 const randomIndex = secureRandomInt(available.length);
                 const selectedIdx = available[randomIndex];
-                
-                // Seçilen rengi ekle
                 results.push({ ...COLOR_SET[selectedIdx] });
                 usedInCurrentSet[selectedIdx] = (usedInCurrentSet[selectedIdx] || 0) + 1;
-                
-                // Geçmişe ekle (bu atıştaki her bir zar için ayrı ayrı)
                 lastSingleRollsHistory.push(selectedIdx);
-                // Geçmişi son 20 ile sınırla
-                while (lastSingleRollsHistory.length > 20) {
-                    lastSingleRollsHistory.shift();
-                }
+                while (lastSingleRollsHistory.length > 20) lastSingleRollsHistory.shift();
             }
-            
             return results;
         }
 
@@ -704,10 +780,14 @@
         }
 
         // ---------- GÖRSELLER ----------
+        const DEFAULT_LOGO = "https://www.image2url.com/r2/default/images/1781420466501-07a1c3e4-3c78-4685-b876-7e2081ad52b1.jpg";
+        const AKIDE_LOGO = "https://www.image2url.com/r2/default/images/1781395434590-608945c2-fa4d-407f-98aa-966d3e1be22a.png";
+        
         const LOS_IMAGE_URL = "https://user13567.na.imgto.link/public/20260610/ekran-g-r-nt-s-2026-06-10-200913.avif";
         const OG_IMAGE_URL = "https://www.image2url.com/r2/default/images/1780831184010-25ed2da6-254e-4168-9d41-8b518db61173.png";
         const SKIBIDI_DICE_IMG = "https://www.image2url.com/r2/default/images/1781103357777-be8c7a3b-02d8-4d5f-962e-c039b40266f6.webp";
         const MEOWL_DICE_IMG = "https://www.image2url.com/r2/default/images/1781103502397-1ffbcbb8-7248-41b4-ad0a-bbccf0b5385d.webp";
+        const AKIDE_DICE_IMG = "https://www.image2url.com/r2/default/images/1781395434590-608945c2-fa4d-407f-98aa-966d3e1be22a.png";
 
         let totalRolls = 0;
         let colorHistory = [];
@@ -727,15 +807,21 @@
         document.body.addEventListener('click', unlockAudio, { once: true });
         function playSound() { if(audioUnlocked) { rollAudio.currentTime = 0; rollAudio.play().catch(e=>console.log); } }
 
-        // Temalar (OG 10 atış)
+        // TEMALAR: blue, pink, bw, akide, los, skibidi, meowl, og (elephant)
         const themes = [
-            { id: "blue", name: "BLUE", unlock: 0, emoji: "🔵" }, { id: "pink", name: "PINK", unlock: 0, emoji: "💗" },
-            { id: "bw", name: "B&W", unlock: 0, emoji: "☯️" }, { id: "los", name: "Los Tralaleritos", unlock: 0, emoji: "🌊" },
-            { id: "skibidi", name: "Skibidi Toilet", unlock: 0, emoji: "🚽" }, { id: "meowl", name: "MEOWL", unlock: 0, emoji: "🐱" },
-            { id: "og", name: "OG", unlock: 10, emoji: "🐘" }
+            { id: "blue", name: "BLUE", unlock: 0, emoji: "💙" },
+            { id: "pink", name: "PINK", unlock: 0, emoji: "💗" },
+            { id: "bw", name: "B&W", unlock: 0, emoji: "☯️" },
+            { id: "akide", name: "AKİDE ŞEKERİ", unlock: 0, emoji: "🍈" },
+            { id: "los", name: "Los Tralaleritos", unlock: 0, emoji: "🌊" },
+            { id: "skibidi", name: "Skibidi Toilet", unlock: 0, emoji: "🚽" },
+            { id: "meowl", name: "MEOWL", unlock: 0, emoji: "🐱" },
+            { id: "og", name: "elephant", unlock: 10, emoji: "🐘" }
         ];
         const themeSelect = document.getElementById('themeSelect');
         const themeHint = document.getElementById('themeHint');
+        const leftLogo = document.getElementById('brandLogoLeft');
+        const rightLogo = document.getElementById('brandLogoRight');
 
         function updateThemeSelect() {
             const currentVal = themeSelect.value;
@@ -743,7 +829,7 @@
             for (let t of themes) {
                 const opt = document.createElement('option');
                 opt.value = t.id;
-                let label = t.emoji + ' ' + t.name;
+                let label = t.emoji ? t.emoji + ' ' + t.name : t.name;
                 if (t.unlock > 0 && totalRolls < t.unlock) {
                     label = '🔒 ' + label + ` (${t.unlock} rolls)`;
                     opt.disabled = true;
@@ -763,10 +849,23 @@
                 }
             }
             document.body.className = themeSelect.value;
+            
+            if (themeSelect.value === 'akide') {
+                leftLogo.src = AKIDE_LOGO;
+                rightLogo.src = AKIDE_LOGO;
+            } else {
+                leftLogo.src = DEFAULT_LOGO;
+                rightLogo.src = DEFAULT_LOGO;
+            }
             renderActiveDice(false);
-            themeHint.innerText = totalRolls < 10 ? "🐘 10 rolls to unlock OG theme" : "🎉 ALL THEMES UNLOCKED! 🎉";
+            themeHint.innerText = totalRolls < 10 ? "🐘 10 rolls to unlock elephant theme" : "🎉 ALL THEMES UNLOCKED! 🎉";
         }
-        themeSelect.addEventListener('change', (e) => { document.body.className = e.target.value; renderActiveDice(false); });
+
+        themeSelect.addEventListener('change', (e) => {
+            document.body.className = e.target.value;
+            updateThemeSelect();
+            renderActiveDice(false);
+        });
 
         const diceCountInput = document.getElementById('diceCountInput');
         function updateDiceCount() {
@@ -792,6 +891,7 @@
                     else if (currentTheme === 'og') html += `<div class="premium-die color-premium" style="--die-color: ${d.hex};"><img src="${OG_IMAGE_URL}" style="width:50px; height:50px; object-fit:contain; border-radius:12px;"></div>`;
                     else if (currentTheme === 'skibidi') html += `<div class="premium-die color-premium" style="--die-color: ${d.hex};"><img src="${SKIBIDI_DICE_IMG}" style="width:50px; height:50px; object-fit:contain; border-radius:12px;"></div>`;
                     else if (currentTheme === 'meowl') html += `<div class="premium-die color-premium" style="--die-color: ${d.hex};"><img src="${MEOWL_DICE_IMG}" style="width:50px; height:50px; object-fit:contain; border-radius:12px;"></div>`;
+                    else if (currentTheme === 'akide') html += `<div class="premium-die color-premium" style="--die-color: ${d.hex};"><img src="${AKIDE_DICE_IMG}" style="width:50px; height:50px; object-fit:contain; border-radius:12px;"></div>`;
                     else html += `<div class="premium-die color-premium" style="--die-color: ${d.hex};"></div>`;
                 }
                 diceGrid.innerHTML = html;
@@ -804,7 +904,7 @@
             if (withSpin) {
                 document.querySelectorAll('.premium-die').forEach(die => {
                     die.classList.add('spinning');
-                    setTimeout(() => die.classList.remove('spinning'), 350);
+                    setTimeout(() => die.classList.remove('spinning'), 400);
                 });
             }
         }
@@ -841,7 +941,7 @@
                 container.classList.add('dice-visible');
                 isRolling = false;
                 rollTimeout = null;
-            }, 350);
+            }, 400);
         }
 
         diceTypeSelect.addEventListener('change', () => renderActiveDice(false));
@@ -859,12 +959,9 @@
             totalRolls = 0;
             updateThemeSelect();
             document.getElementById('diceContainer').classList.add('dice-visible');
-            // Geçmişi sıfırla
-            lastSingleRollsHistory = [];
         }
         initDemo();
 
-        // Mobil performans
         const btns = document.querySelectorAll('button, .tiktok-btn, select, input');
         btns.forEach(btn => {
             btn.addEventListener('touchstart', () => {}, { passive: true });
