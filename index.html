@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>ERAS DICE </title>
+    <title>ERAS DICE</title>
     <style>
         * {
             margin: 0;
@@ -563,7 +563,7 @@
     </div>
 
     <div class="dice-container" id="diceContainer"><div class="dice-grid" id="diceGrid"></div></div>
-    <div class="action"><button class="roll-btn" id="rollBtn"><span class="roll-btn-icon"></span> <span>ROLL AGAIN!</span></button></div>
+    <div class="action"><button class="roll-btn" id="rollBtn"><span class="roll-btn-icon">🎲</span> <span>ROLL AGAIN!</span></button></div>
     
     <div class="color-section">
         <div class="color-list">
@@ -578,12 +578,12 @@
 
     <div class="history-panel"><div class="history-title">📜 LAST 3 ROLLS</div><div class="history-list" id="historyList"></div></div>
     <div class="theme-hint" id="themeHint"></div>
-    <div class="footer-credit">made by <span>erasmus</span> | version <span>10.0</span> | <span>⚛️ QUANTUM RNG</span></div>
+    <div class="footer-credit">made by <span>erasmus</span> | version <span>11.0</span> | <span>⚛️ NO 3 SAME</span></div>
 </div>
 
 <!-- MODAL VE TOAST -->
-<div id="welcomeModal" class="welcome-modal"><div class="modal-card"><div class="modal-icon"><img src="https://www.image2url.com/r2/default/images/1780852160014-833b5895-7426-482a-8fd4-4e2f09d286f9.webp" alt="Icon"></div><div class="thanks">✨ SİTEYİ ZİYARET ETTİĞİNİZ İÇİN TEŞEKKÜRLER ✨</div><p>⚡ QUANTUM RASTGELELİK MOTORU AKTİF ⚡</p><div class="modal-highlight"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M448 209.91a210.06 210.06 0 01-122.77-39.25v178.72A162.55 162.55 0 11185 188.31v89.89a74.62 74.62 0 1052.23 71.18V0h88a121.18 121.18 0 001.86 22.17A122.18 122.18 0 00381 102.39a121.43 121.43 0 0067 20.14Z"/></svg><span>BUNUN GİBİ SİTE YAPTIRMAK İSTERSENİZ SAĞ ÜSTEKİ KUTUCUĞA TIKLAYIN.</span></div><button class="close-modal" id="closeModalBtn">🚀 DEVAM ET</button><div class="modal-smallnote">(Bu mesaj sadece bir kez görünür)</div></div></div>
-<div id="welcomeToast" class="toast-notify"><span>⚛️</span><span>Kuantum RNG Aktif! Renkler tamamen tahmin edilemez.</span><button id="toastCloseBtn">Kapat</button></div>
+<div id="welcomeModal" class="welcome-modal"><div class="modal-card"><div class="modal-icon"><img src="https://www.image2url.com/r2/default/images/1780852160014-833b5895-7426-482a-8fd4-4e2f09d286f9.webp" alt="Icon"></div><div class="thanks">✨ SİTEYİ ZİYARET ETTİĞİNİZ İÇİN TEŞEKKÜRLER ✨</div><p>⚡ ARDIŞIK 3 RENK ENGELLENDİ ⚡</p><div class="modal-highlight"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M448 209.91a210.06 210.06 0 01-122.77-39.25v178.72A162.55 162.55 0 11185 188.31v89.89a74.62 74.62 0 1052.23 71.18V0h88a121.18 121.18 0 001.86 22.17A122.18 122.18 0 00381 102.39a121.43 121.43 0 0067 20.14Z"/></svg><span>BUNUN GİBİ SİTE YAPTIRMAK İSTERSENİZ SAĞ ÜSTEKİ KUTUCUĞA TIKLAYIN.</span></div><button class="close-modal" id="closeModalBtn">🚀 DEVAM ET</button><div class="modal-smallnote">(Bu mesaj sadece bir kez görünür)</div></div></div>
+<div id="welcomeToast" class="toast-notify"><span>🚫</span><span>Ardışık 3 aynı renk engellendi! En fazla 2 aynı renk üst üste gelebilir.</span><button id="toastCloseBtn">Kapat</button></div>
 <a href="https://www.tiktok.com/@erasmus_w" target="_blank" rel="noopener noreferrer" class="tiktok-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M448 209.91a210.06 210.06 0 01-122.77-39.25v178.72A162.55 162.55 0 11185 188.31v89.89a74.62 74.62 0 1052.23 71.18V0h88a121.18 121.18 0 001.86 22.17A122.18 122.18 0 00381 102.39a121.43 121.43 0 0067 20.14Z"/></svg></a>
 
 <script>
@@ -649,7 +649,7 @@
         ];
 
         // ================================================================
-        // ⚛️ YENİ DENGELİ RASTGELE ALGORİTMASI v10
+        // ⚛️ ARDIŞIK 3 RENK ENGELLEYİCİ ALGORİTMA v11
         // ================================================================
 
         // ----- KRİPTOGRAFİK RASTGELE (CSPRNG) -----
@@ -701,17 +701,15 @@
             // 4. Frekans indeksini karışıma ekle
             let selected = (mixed + freqIndex) % 6;
 
-            // 5. Son 3 atışa bak, eğer aynı renk gelme eğilimi varsa hafifçe sap
-            if (lastThree[0] === selected && lastThree[1] === selected && lastThree[2] === selected) {
-                // 3 kez üst üste aynı renk geldiyse, zorla değiştir (nadir durum)
-                const alternatives = [];
-                for (let i = 0; i < 6; i++) if (i !== selected) alternatives.push(i);
-                selected = alternatives[cryptoRandom(alternatives.length)];
-            } else if (lastThree[1] === selected && lastThree[2] === selected) {
-                // Son iki atış aynı renk ise, bu rengi %30 ihtimalle değiştir
-                if (cryptoRandom(100) < 30) {
+            // 5. ARDIŞIK 3 RENK ENGELLEYİCİ - SON 2 AYNI RENK İSE, FARKLI SEÇ
+            // Eğer son iki atış aynı renk ise, bu rengi seçme olasılığını sıfırla
+            if (lastThree[1] === lastThree[2] && lastThree[1] !== -1) {
+                // Eğer seçilen renk, son iki atışın rengi ile aynı ise, farklı bir renk seç
+                if (selected === lastThree[1]) {
                     const alternatives = [];
-                    for (let i = 0; i < 6; i++) if (i !== selected) alternatives.push(i);
+                    for (let i = 0; i < 6; i++) {
+                        if (i !== selected) alternatives.push(i);
+                    }
                     selected = alternatives[cryptoRandom(alternatives.length)];
                 }
             }
