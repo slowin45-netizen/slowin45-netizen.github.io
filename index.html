@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>ERAS DICE | KALİTE TESADÜF DEĞİLDİR</title>
+    <title>ERAS DICE | YAPAY ZEKA DESTEKLİ</title>
     <style>
         * {
             margin: 0;
@@ -578,12 +578,12 @@
 
     <div class="history-panel"><div class="history-title">📜 LAST 3 ROLLS</div><div class="history-list" id="historyList"></div></div>
     <div class="theme-hint" id="themeHint"></div>
-    <div class="footer-credit">made by <span>erasmus</span> | version <span>6.0</span></div>
+    <div class="footer-credit">made by <span>erasmus</span> | version <span>7.0</span> | <span>🧠 AI Engine</span></div>
 </div>
 
 <!-- MODAL VE TOAST -->
-<div id="welcomeModal" class="welcome-modal"><div class="modal-card"><div class="modal-icon"><img src="https://www.image2url.com/r2/default/images/1780852160014-833b5895-7426-482a-8fd4-4e2f09d286f9.webp" alt="Icon"></div><div class="thanks">✨ SİTEYİ ZİYARET ETTİĞİNİZ İÇİN TEŞEKKÜRLER ✨</div><p>⚡ DAHA İYİ BİR DENEYİM İÇİN UĞRAŞIYORUZ ⚡</p><div class="modal-highlight"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M448 209.91a210.06 210.06 0 01-122.77-39.25v178.72A162.55 162.55 0 11185 188.31v89.89a74.62 74.62 0 1052.23 71.18V0h88a121.18 121.18 0 001.86 22.17A122.18 122.18 0 00381 102.39a121.43 121.43 0 0067 20.14Z"/></svg><span>BUNUN GİBİ SİTE YAPTIRMAK İSTERSENİZ SAĞ ÜSTEKİ KUTUCUĞA TIKLAYIN.</span></div><button class="close-modal" id="closeModalBtn">🚀 DEVAM ET</button><div class="modal-smallnote">(Bu mesaj sadece bir kez görünür)</div></div></div>
-<div id="welcomeToast" class="toast-notify"><span>✨</span><span>Hoş geldin! Zar at, renkleri keşfet, 10 atışta elephant temasını aç!</span><button id="toastCloseBtn">Kapat</button></div>
+<div id="welcomeModal" class="welcome-modal"><div class="modal-card"><div class="modal-icon"><img src="https://www.image2url.com/r2/default/images/1780852160014-833b5895-7426-482a-8fd4-4e2f09d286f9.webp" alt="Icon"></div><div class="thanks">✨ SİTEYİ ZİYARET ETTİĞİNİZ İÇİN TEŞEKKÜRLER ✨</div><p>⚡ YAPAY ZEKA DESTEKLİ RENK MOTORU AKTİF ⚡</p><div class="modal-highlight"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M448 209.91a210.06 210.06 0 01-122.77-39.25v178.72A162.55 162.55 0 11185 188.31v89.89a74.62 74.62 0 1052.23 71.18V0h88a121.18 121.18 0 001.86 22.17A122.18 122.18 0 00381 102.39a121.43 121.43 0 0067 20.14Z"/></svg><span>BUNUN GİBİ SİTE YAPTIRMAK İSTERSENİZ SAĞ ÜSTEKİ KUTUCUĞA TIKLAYIN.</span></div><button class="close-modal" id="closeModalBtn">🚀 DEVAM ET</button><div class="modal-smallnote">(Bu mesaj sadece bir kez görünür)</div></div></div>
+<div id="welcomeToast" class="toast-notify"><span>🧠</span><span>Yapay Zeka Aktif! Renkler artık tahmin edilemez.</span><button id="toastCloseBtn">Kapat</button></div>
 <a href="https://www.tiktok.com/@erasmus_w" target="_blank" rel="noopener noreferrer" class="tiktok-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M448 209.91a210.06 210.06 0 01-122.77-39.25v178.72A162.55 162.55 0 11185 188.31v89.89a74.62 74.62 0 1052.23 71.18V0h88a121.18 121.18 0 001.86 22.17A122.18 122.18 0 00381 102.39a121.43 121.43 0 0067 20.14Z"/></svg></a>
 
 <script>
@@ -649,255 +649,258 @@
         ];
 
         // ================================================================
-        // 🧠 12 KATMANLI SÜPER ALGORİTMA - KIRILAMAZ, ADAPTİF, CANLI
+        // 🧠 YAPAY ZEKA DESTEKLİ DİNAMİK RENK MOTORU v2.0
         // ================================================================
 
-        // ---- KATMAN 1: Kuantum Rastgele (Kriptografik + Zaman + Performans) ----
+        // ---- KRİPTOGRAFİK RASTGELE ----
         function quantumRandom(max) {
-            const array = new Uint32Array(3);
+            const array = new Uint32Array(2);
             window.crypto.getRandomValues(array);
             const perf = performance.now() * 1000;
             const time = Date.now() % 100000;
-            const mixed = (array[0] ^ array[1] ^ array[2] ^ (perf >>> 0) ^ time) >>> 0;
+            const mixed = (array[0] ^ array[1] ^ (perf >>> 0) ^ time) >>> 0;
             return mixed % max;
         }
 
-        // ---- KATMAN 2: Kaotik Harita (Lojistik + Ters Lojistik) ----
-        let chaosX = 0.6180339887498949;
-        let chaosY = 0.3819660112501051;
-        function chaoticMap() {
+        // ---- KAOTİK HARİTA (ÇİFT KATMANLI) ----
+        let chaosA = 0.6180339887498949;
+        let chaosB = 0.3819660112501051;
+        function chaoticDouble(max) {
             const r1 = 3.99, r2 = 3.97;
-            chaosX = r1 * chaosX * (1 - chaosX);
-            chaosY = r2 * chaosY * (1 - chaosY);
-            return (chaosX + chaosY) / 2;
+            chaosA = r1 * chaosA * (1 - chaosA);
+            chaosB = r2 * chaosB * (1 - chaosB);
+            const val = (chaosA + chaosB) / 2;
+            return Math.floor(val * max);
         }
 
-        // ---- KATMAN 3: LFSR (Doğrusal Geri Beslemeli Kaydırma Yazmacı) ----
-        let lfsr = 0xACE1;
-        function lfsrShuffle(max) {
-            const bit = ((lfsr >> 0) ^ (lfsr >> 2) ^ (lfsr >> 3) ^ (lfsr >> 5)) & 1;
-            lfsr = (lfsr >> 1) | (bit << 15);
-            return (lfsr % max);
+        // ---- LFSR (DETERMİNİSTİK KARIŞTIRICI) ----
+        let lfsrState = 0xACE1;
+        function lfsrMix(max) {
+            const bit = ((lfsrState >> 0) ^ (lfsrState >> 2) ^ (lfsrState >> 3) ^ (lfsrState >> 5)) & 1;
+            lfsrState = (lfsrState >> 1) | (bit << 15);
+            return lfsrState % max;
         }
 
-        // ---- KATMAN 4: Fibonacci Karıştırıcı (Dinamik) ----
-        let fibA = 1, fibB = 1;
-        function fibonacciMix(index, max) {
-            const fib = (fibA + fibB) % max;
-            fibA = fibB;
-            fibB = fib;
-            return (index + fib) % max;
-        }
+        // ---- YAPAY ZEKA SİNİR AĞI SİMÜLASYONU ----
+        // Girdi katmanı: 6 özellik (son 3 renk, fare entropisi, tıklama entropisi, zaman)
+        // Gizli katman: 8 nöronlu 2 katman
+        // Çıktı katmanı: 6 renk için skor
 
-        // ---- KATMAN 5: Entropi Havuzu (Son 200 atış + fare + tıklama) ----
-        let entropyPool = [];
-        let mouseHistory = [];
-        let clickTimestamps = [];
+        let weights1 = Array.from({ length: 6 }, () => Array.from({ length: 8 }, () => (quantumRandom(100) / 100) - 0.5));
+        let weights2 = Array.from({ length: 8 }, () => Array.from({ length: 6 }, () => (quantumRandom(100) / 100) - 0.5));
+        let bias1 = Array.from({ length: 8 }, () => (quantumRandom(100) / 100) - 0.5);
+        let bias2 = Array.from({ length: 6 }, () => (quantumRandom(100) / 100) - 0.5);
 
+        // Öğrenme oranı (zamanla azalır)
+        let learningRate = 0.15;
+        let epoch = 0;
+
+        // Geçmiş atışlar (son 50)
+        let aiHistory = [];
+        let mouseEntropyHistory = [];
+        let clickEntropyHistory = [];
+
+        // Fare ve tıklama toplama
+        let mouseEvents = [];
+        let clickEvents = [];
         document.addEventListener('mousemove', (e) => {
-            mouseHistory.push({ x: e.clientX, y: e.clientY, t: Date.now() });
-            if (mouseHistory.length > 100) mouseHistory.shift();
+            mouseEvents.push({ x: e.clientX, y: e.clientY });
+            if (mouseEvents.length > 30) mouseEvents.shift();
         });
-
         document.addEventListener('click', () => {
-            clickTimestamps.push(Date.now());
-            if (clickTimestamps.length > 50) clickTimestamps.shift();
+            clickEvents.push(Date.now());
+            if (clickEvents.length > 20) clickEvents.shift();
         });
 
-        function getMouseEntropy(max) {
-            if (mouseHistory.length === 0) return 0;
-            const last = mouseHistory[mouseHistory.length - 1];
-            return (last.x + last.y + last.t) % max;
+        function getMouseEntropy() {
+            if (mouseEvents.length === 0) return 0;
+            const sum = mouseEvents.reduce((a, b) => a + b.x + b.y, 0);
+            return sum % 6;
         }
 
-        function getClickEntropy(max) {
-            if (clickTimestamps.length === 0) return 0;
-            const sum = clickTimestamps.reduce((a, b) => a + b, 0);
-            return (sum % max);
+        function getClickEntropy() {
+            if (clickEvents.length === 0) return 0;
+            const sum = clickEvents.reduce((a, b) => a + b, 0);
+            return sum % 6;
         }
 
-        // ---- KATMAN 6: Adaptif Frekans (Öğrenme + Unutma) ----
-        let colorFreq = new Array(COLOR_SET.length).fill(1);
-        const MAX_FREQ = 200;
-
-        // ---- KATMAN 7: Markov Zinciri (2. Derece) ----
-        let markovChain = Array.from({ length: COLOR_SET.length }, () =>
-            Array.from({ length: COLOR_SET.length }, () => 1)
-        );
-        let lastTwo = [-1, -1];
-
-        // ---- KATMAN 8: Zaman Tabanlı Periyodik Kaydırma ----
-        function timeShift(max) {
-            const now = Date.now();
-            const ms = now % 1000;
-            return Math.floor((ms / 1000) * max);
+        // Sigmoid aktivasyon
+        function sigmoid(x) {
+            return 1 / (1 + Math.exp(-x));
         }
 
-        // ---- KATMAN 9: Kullanıcı Davranışı (Hız, Sayfada Kalma Süresi) ----
-        let startTime = Date.now();
-        let rollCount = 0;
-
-        function getUserBehaviorWeight(max) {
-            const elapsed = (Date.now() - startTime) / 1000;
-            const speed = rollCount / (elapsed + 1);
-            return Math.floor((speed * 100) % max);
-        }
-
-        // ---- KATMAN 10: Çift Kaotik Karıştırma ----
-        function doubleChaos(index, max) {
-            const c1 = chaoticMap();
-            const c2 = chaoticMap();
-            const mixed = (index + Math.floor(c1 * max) + Math.floor(c2 * max)) % max;
-            return mixed;
-        }
-
-        // ---- KATMAN 11: Öngörü Katmanı (Tersine Mühendislik Koruması) ----
-        function predictionGuard(index, max) {
-            // Eğer son 3 atışta belirli bir desen varsa, onu boz
-            if (lastTwo[0] >= 0 && lastTwo[1] >= 0) {
-                const pattern = lastTwo[0] * COLOR_SET.length + lastTwo[1];
-                const pred = (pattern + 7) % max;
-                if (pred === index) {
-                    // Aynı kalıbı tekrarlama, başka bir renk seç
-                    return (index + 3) % max;
+        // İleri besleme
+        function forwardPass(inputs) {
+            // Gizli katman 1
+            const hidden1 = Array(8).fill(0);
+            for (let i = 0; i < 6; i++) {
+                for (let j = 0; j < 8; j++) {
+                    hidden1[j] += inputs[i] * weights1[i][j];
                 }
             }
-            return index;
+            for (let j = 0; j < 8; j++) {
+                hidden1[j] = sigmoid(hidden1[j] + bias1[j]);
+            }
+            // Çıktı katmanı
+            const output = Array(6).fill(0);
+            for (let i = 0; i < 8; i++) {
+                for (let j = 0; j < 6; j++) {
+                    output[j] += hidden1[i] * weights2[i][j];
+                }
+            }
+            for (let j = 0; j < 6; j++) {
+                output[j] = sigmoid(output[j] + bias2[j]);
+            }
+            return { hidden1, output };
         }
 
-        // ---- KATMAN 12: Son Güvenlik Katmanı (Aşırı Tekrar Engelleme) ----
-        let lastColors = [];
+        // Geri yayılım (basit)
+        function backprop(inputs, target) {
+            const { hidden1, output } = forwardPass(inputs);
+            // Çıktı hatası
+            const outputErrors = output.map((o, i) => (target[i] - o) * o * (1 - o));
+            // Gizli katman hatası
+            const hiddenErrors = Array(8).fill(0);
+            for (let i = 0; i < 8; i++) {
+                let sum = 0;
+                for (let j = 0; j < 6; j++) {
+                    sum += outputErrors[j] * weights2[i][j];
+                }
+                hiddenErrors[i] = sum * hidden1[i] * (1 - hidden1[i]);
+            }
+            // Ağırlıkları güncelle (öğrenme)
+            for (let i = 0; i < 6; i++) {
+                for (let j = 0; j < 8; j++) {
+                    weights1[i][j] += learningRate * hiddenErrors[j] * inputs[i];
+                }
+            }
+            for (let i = 0; i < 8; i++) {
+                for (let j = 0; j < 6; j++) {
+                    weights2[i][j] += learningRate * outputErrors[j] * hidden1[i];
+                }
+            }
+            // Bias güncelle
+            for (let i = 0; i < 8; i++) bias1[i] += learningRate * hiddenErrors[i];
+            for (let i = 0; i < 6; i++) bias2[i] += learningRate * outputErrors[i];
+        }
 
-        function finalGuard(index, max) {
-            // Son 5 atışa bak, eğer 4 kez aynı renk varsa zorla değiştir
-            if (lastColors.length >= 5) {
-                const lastFive = lastColors.slice(-5);
+        // Ana seçim fonksiyonu
+        let lastThree = [-1, -1, -1];
+        let aiColorFreq = Array(6).fill(1);
+
+        function selectAIColor() {
+            epoch++;
+            // Öğrenme oranını zamanla azalt
+            learningRate = Math.max(0.01, 0.15 - (epoch * 0.0001));
+
+            // Girdi vektörü: [son3 renk indeksleri, fare entropisi, tıklama entropisi, zaman]
+            const inputs = [
+                lastThree[0] !== -1 ? lastThree[0] / 5 : 0.5,
+                lastThree[1] !== -1 ? lastThree[1] / 5 : 0.5,
+                lastThree[2] !== -1 ? lastThree[2] / 5 : 0.5,
+                getMouseEntropy() / 5,
+                getClickEntropy() / 5,
+                (Date.now() % 10000) / 10000
+            ];
+
+            // İleri besleme
+            const { output } = forwardPass(inputs);
+
+            // Çıktılara kaos ekle (tahmin edilemezlik için)
+            const chaosIdx = chaoticDouble(6);
+            const lfsrIdx = lfsrMix(6);
+            const quantumIdx = quantumRandom(6);
+
+            // Çıktılara ağırlık ver
+            let scores = output.map((v, i) => {
+                // Frekans baskısı (çok gelen renkleri azalt)
+                const freqPenalty = 1 / (aiColorFreq[i] + 0.5);
+                // Kaos katkısı
+                const chaosContribution = (chaosIdx === i ? 0.3 : 0) + (lfsrIdx === i ? 0.2 : 0) + (quantumIdx === i ? 0.1 : 0);
+                return v * freqPenalty + chaosContribution;
+            });
+
+            // Softmax ile olasılık dağılımı
+            const maxScore = Math.max(...scores);
+            const expScores = scores.map(s => Math.exp(s - maxScore));
+            const sumExp = expScores.reduce((a, b) => a + b, 0);
+            const probabilities = expScores.map(e => e / sumExp);
+
+            // Olasılıklara göre seçim (ağırlıklı rastgele)
+            let rand = quantumRandom(10000) / 10000;
+            let cum = 0;
+            let selected = 0;
+            for (let i = 0; i < probabilities.length; i++) {
+                cum += probabilities[i];
+                if (rand <= cum) { selected = i; break; }
+            }
+
+            // ----- SON GÜVENLİK KONTROLLERİ -----
+            // 1. Aynı renk 3 kez üst üste gelmesin
+            if (lastThree[0] === selected && lastThree[1] === selected && lastThree[2] === selected) {
+                // Zorla başka bir renk seç (en düşük frekanslı)
+                let minFreq = Math.min(...aiColorFreq);
+                let candidates = [];
+                for (let i = 0; i < 6; i++) {
+                    if (aiColorFreq[i] === minFreq && i !== selected) candidates.push(i);
+                }
+                if (candidates.length > 0) {
+                    selected = candidates[quantumRandom(candidates.length)];
+                } else {
+                    // Tüm renkler eşitse rastgele (selected hariç)
+                    const alt = [];
+                    for (let i = 0; i < 6; i++) if (i !== selected) alt.push(i);
+                    selected = alt[quantumRandom(alt.length)];
+                }
+            }
+
+            // 2. Son 5 atışta 4 kez aynı renk varsa, frekansını yükselt
+            if (aiHistory.length >= 5) {
+                const lastFive = aiHistory.slice(-5);
                 const counts = {};
                 for (let c of lastFive) counts[c] = (counts[c] || 0) + 1;
                 for (let c in counts) {
                     if (counts[c] >= 4) {
-                        const target = parseInt(c);
-                        // Bu rengin frekansını artır (baskıla)
-                        colorFreq[target] = Math.min(colorFreq[target] + 5, MAX_FREQ);
-                        // Farklı bir renk seç
-                        const alternatives = [];
-                        for (let i = 0; i < max; i++) {
-                            if (i !== target) alternatives.push(i);
-                        }
-                        if (alternatives.length > 0) {
-                            return alternatives[quantumRandom(alternatives.length)];
-                        }
+                        aiColorFreq[parseInt(c)] = Math.min(aiColorFreq[parseInt(c)] + 3, 50);
                     }
                 }
             }
-            return index;
+
+            // ----- ÖĞRENME (Geri yayılım) -----
+            // Hedef vektör: seçilen rengi 1, diğerlerini 0
+            const target = Array(6).fill(0);
+            target[selected] = 1;
+            // Gürültü ekle (aşırı öğrenmeyi önle)
+            for (let i = 0; i < 6; i++) {
+                if (i !== selected) target[i] = (quantumRandom(100) / 100) * 0.1;
+                else target[i] = 0.9 + (quantumRandom(100) / 1000);
+            }
+            backprop(inputs, target);
+
+            // ----- VERİLERİ GÜNCELLE -----
+            lastThree = [lastThree[1], lastThree[2], selected];
+            aiHistory.push(selected);
+            if (aiHistory.length > 50) aiHistory.shift();
+            aiColorFreq[selected] = Math.min(aiColorFreq[selected] + 1, 50);
+            for (let i = 0; i < 6; i++) {
+                if (i !== selected) aiColorFreq[i] = Math.max(1, aiColorFreq[i] - 0.2);
+            }
+
+            return selected;
         }
 
-        // ---- ANA SEÇİM FONKSİYONU (Tüm katmanları birleştir) ----
-        function selectSuperColor() {
-            const N = COLOR_SET.length;
-
-            // Katman 1: Kuantum
-            let idx = quantumRandom(N);
-
-            // Katman 2: Kaotik
-            idx = (idx + Math.floor(chaoticMap() * N)) % N;
-
-            // Katman 3: LFSR
-            idx = (idx + lfsrShuffle(N)) % N;
-
-            // Katman 4: Fibonacci
-            idx = fibonacciMix(idx, N);
-
-            // Katman 5: Entropi (fare + tıklama)
-            const mouseEnt = getMouseEntropy(N);
-            const clickEnt = getClickEntropy(N);
-            idx = (idx + mouseEnt + clickEnt) % N;
-
-            // Katman 6: Adaptif Frekans (ağırlıklı seçim)
-            const weights = colorFreq.map(f => 1 / (f + 0.5));
-            const totalWeight = weights.reduce((a, b) => a + b, 0);
-            let wRand = quantumRandom(10000) / 10000;
-            let cum = 0;
-            let wIdx = 0;
-            for (let i = 0; i < N; i++) {
-                cum += weights[i] / totalWeight;
-                if (wRand <= cum) { wIdx = i; break; }
-            }
-            idx = (idx + wIdx) % N;
-
-            // Katman 7: Markov Zinciri (2. derece)
-            if (lastTwo[0] >= 0 && lastTwo[1] >= 0) {
-                const markovRow = markovChain[lastTwo[0]];
-                const markovWeights = markovRow.map((v) => v);
-                const totalM = markovWeights.reduce((a, b) => a + b, 0);
-                let mRand = quantumRandom(10000) / 10000;
-                let mCum = 0;
-                let mIdx = 0;
-                for (let i = 0; i < N; i++) {
-                    mCum += markovWeights[i] / totalM;
-                    if (mRand <= mCum) { mIdx = i; break; }
-                }
-                idx = (idx + mIdx) % N;
-                // Markov zincirini güncelle (öğrenme)
-                if (lastTwo[0] >= 0 && lastTwo[1] >= 0) {
-                    markovChain[lastTwo[0]][lastTwo[1]] = Math.min(markovChain[lastTwo[0]][lastTwo[1]] + 1, 100);
-                }
-            }
-
-            // Katman 8: Zaman kaydırması
-            idx = (idx + timeShift(N)) % N;
-
-            // Katman 9: Kullanıcı davranışı
-            idx = (idx + getUserBehaviorWeight(N)) % N;
-
-            // Katman 10: Çift kaotik
-            idx = doubleChaos(idx, N);
-
-            // Katman 11: Öngörü koruması
-            idx = predictionGuard(idx, N);
-
-            // Katman 12: Son güvenlik (tekrar önleme)
-            idx = finalGuard(idx, N);
-
-            // Frekansları güncelle (öğrenme)
-            colorFreq[idx] = Math.min(colorFreq[idx] + 1, MAX_FREQ);
-            // Diğer renklerin frekanslarını azalt (unutma)
-            for (let i = 0; i < N; i++) {
-                if (i !== idx) colorFreq[i] = Math.max(1, colorFreq[i] - 0.2);
-            }
-
-            // Entropi havuzuna ekle
-            entropyPool.push(idx);
-            if (entropyPool.length > 200) entropyPool.shift();
-
-            // Son renkleri güncelle
-            lastColors.push(idx);
-            if (lastColors.length > 50) lastColors.shift();
-
-            // Markov için son iki rengi güncelle
-            if (lastTwo[0] === -1) {
-                lastTwo[0] = idx;
-            } else if (lastTwo[1] === -1) {
-                lastTwo[1] = idx;
-            } else {
-                lastTwo[0] = lastTwo[1];
-                lastTwo[1] = idx;
-            }
-
-            rollCount++;
-            return idx;
-        }
-
-        // Sayı zarları için (aynı mantık, sayı versiyonu)
-        function selectSuperNumber() {
-            return quantumRandom(6) + 1;
+        // Sayı zarları için (aynı AI mantığı sayıya uyarlanmış)
+        function selectAINumber() {
+            // Basit: 1-6 arası quantum + kaos
+            const q = quantumRandom(6);
+            const c = chaoticDouble(6);
+            return ((q + c) % 6) + 1;
         }
 
         function generateColorSet(count) {
             const results = [];
             for (let i = 0; i < count; i++) {
-                const idx = selectSuperColor();
+                const idx = selectAIColor();
                 results.push({ ...COLOR_SET[idx] });
             }
             return results;
@@ -906,12 +909,12 @@
         function generateNumberSet(count) {
             const results = [];
             for (let i = 0; i < count; i++) {
-                results.push(selectSuperNumber());
+                results.push(selectAINumber());
             }
             return results;
         }
 
-        // ---------- GÖRSELLER VE ZAR MEKANİĞİ ----------
+        // ---------- GÖRSELLER VE ZAR MEKANİĞİ (AYNI) ----------
         const DEFAULT_LOGO = "https://www.image2url.com/r2/default/images/1781420466501-07a1c3e4-3c78-4685-b876-7e2081ad52b1.jpg";
         const AKIDE_LOGO = "https://www.image2url.com/r2/default/images/1781395434590-608945c2-fa4d-407f-98aa-966d3e1be22a.png";
         const LOS_IMAGE_URL = "https://user13567.na.imgto.link/public/20260610/ekran-g-r-nt-s-2026-06-10-200913.avif";
@@ -1112,9 +1115,9 @@
         });
 
         function initDemo() {
-            // Algoritmayı ısındır (entropi ve markov zincirini doldur)
+            // AI'yi ısındır (50 atış yap)
             for (let i = 0; i < 50; i++) {
-                selectSuperColor();
+                selectAIColor();
             }
             currentColorSet = generateColorSet(4);
             currentNumberSet = generateNumberSet(4);
