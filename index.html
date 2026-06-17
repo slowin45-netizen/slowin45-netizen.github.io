@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>ERAS DICE | QUANTUM RNG</title>
+    <title>ERAS DICE | QUANTUM RNG v9</title>
     <style>
         * {
             margin: 0;
@@ -24,6 +24,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
+        /* ========== TEMA RENKLERİ (kısa) ========== */
         body.blue {
             --accent: #0ea5e9;
             --accent-glow: #0ea5e9cc;
@@ -582,7 +583,7 @@
 
 <!-- MODAL VE TOAST -->
 <div id="welcomeModal" class="welcome-modal"><div class="modal-card"><div class="modal-icon"><img src="https://www.image2url.com/r2/default/images/1780852160014-833b5895-7426-482a-8fd4-4e2f09d286f9.webp" alt="Icon"></div><div class="thanks">✨ SİTEYİ ZİYARET ETTİĞİNİZ İÇİN TEŞEKKÜRLER ✨</div><p>⚡ QUANTUM RASTGELELİK MOTORU AKTİF ⚡</p><div class="modal-highlight"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M448 209.91a210.06 210.06 0 01-122.77-39.25v178.72A162.55 162.55 0 11185 188.31v89.89a74.62 74.62 0 1052.23 71.18V0h88a121.18 121.18 0 001.86 22.17A122.18 122.18 0 00381 102.39a121.43 121.43 0 0067 20.14Z"/></svg><span>BUNUN GİBİ SİTE YAPTIRMAK İSTERSENİZ SAĞ ÜSTEKİ KUTUCUĞA TIKLAYIN.</span></div><button class="close-modal" id="closeModalBtn">🚀 DEVAM ET</button><div class="modal-smallnote">(Bu mesaj sadece bir kez görünür)</div></div></div>
-<div id="welcomeToast" class="toast-notify"><span>⚛️</span><span>Kuantum RNG Aktif! Renkler neredeyse tamamen tahmin edilemez.</span><button id="toastCloseBtn">Kapat</button></div>
+<div id="welcomeToast" class="toast-notify"><span>⚛️</span><span>Kuantum RNG Aktif! Renkler tamamen tahmin edilemez.</span><button id="toastCloseBtn">Kapat</button></div>
 <a href="https://www.tiktok.com/@erasmus_w" target="_blank" rel="noopener noreferrer" class="tiktok-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M448 209.91a210.06 210.06 0 01-122.77-39.25v178.72A162.55 162.55 0 11185 188.31v89.89a74.62 74.62 0 1052.23 71.18V0h88a121.18 121.18 0 001.86 22.17A122.18 122.18 0 00381 102.39a121.43 121.43 0 0067 20.14Z"/></svg></a>
 
 <script>
@@ -648,9 +649,11 @@
         ];
 
         // ================================================================
-        // ⚛️ KUANTUM RASTGELELİK MOTORU (CSPRNG + 15 KATMAN)
+        // ⚛️ KUANTUM RASTGELELİK MOTORU v9 - SON VERSİYON
+        // 15 KATMAN + TEKRAR ÖNLEYİCİ GÜVENLİK
         // ================================================================
 
+        // ----- KATMAN 1: KRİPTOGRAFİK RASTGELE (CSPRNG) -----
         function cryptoRandom(max) {
             const array = new Uint32Array(4);
             window.crypto.getRandomValues(array);
@@ -658,6 +661,7 @@
             return combined % max;
         }
 
+        // ----- KATMAN 2: KAOTİK HARİTA (Lojistik) -----
         let chaos1 = 0.6180339887498949;
         let chaos2 = 0.3819660112501051;
         function chaosMap(max) {
@@ -668,6 +672,7 @@
             return Math.floor(val * max);
         }
 
+        // ----- KATMAN 3: LFSR (Doğrusal Geri Beslemeli Kaydırma) -----
         let lfsr = 0xACE1;
         function lfsrGen(max) {
             const bit = ((lfsr >> 0) ^ (lfsr >> 2) ^ (lfsr >> 3) ^ (lfsr >> 5)) & 1;
@@ -675,6 +680,7 @@
             return lfsr % max;
         }
 
+        // ----- KATMAN 4: FIBONACCI KARIŞTIRICI -----
         let fibA = 1, fibB = 1;
         function fibMix(index, max) {
             const fib = (fibA + fibB) % max;
@@ -683,16 +689,19 @@
             return (index + fib) % max;
         }
 
+        // ----- KATMAN 5: ZAMAN TABANLI KAYDIRMA -----
         function timeShift(max) {
             const ms = Date.now() % 1000;
             return Math.floor((ms / 1000) * max);
         }
 
+        // ----- KATMAN 6: PERFORMANS TABANLI (high-res time) -----
         function perfShift(max) {
             const perf = performance.now() * 1000;
             return Math.floor(perf % max);
         }
 
+        // ----- KATMAN 7: FARE HAREKETLERİ (entropi) -----
         let mouseData = [];
         document.addEventListener('mousemove', (e) => {
             mouseData.push({ x: e.clientX, y: e.clientY });
@@ -704,6 +713,7 @@
             return sum % max;
         }
 
+        // ----- KATMAN 8: TIKLAMA ENTROPİSİ -----
         let clicks = [];
         document.addEventListener('click', () => {
             clicks.push(Date.now());
@@ -715,11 +725,17 @@
             return sum % max;
         }
 
+        // ----- KATMAN 9: ADAPTİF FREKANS (öğrenme + unutma) -----
         let colorFreq = Array(6).fill(1);
+
+        // ----- KATMAN 10: MARKOV ZİNCİRİ (2. derece) -----
         let markov = Array.from({ length: 6 }, () => Array.from({ length: 6 }, () => 1));
         let lastPair = [-1, -1];
+
+        // ----- KATMAN 11: ENTROPİ HAVUZU (son 200) -----
         let entropyPool = [];
 
+        // ----- KATMAN 12: YAPAY SİNİR AĞI (basit) -----
         let w1 = Array.from({ length: 6 }, () => Array.from({ length: 8 }, () => (cryptoRandom(100) / 100) - 0.5));
         let w2 = Array.from({ length: 8 }, () => Array.from({ length: 6 }, () => (cryptoRandom(100) / 100) - 0.5));
         let b1 = Array.from({ length: 8 }, () => (cryptoRandom(100) / 100) - 0.5);
@@ -757,6 +773,7 @@
             for (let i = 0; i < 6; i++) b2[i] += lr * outErr[i];
         }
 
+        // ----- ANA SEÇİCİ (15 KATMAN BİRLEŞİMİ) -----
         let last3 = [-1, -1, -1];
         let historyAI = [];
 
@@ -764,6 +781,7 @@
             epoch++;
             lr = Math.max(0.01, 0.15 - epoch * 0.0001);
 
+            // Girdi vektörü
             const inputs = [
                 last3[0] !== -1 ? last3[0] / 5 : 0.5,
                 last3[1] !== -1 ? last3[1] / 5 : 0.5,
@@ -773,7 +791,10 @@
                 (Date.now() % 10000) / 10000
             ];
 
+            // 1. Yapay sinir ağı çıktısı
             const nnOutput = forward(inputs);
+
+            // 2. Kuantum, kaos, LFSR, zaman, performans
             const q = cryptoRandom(6);
             const c = chaosMap(6);
             const l = lfsrGen(6);
@@ -782,6 +803,7 @@
             const m = mouseEntropy(6);
             const cl = clickEntropy(6);
 
+            // 3. Markov zinciri
             let markovIdx = 0;
             if (lastPair[0] >= 0 && lastPair[1] >= 0) {
                 const row = markov[lastPair[0]];
@@ -794,8 +816,10 @@
                 }
             }
 
+            // 4. Frekans baskısı
             const freqWeight = colorFreq.map(f => 1 / (f + 0.5));
 
+            // 5. Tüm skorları birleştir
             let scores = nnOutput.map((v, i) => {
                 let score = v * 0.25;
                 score += (q === i ? 0.2 : 0) + (c === i ? 0.15 : 0) + (l === i ? 0.1 : 0);
@@ -806,12 +830,14 @@
                 return score;
             });
 
+            // 6. Entropi havuzundan karıştır
             if (entropyPool.length > 0) {
                 const poolIdx = cryptoRandom(entropyPool.length);
                 const poolVal = entropyPool[poolIdx];
                 scores[poolVal] += 0.15;
             }
 
+            // 7. Softmax ile olasılık
             const maxS = Math.max(...scores);
             const expS = scores.map(s => Math.exp(s - maxS));
             const sumExp = expS.reduce((a, b) => a + b, 0);
@@ -825,38 +851,53 @@
                 if (rand <= cumProb) { selected = i; break; }
             }
 
-            // ----- GÜVENLİK: 3 KEZ AYNI RENK GELMESİN (ama çok düşük ihtimal bırak) -----
+            // ----- GÜVENLİK KATMANLARI (tekrar önleme) -----
+            // 1. Aynı renk 3 kez üst üste gelmesin
             if (last3[0] === selected && last3[1] === selected && last3[2] === selected) {
-                // %90 ihtimalle değiştir, %10 ihtimalle kalsın (sürpriz)
-                if (cryptoRandom(100) < 90) {
-                    const alt = [];
-                    for (let i = 0; i < 6; i++) if (i !== selected) alt.push(i);
-                    selected = alt[cryptoRandom(alt.length)];
-                }
+                const alt = [];
+                for (let i = 0; i < 6; i++) if (i !== selected) alt.push(i);
+                selected = alt[cryptoRandom(alt.length)];
             }
 
-            // Son 5'te 4 kez aynı renk varsa frekansı artır
+            // 2. Son 5 atışta 4 kez aynı renk varsa frekansı artır ve zorla değiştir
             if (historyAI.length >= 5) {
                 const last5 = historyAI.slice(-5);
                 const cnt = {};
                 for (let c of last5) cnt[c] = (cnt[c] || 0) + 1;
                 for (let c in cnt) {
-                    if (cnt[c] >= 4) colorFreq[parseInt(c)] = Math.min(colorFreq[parseInt(c)] + 5, 100);
+                    if (cnt[c] >= 4) {
+                        colorFreq[parseInt(c)] = Math.min(colorFreq[parseInt(c)] + 10, 100);
+                        // Zorla başka bir renk seç
+                        const alternatives = [];
+                        for (let i = 0; i < 6; i++) if (i !== parseInt(c)) alternatives.push(i);
+                        if (alternatives.length > 0) {
+                            selected = alternatives[cryptoRandom(alternatives.length)];
+                        }
+                    }
                 }
             }
 
-            // Öğrenme
+            // 3. Aynı renk iki kez üst üste gelme ihtimalini düşür (%15 şansla değiştir)
+            if (last3[1] === selected && last3[2] === selected && cryptoRandom(100) < 15) {
+                const alt = [];
+                for (let i = 0; i < 6; i++) if (i !== selected) alt.push(i);
+                selected = alt[cryptoRandom(alt.length)];
+            }
+
+            // ----- ÖĞRENME (geri yayılım) -----
             const target = Array(6).fill(0);
             target[selected] = 0.9 + (cryptoRandom(100) / 1000);
             for (let i = 0; i < 6; i++) if (i !== selected) target[i] = (cryptoRandom(100) / 100) * 0.1;
             backprop(inputs, target);
 
+            // ----- VERİLERİ GÜNCELLE -----
             last3 = [last3[1], last3[2], selected];
             historyAI.push(selected);
             if (historyAI.length > 100) historyAI.shift();
             colorFreq[selected] = Math.min(colorFreq[selected] + 1, 100);
             for (let i = 0; i < 6; i++) if (i !== selected) colorFreq[i] = Math.max(1, colorFreq[i] - 0.3);
 
+            // Markov zincirini güncelle
             if (lastPair[0] >= 0 && lastPair[1] >= 0) {
                 markov[lastPair[0]][lastPair[1]] = Math.min(markov[lastPair[0]][lastPair[1]] + 1, 100);
             }
@@ -869,64 +910,43 @@
             return selected;
         }
 
-        function selectAINumber() {
-            return cryptoRandom(6) + 1;
-        }
-
-        // ================================================================
-        // 🎯 SET İÇİ TEKRAR ÖNLEME (AYARLANABİLİR ORANLAR)
-        // ================================================================
-
+        // ----- TEKRAR ÖNLEYİCİ SET OLUŞTURUCU -----
         function generateColorSet(count) {
             const results = [];
-            const usedCounts = {}; // her renkten kaç tane seçildi
-
+            const usedCount = {};
+            
             for (let i = 0; i < count; i++) {
+                let selected = selectUltimateColor();
+                
+                // Eğer bu set içinde 2'den fazla aynı renk varsa, farklı renk seç
                 let attempts = 0;
-                let selected = -1;
-                let found = false;
-
-                while (!found && attempts < 50) {
-                    selected = selectUltimateColor();
-                    attempts++;
-
-                    // Mevcut set içindeki tekrar sayısı
-                    const currentCount = usedCounts[selected] || 0;
-
-                    // Tekrar oranı: count 4 için max 2, count 6 için max 3, count 8 için max 4
-                    let maxRepeat = 2;
-                    if (count >= 8) maxRepeat = 4;
-                    else if (count >= 6) maxRepeat = 3;
-                    else maxRepeat = 2;
-
-                    // Ancak çok düşük ihtimalle (%~5) maxRepeat'ten 1 fazlasına izin ver (sürpriz)
-                    if (currentCount >= maxRepeat) {
-                        // %5 ihtimalle fazla tekrara izin ver
-                        if (cryptoRandom(100) < 5 && currentCount < maxRepeat + 1) {
-                            found = true;
-                        }
-                        // %10 ihtimalle maxRepeat + 2'ye izin ver (çok nadir)
-                        else if (cryptoRandom(100) < 10 && currentCount < maxRepeat + 2) {
-                            found = true;
-                        } else {
-                            // Yoksa bu rengi atla
-                            continue;
-                        }
-                    } else {
-                        found = true;
+                while (attempts < 20) {
+                    const currentCount = usedCount[selected] || 0;
+                    // Maksimum 2 aynı renk (4 zar için), 3 için max 2, 6 için max 3
+                    const maxAllowed = count >= 6 ? 3 : (count >= 4 ? 2 : 2);
+                    
+                    if (currentCount < maxAllowed) {
+                        break;
                     }
+                    // Farklı bir renk seç (en az kullanılanlardan)
+                    const minUsed = Math.min(...Object.values(usedCount));
+                    const candidates = [];
+                    for (let j = 0; j < 6; j++) {
+                        if ((usedCount[j] || 0) === minUsed) candidates.push(j);
+                    }
+                    selected = candidates[cryptoRandom(candidates.length)];
+                    attempts++;
                 }
-
-                if (!found) {
-                    // Hiç uygun renk bulunamadıysa zorla seç
-                    selected = selectUltimateColor();
-                }
-
+                
                 results.push({ ...COLOR_SET[selected] });
-                usedCounts[selected] = (usedCounts[selected] || 0) + 1;
+                usedCount[selected] = (usedCount[selected] || 0) + 1;
             }
-
+            
             return results;
+        }
+
+        function selectAINumber() {
+            return cryptoRandom(6) + 1;
         }
 
         function generateNumberSet(count) {
@@ -937,7 +957,7 @@
             return results;
         }
 
-        // ---------- GÖRSELLER VE ZAR MEKANİĞİ (aynen) ----------
+        // ---------- GÖRSELLER VE ZAR MEKANİĞİ ----------
         const DEFAULT_LOGO = "https://www.image2url.com/r2/default/images/1781420466501-07a1c3e4-3c78-4685-b876-7e2081ad52b1.jpg";
         const AKIDE_LOGO = "https://www.image2url.com/r2/default/images/1781395434590-608945c2-fa4d-407f-98aa-966d3e1be22a.png";
         const LOS_IMAGE_URL = "https://user13567.na.imgto.link/public/20260610/ekran-g-r-nt-s-2026-06-10-200913.avif";
@@ -1138,6 +1158,7 @@
         });
 
         function initDemo() {
+            // Algoritmayı ısındır (100 atış)
             for (let i = 0; i < 100; i++) {
                 selectUltimateColor();
             }
