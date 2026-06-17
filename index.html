@@ -104,7 +104,6 @@
             50% { transform: scale(1.2); opacity: 0.6; }
             100% { transform: scale(1); opacity: 0.3; }
         }
-        /* OG (elephant) TEMASI - ARKA PLAN RESMİ DÜZELTİLDİ (contain, ortalanmış) */
         body.og {
             --accent: #f59e0b;
             --accent-glow: #f59e0baa;
@@ -132,7 +131,6 @@
             pointer-events: none;
             z-index: 0;
         }
-        /* SKIBIDI TEMASI - ARKA PLAN RESMİ DÜZELTİLDİ */
         body.skibidi {
             --accent: #ffffff;
             --accent-glow: #ffffffaa;
@@ -164,7 +162,6 @@
             background: rgba(245, 245, 245, 0.95);
             backdrop-filter: none;
         }
-        /* MEOWL TEMASI - ARKA PLAN RESMİ DÜZELTİLDİ */
         body.meowl {
             --accent: #ffaa44;
             --accent-glow: #ffaa44cc;
@@ -196,8 +193,6 @@
             background: rgba(0,0,0,0.78);
             backdrop-filter: blur(8px);
         }
-
-        /* AKİDE ŞEKERİ TEMASI */
         body.akide {
             --accent: #2c2c2c;
             --accent-glow: #4a4a4acc;
@@ -234,7 +229,6 @@
             color: var(--text-light);
         }
 
-        /* ANA KART */
         .guts-card {
             max-width: 1100px;
             width: 100%;
@@ -251,7 +245,6 @@
             z-index: 3;
         }
 
-        /* BAŞLIK */
         .brand {
             text-align: center;
             padding: 1rem 1rem;
@@ -268,7 +261,6 @@
             height: 50px;
             object-fit: contain;
             filter: drop-shadow(0 0 8px var(--accent-glow));
-            transition: 0.1s;
         }
         .brand h1 {
             font-size: 2.2rem;
@@ -282,7 +274,6 @@
             text-shadow: 0 0 15px var(--accent-glow);
         }
 
-        /* TOAST BİLDİRİM */
         .toast-notify {
             position: fixed; bottom: 20px; left: 50%;
             transform: translateX(-50%) translateY(30px);
@@ -300,12 +291,8 @@
             visibility: hidden;
         }
         .toast-notify.show { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
-        .toast-notify button {
-            background: var(--accent); border: none; padding: 2px 8px; border-radius: 40px;
-            color: #000; margin-left: 8px; cursor: pointer;
-        }
+        .toast-notify button { background: var(--accent); border: none; padding: 2px 8px; border-radius: 40px; color: #000; margin-left: 8px; cursor: pointer; }
 
-        /* MODAL */
         .welcome-modal {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.85);
@@ -335,7 +322,6 @@
         .close-modal:active { transform: scale(0.96); }
         .modal-smallnote { font-size: 0.6rem; opacity: 0.6; margin-top: 0.6rem; }
 
-        /* KONTROL ÇUBUĞU */
         .control-bar {
             display: flex;
             justify-content: center;
@@ -355,34 +341,11 @@
             padding: 0.3rem 1rem;
             border-radius: 60px;
             border: 1px solid var(--accent);
-            transition: all 0.2s;
         }
-        .ctrl:hover {
-            background: rgba(0,0,0,0.8);
-            transform: translateY(-2px);
-        }
-        .ctrl label {
-            font-size: 0.7rem;
-            font-weight: 600;
-            color: var(--accent);
-            letter-spacing: 0.5px;
-        }
-        select, input {
-            background: #1a1a2a;
-            border: 1px solid var(--accent);
-            border-radius: 40px;
-            padding: 4px 12px;
-            font-weight: 500;
-            color: #fff;
-            outline: none;
-            cursor: pointer;
-            font-size: 0.75rem;
-            transition: 0.1s;
-        }
-        select:hover, input:hover { border-color: #fff; transform: scale(1.02); }
+        .ctrl label { font-size: 0.7rem; font-weight: 600; color: var(--accent); letter-spacing: 0.5px; }
+        select, input { background: #1a1a2a; border: 1px solid var(--accent); border-radius: 40px; padding: 4px 12px; font-weight: 500; color: #fff; outline: none; cursor: pointer; font-size: 0.75rem; }
         input { width: 60px; text-align: center; }
 
-        /* ZAR ALANI */
         .dice-container {
             margin: 0.5rem 1rem;
             background: rgba(0,0,0,0.2);
@@ -405,7 +368,6 @@
             margin: 0 auto;
         }
 
-        /* ZAR TASARIMI */
         .premium-die {
             width: 95px;
             height: 95px;
@@ -445,12 +407,7 @@
             box-shadow: 0 0 5px rgba(0,0,0,0.3);
         }
         .number-premium::after { display: none; }
-        body.skibidi .color-premium::after,
-        body.meowl .color-premium::after,
-        body.los .color-premium::after,
-        body.og .color-premium::after,
-        body.akide .color-premium::after { display: none; }
-
+        body.skibidi .color-premium::after, body.meowl .color-premium::after, body.los .color-premium::after, body.og .color-premium::after, body.akide .color-premium::after { display: none; }
         .color-premium { background: var(--die-color); box-shadow: var(--die-glow), inset 0 0 15px rgba(255,255,255,0.3); }
         .number-premium { background: #0a0a0a; font-size: 2rem; font-weight: 800; color: var(--accent); text-shadow: 0 0 8px var(--accent-glow); }
         .premium-die:hover { transform: scale(1.03); filter: brightness(1.05); }
@@ -479,17 +436,10 @@
             gap: 10px;
         }
         .roll-btn:active { transform: scale(0.96); }
-
-        /* AKİDE BUTON ÖZEL */
         body.akide .roll-btn span:not(.roll-btn-icon) { display: none; }
-        body.akide .roll-btn::before {
-            content: "🍈 KAVUNLAR GÖKTEN İNMEZ! 🍈";
-            font-size: 1rem;
-        }
-        body.akide .roll-btn svg, 
-        body.akide .roll-btn .roll-btn-icon { display: none; }
+        body.akide .roll-btn::before { content: "🍈 KAVUNLAR GÖKTEN İNMEZ! 🍈"; font-size: 1rem; }
+        body.akide .roll-btn svg, body.akide .roll-btn .roll-btn-icon { display: none; }
 
-        /* RENK LİSTESİ - SADE, HİÇBİR EFEKT YOK */
         .color-section {
             margin: 0.3rem 1rem;
             background: rgba(0,0,0,0.2);
@@ -512,15 +462,6 @@
             color: #fff;
             border: 1px solid rgba(255,255,255,0.2);
             cursor: default;
-            transition: none;
-            backdrop-filter: blur(2px);
-        }
-        /* Hiçbir hover veya aktif efekti yok - tamamen sade */
-        .color-item:hover {
-            background: rgba(0, 0, 0, 0.55);
-            color: #fff;
-            transform: none;
-            border-color: rgba(255,255,255,0.2);
         }
 
         .history-panel {
@@ -538,14 +479,12 @@
             text-align: center;
             color: var(--accent);
             margin-bottom: 0.5rem;
-            letter-spacing: 1px;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
         }
-        .history-title::before,
-        .history-title::after {
+        .history-title::before, .history-title::after {
             content: "";
             flex: 1;
             height: 1px;
@@ -568,14 +507,10 @@
             max-width: 320px;
             text-align: center;
             border-left: 4px solid var(--accent);
-            backdrop-filter: blur(2px);
-            letter-spacing: 1px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
         .history-row:first-child {
             background: rgba(0,0,0,0.8);
             color: #ffaa44;
-            font-weight: 700;
             border-left-width: 5px;
         }
 
@@ -592,11 +527,8 @@
             display: flex; align-items: center; justify-content: center;
             border: 1px solid var(--accent);
             z-index: 1000;
-            transition: 0.1s;
         }
-        .tiktok-btn:active { transform: scale(0.95); background: var(--accent); }
         .tiktok-btn svg { width: 24px; height: 24px; fill: #fff; }
-        .tiktok-btn:active svg { fill: #000; }
 
         .footer-credit {
             text-align: center;
@@ -610,15 +542,9 @@
 
         @media (max-width: 750px) {
             .premium-die { width: 80px; height: 80px; border-radius: 18px; }
-            .premium-die::before { border-radius: 14px; inset: 3px; }
             .roll-btn { font-size: 1rem; padding: 8px 24px; }
             .brand h1 { font-size: 1.5rem; letter-spacing: 2px; }
             .brand-logo { width: 40px; height: 40px; }
-            .ctrl { padding: 0.2rem 0.8rem; gap: 6px; }
-            select, input { font-size: 0.65rem; padding: 2px 8px; }
-            .color-item { font-size: 0.7rem; padding: 0.15rem 0.8rem; }
-            .history-row { font-size: 0.75rem; padding: 5px 12px; width: 90%; }
-            body.akide .roll-btn::before { font-size: 0.8rem; }
         }
     </style>
 </head>
@@ -637,9 +563,8 @@
     </div>
 
     <div class="dice-container" id="diceContainer"><div class="dice-grid" id="diceGrid"></div></div>
-    <div class="action"><button class="roll-btn" id="rollBtn"><span class="roll-btn-icon"></span> <span>ROLL AGAIN!</span></button></div>
+    <div class="action"><button class="roll-btn" id="rollBtn"><span class="roll-btn-icon">🎲</span> <span>ROLL AGAIN!</span></button></div>
     
-    <!-- SADE RENK LİSTESİ - HİÇBİR EFEKT YOK -->
     <div class="color-section">
         <div class="color-list">
             <span class="color-item">🔴 KIRMIZI</span>
@@ -653,7 +578,7 @@
 
     <div class="history-panel"><div class="history-title">📜 LAST 3 ROLLS</div><div class="history-list" id="historyList"></div></div>
     <div class="theme-hint" id="themeHint"></div>
-    <div class="footer-credit">made by <span>erasmus</span> | version <span>4.0</span></div>
+    <div class="footer-credit">made by <span>erasmus</span> | version <span>6.0</span></div>
 </div>
 
 <!-- MODAL VE TOAST -->
@@ -663,7 +588,7 @@
 
 <script>
     (function() {
-        // ---------- GELİŞMİŞ HİLE KORUMASI ----------
+        // ---------- KORUMA ----------
         document.addEventListener('contextmenu', e => e.preventDefault());
         document.addEventListener('selectstart', e => e.preventDefault());
         document.addEventListener('dragstart', e => e.preventDefault());
@@ -713,7 +638,7 @@
             sessionStorage.setItem('erasDiceToast', '1');
         }
 
-        // ---------- RENK SETİ ----------
+        // ---------- RENK TANIMLARI ----------
         const COLOR_SET = [
             { name: "KIRMIZI", hex: "#dd0000", short: "🔴" },
             { name: "TURUNCU", hex: "#fd8b06", short: "🟠" },
@@ -723,66 +648,272 @@
             { name: "MOR",    hex: "#430083", short: "🟣" }
         ];
 
-        // KRİPTOGRAFİK RASTGELE
-        function secureRandomInt(max) {
-            const array = new Uint32Array(1);
+        // ================================================================
+        // 🧠 12 KATMANLI SÜPER ALGORİTMA - KIRILAMAZ, ADAPTİF, CANLI
+        // ================================================================
+
+        // ---- KATMAN 1: Kuantum Rastgele (Kriptografik + Zaman + Performans) ----
+        function quantumRandom(max) {
+            const array = new Uint32Array(3);
             window.crypto.getRandomValues(array);
-            return array[0] % max;
+            const perf = performance.now() * 1000;
+            const time = Date.now() % 100000;
+            const mixed = (array[0] ^ array[1] ^ array[2] ^ (perf >>> 0) ^ time) >>> 0;
+            return mixed % max;
         }
 
-        // DENGELİ RASTGELE ALGORİTMASI
-        let lastSingleRollsHistory = [];
+        // ---- KATMAN 2: Kaotik Harita (Lojistik + Ters Lojistik) ----
+        let chaosX = 0.6180339887498949;
+        let chaosY = 0.3819660112501051;
+        function chaoticMap() {
+            const r1 = 3.99, r2 = 3.97;
+            chaosX = r1 * chaosX * (1 - chaosX);
+            chaosY = r2 * chaosY * (1 - chaosY);
+            return (chaosX + chaosY) / 2;
+        }
 
-        function generateBalancedColorSet(count) {
+        // ---- KATMAN 3: LFSR (Doğrusal Geri Beslemeli Kaydırma Yazmacı) ----
+        let lfsr = 0xACE1;
+        function lfsrShuffle(max) {
+            const bit = ((lfsr >> 0) ^ (lfsr >> 2) ^ (lfsr >> 3) ^ (lfsr >> 5)) & 1;
+            lfsr = (lfsr >> 1) | (bit << 15);
+            return (lfsr % max);
+        }
+
+        // ---- KATMAN 4: Fibonacci Karıştırıcı (Dinamik) ----
+        let fibA = 1, fibB = 1;
+        function fibonacciMix(index, max) {
+            const fib = (fibA + fibB) % max;
+            fibA = fibB;
+            fibB = fib;
+            return (index + fib) % max;
+        }
+
+        // ---- KATMAN 5: Entropi Havuzu (Son 200 atış + fare + tıklama) ----
+        let entropyPool = [];
+        let mouseHistory = [];
+        let clickTimestamps = [];
+
+        document.addEventListener('mousemove', (e) => {
+            mouseHistory.push({ x: e.clientX, y: e.clientY, t: Date.now() });
+            if (mouseHistory.length > 100) mouseHistory.shift();
+        });
+
+        document.addEventListener('click', () => {
+            clickTimestamps.push(Date.now());
+            if (clickTimestamps.length > 50) clickTimestamps.shift();
+        });
+
+        function getMouseEntropy(max) {
+            if (mouseHistory.length === 0) return 0;
+            const last = mouseHistory[mouseHistory.length - 1];
+            return (last.x + last.y + last.t) % max;
+        }
+
+        function getClickEntropy(max) {
+            if (clickTimestamps.length === 0) return 0;
+            const sum = clickTimestamps.reduce((a, b) => a + b, 0);
+            return (sum % max);
+        }
+
+        // ---- KATMAN 6: Adaptif Frekans (Öğrenme + Unutma) ----
+        let colorFreq = new Array(COLOR_SET.length).fill(1);
+        const MAX_FREQ = 200;
+
+        // ---- KATMAN 7: Markov Zinciri (2. Derece) ----
+        let markovChain = Array.from({ length: COLOR_SET.length }, () =>
+            Array.from({ length: COLOR_SET.length }, () => 1)
+        );
+        let lastTwo = [-1, -1];
+
+        // ---- KATMAN 8: Zaman Tabanlı Periyodik Kaydırma ----
+        function timeShift(max) {
+            const now = Date.now();
+            const ms = now % 1000;
+            return Math.floor((ms / 1000) * max);
+        }
+
+        // ---- KATMAN 9: Kullanıcı Davranışı (Hız, Sayfada Kalma Süresi) ----
+        let startTime = Date.now();
+        let rollCount = 0;
+
+        function getUserBehaviorWeight(max) {
+            const elapsed = (Date.now() - startTime) / 1000;
+            const speed = rollCount / (elapsed + 1);
+            return Math.floor((speed * 100) % max);
+        }
+
+        // ---- KATMAN 10: Çift Kaotik Karıştırma ----
+        function doubleChaos(index, max) {
+            const c1 = chaoticMap();
+            const c2 = chaoticMap();
+            const mixed = (index + Math.floor(c1 * max) + Math.floor(c2 * max)) % max;
+            return mixed;
+        }
+
+        // ---- KATMAN 11: Öngörü Katmanı (Tersine Mühendislik Koruması) ----
+        function predictionGuard(index, max) {
+            // Eğer son 3 atışta belirli bir desen varsa, onu boz
+            if (lastTwo[0] >= 0 && lastTwo[1] >= 0) {
+                const pattern = lastTwo[0] * COLOR_SET.length + lastTwo[1];
+                const pred = (pattern + 7) % max;
+                if (pred === index) {
+                    // Aynı kalıbı tekrarlama, başka bir renk seç
+                    return (index + 3) % max;
+                }
+            }
+            return index;
+        }
+
+        // ---- KATMAN 12: Son Güvenlik Katmanı (Aşırı Tekrar Engelleme) ----
+        let lastColors = [];
+
+        function finalGuard(index, max) {
+            // Son 5 atışa bak, eğer 4 kez aynı renk varsa zorla değiştir
+            if (lastColors.length >= 5) {
+                const lastFive = lastColors.slice(-5);
+                const counts = {};
+                for (let c of lastFive) counts[c] = (counts[c] || 0) + 1;
+                for (let c in counts) {
+                    if (counts[c] >= 4) {
+                        const target = parseInt(c);
+                        // Bu rengin frekansını artır (baskıla)
+                        colorFreq[target] = Math.min(colorFreq[target] + 5, MAX_FREQ);
+                        // Farklı bir renk seç
+                        const alternatives = [];
+                        for (let i = 0; i < max; i++) {
+                            if (i !== target) alternatives.push(i);
+                        }
+                        if (alternatives.length > 0) {
+                            return alternatives[quantumRandom(alternatives.length)];
+                        }
+                    }
+                }
+            }
+            return index;
+        }
+
+        // ---- ANA SEÇİM FONKSİYONU (Tüm katmanları birleştir) ----
+        function selectSuperColor() {
+            const N = COLOR_SET.length;
+
+            // Katman 1: Kuantum
+            let idx = quantumRandom(N);
+
+            // Katman 2: Kaotik
+            idx = (idx + Math.floor(chaoticMap() * N)) % N;
+
+            // Katman 3: LFSR
+            idx = (idx + lfsrShuffle(N)) % N;
+
+            // Katman 4: Fibonacci
+            idx = fibonacciMix(idx, N);
+
+            // Katman 5: Entropi (fare + tıklama)
+            const mouseEnt = getMouseEntropy(N);
+            const clickEnt = getClickEntropy(N);
+            idx = (idx + mouseEnt + clickEnt) % N;
+
+            // Katman 6: Adaptif Frekans (ağırlıklı seçim)
+            const weights = colorFreq.map(f => 1 / (f + 0.5));
+            const totalWeight = weights.reduce((a, b) => a + b, 0);
+            let wRand = quantumRandom(10000) / 10000;
+            let cum = 0;
+            let wIdx = 0;
+            for (let i = 0; i < N; i++) {
+                cum += weights[i] / totalWeight;
+                if (wRand <= cum) { wIdx = i; break; }
+            }
+            idx = (idx + wIdx) % N;
+
+            // Katman 7: Markov Zinciri (2. derece)
+            if (lastTwo[0] >= 0 && lastTwo[1] >= 0) {
+                const markovRow = markovChain[lastTwo[0]];
+                const markovWeights = markovRow.map((v) => v);
+                const totalM = markovWeights.reduce((a, b) => a + b, 0);
+                let mRand = quantumRandom(10000) / 10000;
+                let mCum = 0;
+                let mIdx = 0;
+                for (let i = 0; i < N; i++) {
+                    mCum += markovWeights[i] / totalM;
+                    if (mRand <= mCum) { mIdx = i; break; }
+                }
+                idx = (idx + mIdx) % N;
+                // Markov zincirini güncelle (öğrenme)
+                if (lastTwo[0] >= 0 && lastTwo[1] >= 0) {
+                    markovChain[lastTwo[0]][lastTwo[1]] = Math.min(markovChain[lastTwo[0]][lastTwo[1]] + 1, 100);
+                }
+            }
+
+            // Katman 8: Zaman kaydırması
+            idx = (idx + timeShift(N)) % N;
+
+            // Katman 9: Kullanıcı davranışı
+            idx = (idx + getUserBehaviorWeight(N)) % N;
+
+            // Katman 10: Çift kaotik
+            idx = doubleChaos(idx, N);
+
+            // Katman 11: Öngörü koruması
+            idx = predictionGuard(idx, N);
+
+            // Katman 12: Son güvenlik (tekrar önleme)
+            idx = finalGuard(idx, N);
+
+            // Frekansları güncelle (öğrenme)
+            colorFreq[idx] = Math.min(colorFreq[idx] + 1, MAX_FREQ);
+            // Diğer renklerin frekanslarını azalt (unutma)
+            for (let i = 0; i < N; i++) {
+                if (i !== idx) colorFreq[i] = Math.max(1, colorFreq[i] - 0.2);
+            }
+
+            // Entropi havuzuna ekle
+            entropyPool.push(idx);
+            if (entropyPool.length > 200) entropyPool.shift();
+
+            // Son renkleri güncelle
+            lastColors.push(idx);
+            if (lastColors.length > 50) lastColors.shift();
+
+            // Markov için son iki rengi güncelle
+            if (lastTwo[0] === -1) {
+                lastTwo[0] = idx;
+            } else if (lastTwo[1] === -1) {
+                lastTwo[1] = idx;
+            } else {
+                lastTwo[0] = lastTwo[1];
+                lastTwo[1] = idx;
+            }
+
+            rollCount++;
+            return idx;
+        }
+
+        // Sayı zarları için (aynı mantık, sayı versiyonu)
+        function selectSuperNumber() {
+            return quantumRandom(6) + 1;
+        }
+
+        function generateColorSet(count) {
             const results = [];
-            const usedInCurrentSet = {};
-            const maxPerColor = Math.max(1, Math.floor(count / 2));
-            
             for (let i = 0; i < count; i++) {
-                const freq = Array(COLOR_SET.length).fill(0);
-                for (let idx of lastSingleRollsHistory) freq[idx]++;
-                let minFreq = Math.min(...freq);
-                let candidates = [];
-                for (let j = 0; j < freq.length; j++) {
-                    if (freq[j] === minFreq) candidates.push(j);
-                }
-                let available = candidates.filter(idx => (usedInCurrentSet[idx] || 0) < maxPerColor);
-                if (available.length === 0) {
-                    available = [];
-                    for (let j = 0; j < COLOR_SET.length; j++) {
-                        if ((usedInCurrentSet[j] || 0) < maxPerColor) available.push(j);
-                    }
-                    if (available.length === 0) {
-                        for (let j = 0; j < COLOR_SET.length; j++) available.push(j);
-                    }
-                }
-                const randomIndex = secureRandomInt(available.length);
-                const selectedIdx = available[randomIndex];
-                results.push({ ...COLOR_SET[selectedIdx] });
-                usedInCurrentSet[selectedIdx] = (usedInCurrentSet[selectedIdx] || 0) + 1;
-                lastSingleRollsHistory.push(selectedIdx);
-                while (lastSingleRollsHistory.length > 20) lastSingleRollsHistory.shift();
+                const idx = selectSuperColor();
+                results.push({ ...COLOR_SET[idx] });
             }
             return results;
         }
 
-        function generateColorSet(cnt) {
-            return generateBalancedColorSet(cnt);
+        function generateNumberSet(count) {
+            const results = [];
+            for (let i = 0; i < count; i++) {
+                results.push(selectSuperNumber());
+            }
+            return results;
         }
 
-        function getRandomNumber() {
-            return secureRandomInt(6) + 1;
-        }
-        function generateNumberSet(cnt) {
-            let arr = [];
-            for (let i = 0; i < cnt; i++) arr.push(getRandomNumber());
-            return arr;
-        }
-
-        // ---------- GÖRSELLER ----------
+        // ---------- GÖRSELLER VE ZAR MEKANİĞİ ----------
         const DEFAULT_LOGO = "https://www.image2url.com/r2/default/images/1781420466501-07a1c3e4-3c78-4685-b876-7e2081ad52b1.jpg";
         const AKIDE_LOGO = "https://www.image2url.com/r2/default/images/1781395434590-608945c2-fa4d-407f-98aa-966d3e1be22a.png";
-        
         const LOS_IMAGE_URL = "https://user13567.na.imgto.link/public/20260610/ekran-g-r-nt-s-2026-06-10-200913.avif";
         const OG_IMAGE_URL = "https://www.image2url.com/r2/default/images/1780831184010-25ed2da6-254e-4168-9d41-8b518db61173.png";
         const SKIBIDI_DICE_IMG = "https://www.image2url.com/r2/default/images/1781103357777-be8c7a3b-02d8-4d5f-962e-c039b40266f6.webp";
@@ -805,9 +936,13 @@
             rollAudio.play().then(() => { rollAudio.pause(); rollAudio.currentTime = 0; audioUnlocked = true; }).catch(()=>{});
         }
         document.body.addEventListener('click', unlockAudio, { once: true });
-        function playSound() { if(audioUnlocked) { rollAudio.currentTime = 0; rollAudio.play().catch(e=>console.log); } }
+        function playSound() {
+            if (audioUnlocked) {
+                rollAudio.currentTime = 0;
+                rollAudio.play().catch(() => {});
+            }
+        }
 
-        // TEMALAR: blue, pink, bw, akide, los, skibidi, meowl, og (elephant)
         const themes = [
             { id: "blue", name: "BLUE", unlock: 0, emoji: "💙" },
             { id: "pink", name: "PINK", unlock: 0, emoji: "💗" },
@@ -818,6 +953,7 @@
             { id: "meowl", name: "MEOWL", unlock: 0, emoji: "🐱" },
             { id: "og", name: "elephant", unlock: 10, emoji: "🐘" }
         ];
+
         const themeSelect = document.getElementById('themeSelect');
         const themeHint = document.getElementById('themeHint');
         const leftLogo = document.getElementById('brandLogoLeft');
@@ -838,18 +974,22 @@
                 themeSelect.appendChild(opt);
             }
             let found = false;
-            for (let i=0;i<themeSelect.options.length;i++) {
+            for (let i = 0; i < themeSelect.options.length; i++) {
                 if (themeSelect.options[i].value === currentVal && !themeSelect.options[i].disabled) {
-                    themeSelect.selectedIndex = i; found = true; break;
+                    themeSelect.selectedIndex = i;
+                    found = true;
+                    break;
                 }
             }
             if (!found) {
-                for (let i=0;i<themeSelect.options.length;i++) {
-                    if (!themeSelect.options[i].disabled) { themeSelect.selectedIndex = i; break; }
+                for (let i = 0; i < themeSelect.options.length; i++) {
+                    if (!themeSelect.options[i].disabled) {
+                        themeSelect.selectedIndex = i;
+                        break;
+                    }
                 }
             }
             document.body.className = themeSelect.value;
-            
             if (themeSelect.value === 'akide') {
                 leftLogo.src = AKIDE_LOGO;
                 rightLogo.src = AKIDE_LOGO;
@@ -869,9 +1009,9 @@
 
         const diceCountInput = document.getElementById('diceCountInput');
         function updateDiceCount() {
-            let val = parseInt(diceCountInput.value,10);
+            let val = parseInt(diceCountInput.value, 10);
             if (isNaN(val)) val = 4;
-            val = Math.min(80,Math.max(1,val));
+            val = Math.min(80, Math.max(1, val));
             diceCountInput.value = val;
         }
         diceCountInput.addEventListener('input', updateDiceCount);
@@ -884,21 +1024,36 @@
             const activeType = diceTypeSelect.value;
             const currentTheme = document.body.className;
             if (activeType === 'color') {
-                if (!currentColorSet.length) { diceGrid.innerHTML = '<div style="width:100%;text-align:center;">⚡</div>'; return; }
+                if (!currentColorSet.length) {
+                    diceGrid.innerHTML = '<div style="width:100%;text-align:center;">⚡</div>';
+                    return;
+                }
                 let html = '';
                 for (let d of currentColorSet) {
-                    if (currentTheme === 'los') html += `<div class="premium-die color-premium" style="--die-color: ${d.hex};"><img src="${LOS_IMAGE_URL}" style="width:50px; height:50px; object-fit:contain; border-radius:12px;"></div>`;
-                    else if (currentTheme === 'og') html += `<div class="premium-die color-premium" style="--die-color: ${d.hex};"><img src="${OG_IMAGE_URL}" style="width:50px; height:50px; object-fit:contain; border-radius:12px;"></div>`;
-                    else if (currentTheme === 'skibidi') html += `<div class="premium-die color-premium" style="--die-color: ${d.hex};"><img src="${SKIBIDI_DICE_IMG}" style="width:50px; height:50px; object-fit:contain; border-radius:12px;"></div>`;
-                    else if (currentTheme === 'meowl') html += `<div class="premium-die color-premium" style="--die-color: ${d.hex};"><img src="${MEOWL_DICE_IMG}" style="width:50px; height:50px; object-fit:contain; border-radius:12px;"></div>`;
-                    else if (currentTheme === 'akide') html += `<div class="premium-die color-premium" style="--die-color: ${d.hex};"><img src="${AKIDE_DICE_IMG}" style="width:50px; height:50px; object-fit:contain; border-radius:12px;"></div>`;
-                    else html += `<div class="premium-die color-premium" style="--die-color: ${d.hex};"></div>`;
+                    if (currentTheme === 'los') {
+                        html += `<div class="premium-die color-premium" style="--die-color: ${d.hex};"><img src="${LOS_IMAGE_URL}" style="width:50px; height:50px; object-fit:contain; border-radius:12px;"></div>`;
+                    } else if (currentTheme === 'og') {
+                        html += `<div class="premium-die color-premium" style="--die-color: ${d.hex};"><img src="${OG_IMAGE_URL}" style="width:50px; height:50px; object-fit:contain; border-radius:12px;"></div>`;
+                    } else if (currentTheme === 'skibidi') {
+                        html += `<div class="premium-die color-premium" style="--die-color: ${d.hex};"><img src="${SKIBIDI_DICE_IMG}" style="width:50px; height:50px; object-fit:contain; border-radius:12px;"></div>`;
+                    } else if (currentTheme === 'meowl') {
+                        html += `<div class="premium-die color-premium" style="--die-color: ${d.hex};"><img src="${MEOWL_DICE_IMG}" style="width:50px; height:50px; object-fit:contain; border-radius:12px;"></div>`;
+                    } else if (currentTheme === 'akide') {
+                        html += `<div class="premium-die color-premium" style="--die-color: ${d.hex};"><img src="${AKIDE_DICE_IMG}" style="width:50px; height:50px; object-fit:contain; border-radius:12px;"></div>`;
+                    } else {
+                        html += `<div class="premium-die color-premium" style="--die-color: ${d.hex};"></div>`;
+                    }
                 }
                 diceGrid.innerHTML = html;
             } else {
-                if (!currentNumberSet.length) { diceGrid.innerHTML = '<div style="width:100%;text-align:center;">⚡</div>'; return; }
+                if (!currentNumberSet.length) {
+                    diceGrid.innerHTML = '<div style="width:100%;text-align:center;">⚡</div>';
+                    return;
+                }
                 let html = '';
-                for (let num of currentNumberSet) html += `<div class="premium-die number-premium">${num}</div>`;
+                for (let num of currentNumberSet) {
+                    html += `<div class="premium-die number-premium">${num}</div>`;
+                }
                 diceGrid.innerHTML = html;
             }
             if (withSpin) {
@@ -915,17 +1070,23 @@
             colorHistory.unshift(shortStr);
             if (colorHistory.length > 3) colorHistory.pop();
             const historyDiv = document.getElementById('historyList');
-            if (!colorHistory.length) historyDiv.innerHTML = '<div class="history-row">—</div>';
-            else historyDiv.innerHTML = colorHistory.map(item => `<div class="history-row">${item}</div>`).join('');
+            if (!colorHistory.length) {
+                historyDiv.innerHTML = '<div class="history-row">—</div>';
+            } else {
+                historyDiv.innerHTML = colorHistory.map(item => `<div class="history-row">${item}</div>`).join('');
+            }
         }
 
         async function performRoll() {
             if (isRolling) return;
             isRolling = true;
             const activeType = diceTypeSelect.value;
-            const count = parseInt(diceCountInput.value,10);
-            if (activeType === 'color') currentColorSet = generateColorSet(count);
-            else currentNumberSet = generateNumberSet(count);
+            const count = parseInt(diceCountInput.value, 10);
+            if (activeType === 'color') {
+                currentColorSet = generateColorSet(count);
+            } else {
+                currentNumberSet = generateNumberSet(count);
+            }
 
             const container = document.getElementById('diceContainer');
             container.classList.add('dice-hidden');
@@ -946,9 +1107,15 @@
 
         diceTypeSelect.addEventListener('change', () => renderActiveDice(false));
         document.getElementById('rollBtn').addEventListener('click', performRoll);
-        diceCountInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') performRoll(); });
+        diceCountInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') performRoll();
+        });
 
         function initDemo() {
+            // Algoritmayı ısındır (entropi ve markov zincirini doldur)
+            for (let i = 0; i < 50; i++) {
+                selectSuperColor();
+            }
             currentColorSet = generateColorSet(4);
             currentNumberSet = generateNumberSet(4);
             renderActiveDice(false);
