@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>ERAS DICE | QUANTUM RNG v9</title>
+    <title>ERAS DICE | PREMIUM DICE EXPERIENCE</title>
     <style>
         * {
             margin: 0;
@@ -14,17 +14,18 @@
         }
 
         body {
-            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 1rem;
-            background: radial-gradient(ellipse at 30% 40%, #0a3a6a, #021a3a);
-            -webkit-font-smoothing: antialiased;
+            transition: background 0.3s ease;
+            position: relative;
+            background: radial-gradient(circle at 30% 40%, #0a3a6a, #021a3a);
         }
 
-        /* ========== TEMA RENKLERİ (kısa) ========== */
+        /* ========== TEMA RENKLERİ VE DOKULARI ========== */
         body.blue {
             --accent: #0ea5e9;
             --accent-glow: #0ea5e9cc;
@@ -33,10 +34,39 @@
             --card-bg: rgba(10, 40, 70, 0.85);
             --text-light: #e0f2fe;
             --border-color: #0ea5e9;
-            --grad-bg: radial-gradient(ellipse at 30% 40%, #0a3a6a, #021a3a);
+            --grad-bg: radial-gradient(circle at 30% 40%, #0a3a6a, #021a3a);
             --title-gradient: linear-gradient(135deg, #fff, #0ea5e9, #38bdf8, #fff);
+            --theme-texture: repeating-linear-gradient(110deg, rgba(14,165,233,0.15) 0px, rgba(14,165,233,0.15) 2px, transparent 2px, transparent 20px), radial-gradient(circle at 20% 30%, rgba(14,165,233,0.2) 2px, transparent 2px);
             --die-glow: 0 0 12px rgba(14,165,233,0.7);
-            --card-shadow: 0 20px 35px -10px rgba(0,0,0,0.5);
+            --card-shadow: 0 0 30px rgba(14,165,233,0.4);
+        }
+        body.green {
+            --accent: #10b981;
+            --accent-glow: #10b981cc;
+            --btn-start: #10b981;
+            --btn-end: #047857;
+            --card-bg: rgba(0, 50, 20, 0.85);
+            --text-light: #d1fae5;
+            --border-color: #10b981;
+            --grad-bg: radial-gradient(circle at 30% 40%, #0a3a1a, #021a0a);
+            --title-gradient: linear-gradient(135deg, #fff, #10b981, #34d399, #fff);
+            --theme-texture: repeating-linear-gradient(135deg, rgba(16,185,129,0.15) 0px, rgba(16,185,129,0.15) 2px, transparent 2px, transparent 20px), repeating-linear-gradient(0deg, rgba(0,0,0,0.08) 0px, rgba(0,0,0,0.08) 1px, transparent 1px, transparent 8px);
+            --die-glow: 0 0 12px rgba(16,185,129,0.7);
+            --card-shadow: 0 0 30px rgba(16,185,129,0.4);
+        }
+        body.red {
+            --accent: #f43f5e;
+            --accent-glow: #f43f5ecc;
+            --btn-start: #f43f5e;
+            --btn-end: #be123c;
+            --card-bg: rgba(70, 20, 20, 0.85);
+            --text-light: #ffe0e0;
+            --border-color: #f43f5e;
+            --grad-bg: radial-gradient(circle at 30% 40%, #4a1a1a, #1a0505);
+            --title-gradient: linear-gradient(135deg, #fff, #f43f5e, #fb7185, #fff);
+            --theme-texture: repeating-linear-gradient(0deg, rgba(244,63,94,0.2) 0px, rgba(244,63,94,0.2) 2px, transparent 2px, transparent 14px), radial-gradient(circle at 60% 70%, rgba(244,63,94,0.15) 3px, transparent 3px);
+            --die-glow: 0 0 12px rgba(244,63,94,0.7);
+            --card-shadow: 0 0 30px rgba(244,63,94,0.4);
         }
         body.pink {
             --accent: #f472b6;
@@ -46,10 +76,11 @@
             --card-bg: rgba(60, 20, 50, 0.85);
             --text-light: #fce7f3;
             --border-color: #f472b6;
-            --grad-bg: radial-gradient(ellipse at 30% 40%, #3a1a2a, #1a0510);
+            --grad-bg: radial-gradient(circle at 30% 40%, #3a1a2a, #1a0510);
             --title-gradient: linear-gradient(135deg, #fff, #f472b6, #f9a8d4, #fff);
+            --theme-texture: repeating-radial-gradient(circle at 20% 40%, rgba(244,114,182,0.2) 3px, transparent 3px), repeating-linear-gradient(45deg, rgba(244,114,182,0.1) 0px, rgba(244,114,182,0.1) 1px, transparent 1px, transparent 12px);
             --die-glow: 0 0 12px rgba(244,114,182,0.7);
-            --card-shadow: 0 20px 35px -10px rgba(0,0,0,0.5);
+            --card-shadow: 0 0 30px rgba(244,114,182,0.4);
         }
         body.bw {
             --accent: #94a3b8;
@@ -59,10 +90,11 @@
             --card-bg: rgba(30, 30, 40, 0.85);
             --text-light: #f5f6fa;
             --border-color: #94a3b8;
-            --grad-bg: radial-gradient(ellipse at 30% 40%, #2c3e50, #1a252f);
+            --grad-bg: radial-gradient(circle at 30% 40%, #2c3e50, #1a252f);
             --title-gradient: linear-gradient(135deg, #fff, #cbd5e1, #94a3b8, #fff);
+            --theme-texture: repeating-linear-gradient(90deg, rgba(148,163,184,0.2) 0px, rgba(148,163,184,0.2) 1px, transparent 1px, transparent 6px), repeating-linear-gradient(45deg, rgba(255,255,255,0.08) 0px, rgba(255,255,255,0.08) 1px, transparent 1px, transparent 20px);
             --die-glow: 0 0 12px rgba(148,163,184,0.6);
-            --card-shadow: 0 20px 35px -10px rgba(0,0,0,0.5);
+            --card-shadow: 0 0 30px rgba(148,163,184,0.3);
         }
         body.los {
             --accent: #00d2ff;
@@ -72,29 +104,30 @@
             --card-bg: rgba(0, 80, 110, 0.85);
             --text-light: #e0f7fa;
             --border-color: #00d2ff;
-            --grad-bg: radial-gradient(ellipse at 30% 40%, #023e8a, #03045e);
+            --grad-bg: radial-gradient(circle at 30% 40%, #023e8a, #03045e);
             --title-gradient: linear-gradient(135deg, #fff, #00d2ff, #3ae2ff, #fff);
+            --theme-texture: repeating-linear-gradient(45deg, rgba(0,210,255,0.15) 0px, rgba(0,210,255,0.15) 1px, transparent 1px, transparent 12px);
             --die-glow: 0 0 15px cyan;
-            --card-shadow: 0 20px 35px -10px rgba(0,0,0,0.5);
+            --card-shadow: 0 0 30px cyan;
             position: relative;
         }
         body.los::before {
             content: "";
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url('https://www.image2url.com/r2/default/images/1781103773150-7c4d5b5e-d810-458e-ac70-18013b2e71d5.webp');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            opacity: 0.9;
+            background-image: url('https://www.image2url.com/r2/default/images/1780783552979-9d6290c8-daaa-4edb-b5f5-29bb9e2ef726.png');
+            background-size: 65px 65px;
+            background-repeat: repeat;
+            opacity: 0.35;
+            mix-blend-mode: overlay;
             pointer-events: none;
-            z-index: 0;
+            z-index: 2;
         }
         body.los::after {
             content: '';
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 50%, rgba(0,255,255,0.15) 0%, transparent 80%);
+            background: radial-gradient(circle at 50% 50%, rgba(0,255,255,0.08) 0%, transparent 80%);
             animation: waterWave 12s infinite;
             pointer-events: none;
             z-index: 1;
@@ -104,6 +137,7 @@
             50% { transform: scale(1.2); opacity: 0.6; }
             100% { transform: scale(1); opacity: 0.3; }
         }
+
         body.og {
             --accent: #f59e0b;
             --accent-glow: #f59e0baa;
@@ -112,215 +146,293 @@
             --card-bg: rgba(60, 40, 20, 0.85);
             --text-light: #fef0d8;
             --border-color: #f59e0b;
-            --grad-bg: radial-gradient(ellipse at 30% 40%, #4a2e1a, #1a0e05);
+            --grad-bg: radial-gradient(circle at 30% 40%, #4a2e1a, #1a0e05);
             --title-gradient: linear-gradient(135deg, #fff, #f59e0b, #fbbf24, #fff);
+            --theme-texture: repeating-linear-gradient(0deg, rgba(0,0,0,0.2) 0px, rgba(0,0,0,0.2) 1px, transparent 1px, transparent 4px), radial-gradient(circle at 30% 50%, rgba(245,158,11,0.2) 2px, transparent 2px);
             --die-glow: 0 0 15px #f59e0b;
-            --card-shadow: 0 20px 35px -10px rgba(0,0,0,0.5);
-            position: relative;
+            --card-shadow: 0 0 30px rgba(245,158,11,0.5);
         }
         body.og::before {
             content: "";
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url('https://www.image2url.com/r2/default/images/1781104754551-68d8f9b1-1dae-4501-8aa5-a1b6bbe58e6a.webp');
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-color: #1a0e05;
-            opacity: 1;
+            background-image: url('https://www.image2url.com/r2/default/images/1780831184010-25ed2da6-254e-4168-9d41-8b518db61173.png');
+            background-size: 70px 70px;
+            background-repeat: repeat;
+            opacity: 0.3;
+            mix-blend-mode: soft-light;
             pointer-events: none;
-            z-index: 0;
-        }
-        body.skibidi {
-            --accent: #ffffff;
-            --accent-glow: #ffffffaa;
-            --btn-start: #e0e0e0;
-            --btn-end: #b0b0b0;
-            --card-bg: rgba(245, 245, 245, 0.92);
-            --text-light: #333333;
-            --border-color: #cccccc;
-            --grad-bg: radial-gradient(ellipse at 30% 40%, #f5f5f5, #e0e0e0);
-            --title-gradient: linear-gradient(135deg, #555, #aaa, #555);
-            --die-glow: 0 0 12px rgba(0,0,0,0.2);
-            --card-shadow: 0 20px 35px -10px rgba(0,0,0,0.15);
-            position: relative;
-        }
-        body.skibidi::before {
-            content: "";
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url('https://www.image2url.com/r2/default/images/1781103429363-378bff4e-2c7d-4de8-a7c3-0693ab7d645b.webp');
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-color: #f5f5f5;
-            opacity: 0.9;
-            pointer-events: none;
-            z-index: 0;
-        }
-        body.skibidi .guts-card {
-            background: rgba(245, 245, 245, 0.95);
-            backdrop-filter: none;
-        }
-        body.meowl {
-            --accent: #ffaa44;
-            --accent-glow: #ffaa44cc;
-            --btn-start: #ffaa44;
-            --btn-end: #cc7722;
-            --card-bg: rgba(0,0,0,0.72);
-            --text-light: #fff4e0;
-            --border-color: #ffaa44;
-            --grad-bg: radial-gradient(ellipse at 30% 40%, #4a2e1a, #1a0e05);
-            --title-gradient: linear-gradient(135deg, #fff, #ffaa44, #ffcc88, #fff);
-            --die-glow: 0 0 15px #ffaa44;
-            --card-shadow: 0 20px 35px -10px rgba(0,0,0,0.5);
-            position: relative;
-        }
-        body.meowl::before {
-            content: "";
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url('https://www.image2url.com/r2/default/images/1781103530732-4d1341c8-4320-4558-9da6-96ecb885500e.webp');
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-color: #1a0e05;
-            opacity: 1;
-            pointer-events: none;
-            z-index: 0;
-        }
-        body.meowl .guts-card {
-            background: rgba(0,0,0,0.78);
-            backdrop-filter: blur(8px);
-        }
-        body.akide {
-            --accent: #2c2c2c;
-            --accent-glow: #4a4a4acc;
-            --btn-start: #3a3a3a;
-            --btn-end: #1a1a1a;
-            --card-bg: rgba(0, 0, 0, 0.85);
-            --text-light: #f0f0f0;
-            --border-color: #444;
-            --grad-bg: #000000;
-            --title-gradient: linear-gradient(135deg, #fff, #aaa, #fff);
-            --die-glow: 0 0 10px rgba(255,255,255,0.3);
-            --card-shadow: 0 20px 35px -10px rgba(0,0,0,0.6);
-            position: relative;
-        }
-        body.akide::before {
-            content: "";
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url('https://www.image2url.com/r2/default/images/1781395387199-f2edb0f6-cad5-46bc-9986-f217b3b76e9d.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            opacity: 0.9;
-            pointer-events: none;
-            z-index: 0;
-        }
-        body.akide .guts-card {
-            background: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(6px);
+            z-index: 2;
         }
 
+        /* ortak arka plan ışığı */
         body {
             background: var(--grad-bg);
             color: var(--text-light);
         }
+        body::after {
+            content: "";
+            position: fixed;
+            top: -20%;
+            left: -20%;
+            width: 140%;
+            height: 140%;
+            background: radial-gradient(ellipse at 40% 50%, var(--accent-glow) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.3;
+            animation: rotateLight 60s linear infinite;
+            mix-blend-mode: overlay;
+        }
+        @keyframes rotateLight { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
+        /* ANA KART */
         .guts-card {
             max-width: 1100px;
             width: 100%;
             background: var(--card-bg);
             backdrop-filter: blur(16px);
             border-radius: 2rem;
-            border: 1px solid rgba(255,255,255,0.2);
-            box-shadow: var(--card-shadow);
+            border: 2px solid var(--border-color);
+            box-shadow: var(--card-shadow), 0 20px 40px -10px rgba(0,0,0,0.6);
             overflow: hidden;
             display: flex;
             flex-direction: column;
             max-height: 95vh;
             position: relative;
             z-index: 3;
+            transition: box-shadow 0.3s, border-color 0.3s;
         }
 
+        /* BAŞLIK */
         .brand {
             text-align: center;
-            padding: 1rem 1rem;
-            border-bottom: 2px solid var(--accent);
+            padding: 1.2rem 1rem;
+            border-bottom: 3px solid var(--accent);
             background: rgba(0,0,0,0.2);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 20px;
+            gap: 25px;
             flex-wrap: wrap;
+            position: relative;
         }
         .brand-logo {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             object-fit: contain;
-            filter: drop-shadow(0 0 8px var(--accent-glow));
+            filter: drop-shadow(0 0 10px var(--accent-glow));
+            transition: transform 0.2s, filter 0.2s;
+        }
+        .brand-logo:hover {
+            transform: scale(1.08);
+            filter: drop-shadow(0 0 18px var(--accent-glow));
         }
         .brand h1 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            letter-spacing: 4px;
-            background: linear-gradient(135deg, #fff, var(--accent), #fff, var(--accent), #fff);
+            font-size: 2.6rem;
+            font-weight: 900;
+            letter-spacing: 5px;
+            background: var(--title-gradient);
             background-size: 300% auto;
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: 0 0 15px var(--accent-glow);
+            animation: titleShine 4s linear infinite, titlePulse 2s ease-in-out infinite;
+            text-shadow: 0 0 20px var(--accent-glow);
+            font-family: 'Poppins', 'Inter', sans-serif;
+            position: relative;
+            display: inline-block;
+        }
+        @keyframes titleShine {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 300% 50%; }
+        }
+        @keyframes titlePulse {
+            0% { filter: drop-shadow(0 0 5px rgba(255,255,255,0.3)); }
+            50% { filter: drop-shadow(0 0 25px var(--accent-glow)); }
+            100% { filter: drop-shadow(0 0 5px rgba(255,255,255,0.3)); }
+        }
+        .brand h1::before {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.4), rgba(255,255,255,0));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            z-index: -1;
+            filter: blur(8px);
+            opacity: 0.6;
         }
 
+        /* TOAST BİLDİRİM */
         .toast-notify {
-            position: fixed; bottom: 20px; left: 50%;
+            position: fixed;
+            bottom: 25px;
+            left: 50%;
             transform: translateX(-50%) translateY(30px);
             background: rgba(0,0,0,0.85);
-            backdrop-filter: blur(16px);
-            border-left: 4px solid var(--accent);
-            border-radius: 40px;
-            padding: 6px 18px;
+            backdrop-filter: blur(20px);
+            border-left: 5px solid var(--accent, #0ea5e9);
+            border-radius: 20px;
+            padding: 12px 24px;
             color: #fff;
-            font-weight: 500;
-            font-size: 0.75rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-size: 0.9rem;
             z-index: 1000;
-            transition: 0.2s;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, opacity 0.3s;
             opacity: 0;
             visibility: hidden;
         }
-        .toast-notify.show { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
-        .toast-notify button { background: var(--accent); border: none; padding: 2px 8px; border-radius: 40px; color: #000; margin-left: 8px; cursor: pointer; }
-
-        .welcome-modal {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85);
-            backdrop-filter: blur(12px);
-            display: flex; align-items: center; justify-content: center;
-            z-index: 2000; visibility: hidden; opacity: 0; transition: 0.2s;
+        .toast-notify.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
         }
-        .welcome-modal.open { visibility: visible; opacity: 1; }
+        .toast-notify button {
+            background: var(--accent, #0ea5e9);
+            border: none;
+            padding: 5px 12px;
+            border-radius: 40px;
+            font-weight: bold;
+            color: #000;
+            cursor: pointer;
+        }
+
+        /* KARŞILAMA MODAL - SADE, ŞIK, KALİTELİ */
+        .welcome-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(15px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0.3s, opacity 0.3s;
+        }
+        .welcome-modal.open {
+            visibility: visible;
+            opacity: 1;
+        }
         .modal-card {
-            background: rgba(20, 25, 45, 0.96);
+            background: rgba(20, 25, 45, 0.95);
             backdrop-filter: blur(20px);
             border: 1px solid var(--accent);
             border-radius: 2rem;
-            max-width: 460px;
-            width: 85%;
-            padding: 1.5rem;
+            max-width: 520px;
+            width: 90%;
+            padding: 2rem 1.8rem;
             text-align: center;
-            animation: modalFadeUp 0.3s ease;
+            position: relative;
+            box-shadow: 0 25px 45px -12px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.1);
+            animation: modalFadeUp 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
         }
-        @keyframes modalFadeUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        .modal-icon img { width: 48px; height: 48px; object-fit: contain; margin-bottom: 0.8rem; }
-        .modal-card .thanks { font-size: 1.2rem; font-weight: 800; background: var(--title-gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .modal-card p { font-size: 0.85rem; margin: 0.5rem 0; }
-        .modal-highlight { background: rgba(255,255,255,0.1); border-radius: 50px; padding: 0.3rem 0.8rem; display: inline-flex; align-items: center; gap: 6px; margin: 0.6rem auto; font-size: 0.75rem; border: 1px solid var(--accent); }
-        .modal-highlight svg { width: 16px; height: 16px; fill: var(--accent); }
-        .close-modal { background: linear-gradient(135deg, var(--btn-start), var(--btn-end)); border: none; padding: 6px 24px; border-radius: 60px; font-weight: 600; color: white; cursor: pointer; margin-top: 0.6rem; }
-        .close-modal:active { transform: scale(0.96); }
-        .modal-smallnote { font-size: 0.6rem; opacity: 0.6; margin-top: 0.6rem; }
+        @keyframes modalFadeUp {
+            from { transform: translateY(40px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .modal-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 1.2rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--accent);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+        .modal-icon img {
+            width: 55px;
+            height: 55px;
+            object-fit: contain;
+        }
+        .modal-card .thanks {
+            font-size: 1.4rem;
+            font-weight: 800;
+            background: var(--title-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.75rem;
+            letter-spacing: 1px;
+        }
+        .modal-card p {
+            font-size: 1rem;
+            line-height: 1.5;
+            margin: 0.8rem 0;
+            font-weight: 500;
+            color: #f0f0f0;
+        }
+        .modal-highlight {
+            background: rgba(255,255,255,0.1);
+            border-radius: 60px;
+            padding: 0.6rem 1.2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin: 1rem auto 0.5rem;
+            border: 1px solid var(--accent);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .modal-highlight svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--accent);
+        }
+        .close-modal {
+            background: linear-gradient(135deg, var(--btn-start), var(--btn-end));
+            border: none;
+            padding: 10px 32px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1rem;
+            color: white;
+            cursor: pointer;
+            margin-top: 1.2rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            letter-spacing: 1px;
+        }
+        .close-modal:hover {
+            transform: scale(1.02);
+            filter: brightness(1.05);
+        }
+        .close-modal:active { transform: scale(0.97); }
+        .modal-smallnote {
+            font-size: 0.7rem;
+            opacity: 0.6;
+            margin-top: 1rem;
+        }
+
+        .counter-wrapper { display: flex; justify-content: center; margin-top: 0.2rem; }
+        .online-counter {
+            text-align: center;
+            margin: 0.5rem auto 0;
+            padding: 0.3rem 1rem;
+            background: rgba(0,0,0,0.5);
+            border-radius: 60px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #ffd966;
+            border: 1px solid var(--accent);
+            backdrop-filter: blur(4px);
+        }
 
         .control-bar {
             display: flex;
@@ -331,28 +443,38 @@
             padding: 0.4rem 0.8rem;
             background: rgba(0,0,0,0.3);
             border-radius: 80px;
-            backdrop-filter: blur(8px);
         }
         .ctrl {
             display: flex;
             align-items: center;
             gap: 8px;
-            background: rgba(0,0,0,0.6);
-            padding: 0.3rem 1rem;
+            background: rgba(0,0,0,0.5);
+            padding: 0.2rem 1rem;
             border-radius: 60px;
+            backdrop-filter: blur(4px);
             border: 1px solid var(--accent);
         }
-        .ctrl label { font-size: 0.7rem; font-weight: 600; color: var(--accent); letter-spacing: 0.5px; }
-        select, input { background: #1a1a2a; border: 1px solid var(--accent); border-radius: 40px; padding: 4px 12px; font-weight: 500; color: #fff; outline: none; cursor: pointer; font-size: 0.75rem; }
-        input { width: 60px; text-align: center; }
+        .ctrl label { font-size: 0.7rem; font-weight: 700; color: var(--accent); }
+        select, input {
+            background: #1a1a2a;
+            border: 1px solid var(--accent);
+            border-radius: 40px;
+            padding: 4px 12px;
+            font-weight: bold;
+            color: #fff;
+            outline: none;
+            cursor: pointer;
+            font-size: 0.75rem;
+        }
+        input { width: 70px; text-align: center; }
 
         .dice-container {
-            margin: 0.5rem 1rem;
+            margin: 0.3rem 1rem;
             background: rgba(0,0,0,0.2);
             border-radius: 1.5rem;
             padding: 0.8rem;
-            min-height: 220px;
-            max-height: 340px;
+            min-height: 190px;
+            max-height: 320px;
             overflow-y: auto;
             display: flex;
             justify-content: center;
@@ -368,16 +490,17 @@
             margin: 0 auto;
         }
 
+        /* ZAR STİLİ - SAYI ZARLARINDA DAİRE YOK (FIX) */
         .premium-die {
             width: 95px;
             height: 95px;
             background: #0a0a0a;
-            border-radius: 24px;
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            box-shadow: 0 10px 20px -5px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+            transition: transform 0.2s, filter 0.2s, box-shadow 0.2s;
+            box-shadow: 0 5px 15px -2px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.15);
             position: relative;
             flex-shrink: 0;
             backdrop-filter: blur(2px);
@@ -389,10 +512,11 @@
             left: 4px;
             right: 4px;
             bottom: 4px;
-            border: 2px solid rgba(255,255,255,0.85);
-            border-radius: 20px;
+            border: 2px solid rgba(255,255,255,0.8);
+            border-radius: 16px;
             pointer-events: none;
         }
+        /* Renk zarlarında daire var (görsel bütünlük için) */
         .premium-die::after {
             content: "";
             position: absolute;
@@ -406,20 +530,29 @@
             pointer-events: none;
             box-shadow: 0 0 5px rgba(0,0,0,0.3);
         }
-        .number-premium::after { display: none; }
-        body.skibidi .color-premium::after, body.meowl .color-premium::after, body.los .color-premium::after, body.og .color-premium::after, body.akide .color-premium::after { display: none; }
-        .color-premium { background: var(--die-color); box-shadow: var(--die-glow), inset 0 0 15px rgba(255,255,255,0.3); }
+        /* Sayı zarlarında daireyi tamamen kaldır */
+        .number-premium::after {
+            display: none !important;
+        }
+        /* LOS ve OG temalarında renk zarlarındaki daire de kalkar (özel durum) */
+        body.los .color-premium::after,
+        body.og .color-premium::after {
+            display: none;
+        }
+        .color-premium { background: var(--die-color); box-shadow: var(--die-glow), inset 0 0 10px rgba(255,255,255,0.3); }
         .number-premium { background: #0a0a0a; font-size: 2rem; font-weight: 800; color: var(--accent); text-shadow: 0 0 8px var(--accent-glow); }
-        .premium-die:hover { transform: scale(1.03); filter: brightness(1.05); }
+        .premium-die:hover { transform: scale(1.03); filter: brightness(1.08); }
 
         @keyframes diceSpin {
             0% { transform: rotate(0deg) scale(1); }
-            50% { transform: rotate(180deg) scale(1.08); }
+            50% { transform: rotate(180deg) scale(1.1); }
             100% { transform: rotate(360deg) scale(1); }
         }
-        .spinning { animation: diceSpin 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards !important; }
+        .spinning {
+            animation: diceSpin 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards !important;
+        }
 
-        .action { text-align: center; margin: 0.5rem 0 0.3rem; }
+        .action { text-align: center; margin: 0.5rem 0; }
         .roll-btn {
             background: linear-gradient(135deg, var(--btn-start), var(--btn-end));
             border: none;
@@ -429,142 +562,167 @@
             font-size: 1.2rem;
             color: #fff;
             cursor: pointer;
-            transition: 0.08s linear;
-            box-shadow: 0 8px 18px rgba(0,0,0,0.3);
+            transition: 0.1s;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
             display: inline-flex;
             align-items: center;
             gap: 10px;
         }
-        .roll-btn:active { transform: scale(0.96); }
-        body.akide .roll-btn span:not(.roll-btn-icon) { display: none; }
-        body.akide .roll-btn::before { content: "🍈 KAVUNLAR GÖKTEN İNMEZ! 🍈"; font-size: 1rem; }
-        body.akide .roll-btn svg, body.akide .roll-btn .roll-btn-icon { display: none; }
+        .roll-btn:active { transform: scale(0.97); }
 
         .color-section {
             margin: 0.3rem 1rem;
             background: rgba(0,0,0,0.2);
-            border-radius: 1rem;
-            padding: 0.4rem;
+            border-radius: 1.2rem;
+            padding: 0.6rem;
             text-align: center;
+            border: 1px solid var(--accent);
         }
-        .color-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.5rem;
-        }
+        .color-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem; }
         .color-item {
-            background: rgba(0, 0, 0, 0.55);
-            padding: 0.2rem 1rem;
-            border-radius: 2rem;
-            font-size: 0.75rem;
-            font-weight: 500;
+            background: rgba(0,0,0,0.6);
+            padding: 0.3rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
             color: #fff;
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid var(--accent);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
             cursor: default;
+        }
+        .color-item:hover {
+            transform: translateY(-2px);
+            background: var(--accent);
+            color: #000;
+            border-color: #fff;
         }
 
         .history-panel {
-            margin: 0.3rem 1rem 0.5rem;
-            background: rgba(0,0,0,0.25);
+            margin: 0.3rem 1rem 0.6rem;
+            background: rgba(0,0,0,0.2);
             border-radius: 1.2rem;
             padding: 0.6rem;
-            max-height: 120px;
+            max-height: 130px;
             overflow-y: auto;
-            backdrop-filter: blur(4px);
         }
         .history-title {
             font-size: 0.75rem;
             font-weight: 700;
             text-align: center;
             color: var(--accent);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
+        }
+        .history-list { display: flex; flex-direction: column; gap: 5px; align-items: center; }
+        .history-row {
+            background: rgba(0,0,0,0.45);
+            padding: 5px 12px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #facc15;
+            width: 90%;
+            max-width: 380px;
+            text-align: center;
+            border-left: 3px solid var(--accent);
+        }
+        .theme-hint { text-align: center; font-size: 0.65rem; margin-bottom: 0.5rem; opacity: 0.9; letter-spacing: 0.5px; }
+        .dice-hidden .premium-die { opacity: 0; visibility: hidden; transition: 0.15s; }
+        .dice-visible .premium-die { opacity: 1; visibility: visible; transition: 0.15s; }
+
+        /* TikTok butonu (sağ üstteki kutucuk) */
+        .tiktok-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(8px);
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-        }
-        .history-title::before, .history-title::after {
-            content: "";
-            flex: 1;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--accent), transparent);
-        }
-        .history-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            align-items: center;
-        }
-        .history-row {
-            background: rgba(0,0,0,0.65);
-            padding: 8px 18px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #ffdd88;
-            width: 85%;
-            max-width: 320px;
-            text-align: center;
-            border-left: 4px solid var(--accent);
-        }
-        .history-row:first-child {
-            background: rgba(0,0,0,0.8);
-            color: #ffaa44;
-            border-left-width: 5px;
-        }
-
-        .theme-hint { text-align: center; font-size: 0.65rem; margin-bottom: 0.2rem; opacity: 0.8; }
-        .dice-hidden .premium-die { opacity: 0; visibility: hidden; }
-        .dice-visible .premium-die { opacity: 1; visibility: visible; }
-
-        .tiktok-btn {
-            position: fixed; top: 15px; right: 15px;
-            background: rgba(0,0,0,0.6);
-            backdrop-filter: blur(6px);
-            border-radius: 50%;
-            width: 44px; height: 44px;
-            display: flex; align-items: center; justify-content: center;
             border: 1px solid var(--accent);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
             z-index: 1000;
+            cursor: pointer;
         }
-        .tiktok-btn svg { width: 24px; height: 24px; fill: #fff; }
-
-        .footer-credit {
-            text-align: center;
-            font-size: 0.6rem;
-            padding: 0.5rem 0.8rem 0.6rem;
-            border-top: 1px solid rgba(255,255,255,0.15);
-            margin-top: 0.2rem;
-            color: rgba(255,255,255,0.6);
+        .tiktok-btn:hover {
+            transform: scale(1.1);
+            background: var(--accent);
+            border-color: #fff;
+            box-shadow: 0 0 15px var(--accent-glow);
         }
-        .footer-credit span { font-weight: 600; color: var(--accent); }
+        .tiktok-btn svg {
+            width: 28px;
+            height: 28px;
+            fill: #fff;
+            transition: fill 0.3s;
+        }
+        .tiktok-btn:hover svg {
+            fill: #000;
+        }
 
         @media (max-width: 750px) {
-            .premium-die { width: 80px; height: 80px; border-radius: 18px; }
-            .roll-btn { font-size: 1rem; padding: 8px 24px; }
-            .brand h1 { font-size: 1.5rem; letter-spacing: 2px; }
-            .brand-logo { width: 40px; height: 40px; }
+            .premium-die { width: 75px; height: 75px; border-radius: 18px; }
+            .premium-die::before { border-width: 1.5px; border-radius: 14px; top: 3px; left: 3px; right: 3px; bottom: 3px; }
+            .roll-btn { font-size: 1rem; padding: 6px 24px; }
+            .brand h1 { font-size: 1.7rem; letter-spacing: 3px; }
+            .brand-logo { width: 45px; height: 45px; }
+            .online-counter { font-size: 0.75rem; padding: 0.2rem 0.8rem; }
+            .color-item { padding: 0.2rem 0.8rem; font-size: 0.7rem; }
+            .tiktok-btn { width: 40px; height: 40px; top: 15px; right: 15px; }
+            .tiktok-btn svg { width: 24px; height: 24px; }
+            .modal-card { padding: 1.5rem 1rem; }
+            .modal-card .thanks { font-size: 1.2rem; }
+            .modal-card p { font-size: 0.85rem; }
+            .modal-icon { width: 55px; height: 55px; }
+            .modal-icon img { width: 40px; height: 40px; }
         }
     </style>
 </head>
 <body class="blue">
 <div class="guts-card">
     <div class="brand">
-        <img class="brand-logo" id="brandLogoLeft" src="https://www.image2url.com/r2/default/images/1781420313808-362db246-e0f8-483d-bdb8-ab24a314e568.jpg" alt="Logo">
+        <img class="brand-logo" src="https://www.image2url.com/r2/default/images/1780849493933-0f3dbde5-ef61-42b3-a998-b3fdb5f362d6.webp" alt="Logo">
         <h1 data-text="ERAS DICE">ERAS DICE</h1>
-        <img class="brand-logo" id="brandLogoRight" src="https://www.image2url.com/r2/default/images/1781420313808-362db246-e0f8-483d-bdb8-ab24a314e568.jpg" alt="Logo">
+        <img class="brand-logo" src="https://www.image2url.com/r2/default/images/1780849493933-0f3dbde5-ef61-42b3-a998-b3fdb5f362d6.webp" alt="Logo">
+    </div>
+
+    <div class="counter-wrapper">
+        <div class="online-counter" id="onlineCounter">🟢 0 users online</div>
     </div>
 
     <div class="control-bar">
-        <div class="ctrl"><label> TYPE</label><select id="diceTypeSelect"><option value="color"> COLOR</option><option value="number"> NUMBER</option></select></div>
-        <div class="ctrl"><label> COUNT</label><input type="number" id="diceCountInput" min="1" max="80" value="4"></div>
-        <div class="ctrl"><label> THEME</label><select id="themeSelect"></select></div>
+        <div class="ctrl">
+            <label>🎲 TYPE</label>
+            <select id="diceTypeSelect">
+                <option value="color">🌈 COLOR</option>
+                <option value="number">🔢 NUMBER</option>
+            </select>
+        </div>
+        <div class="ctrl">
+            <label>🔢 COUNT</label>
+            <input type="number" id="diceCountInput" min="1" max="80" value="4">
+        </div>
+        <div class="ctrl">
+            <label>🎨 THEME</label>
+            <select id="themeSelect"></select>
+        </div>
     </div>
 
-    <div class="dice-container" id="diceContainer"><div class="dice-grid" id="diceGrid"></div></div>
-    <div class="action"><button class="roll-btn" id="rollBtn"><span class="roll-btn-icon">🎲</span> <span>ROLL AGAIN!</span></button></div>
-    
+    <div class="dice-container" id="diceContainer">
+        <div class="dice-grid" id="diceGrid"></div>
+    </div>
+
+    <div class="action">
+        <button class="roll-btn" id="rollBtn">🎲 ROLL AGAIN! 🎲</button>
+    </div>
+
     <div class="color-section">
         <div class="color-list">
             <span class="color-item">🔴 KIRMIZI</span>
@@ -576,69 +734,81 @@
         </div>
     </div>
 
-    <div class="history-panel"><div class="history-title">📜 LAST 3 ROLLS</div><div class="history-list" id="historyList"></div></div>
+    <div class="history-panel">
+        <div class="history-title">📜 LAST 5 ROLLS</div>
+        <div class="history-list" id="historyList"></div>
+    </div>
     <div class="theme-hint" id="themeHint"></div>
-    <div class="footer-credit">made by <span>erasmus</span> | version <span>9.0</span> | <span>⚛️ QUANTUM RNG</span></div>
 </div>
 
-<!-- MODAL VE TOAST -->
-<div id="welcomeModal" class="welcome-modal"><div class="modal-card"><div class="modal-icon"><img src="https://www.image2url.com/r2/default/images/1780852160014-833b5895-7426-482a-8fd4-4e2f09d286f9.webp" alt="Icon"></div><div class="thanks">✨ SİTEYİ ZİYARET ETTİĞİNİZ İÇİN TEŞEKKÜRLER ✨</div><p>⚡ QUANTUM RASTGELELİK MOTORU AKTİF ⚡</p><div class="modal-highlight"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M448 209.91a210.06 210.06 0 01-122.77-39.25v178.72A162.55 162.55 0 11185 188.31v89.89a74.62 74.62 0 1052.23 71.18V0h88a121.18 121.18 0 001.86 22.17A122.18 122.18 0 00381 102.39a121.43 121.43 0 0067 20.14Z"/></svg><span>BUNUN GİBİ SİTE YAPTIRMAK İSTERSENİZ SAĞ ÜSTEKİ KUTUCUĞA TIKLAYIN.</span></div><button class="close-modal" id="closeModalBtn">🚀 DEVAM ET</button><div class="modal-smallnote">(Bu mesaj sadece bir kez görünür)</div></div></div>
-<div id="welcomeToast" class="toast-notify"><span>⚛️</span><span>Kuantum RNG Aktif! Renkler tamamen tahmin edilemez.</span><button id="toastCloseBtn">Kapat</button></div>
-<a href="https://www.tiktok.com/@erasmus_w" target="_blank" rel="noopener noreferrer" class="tiktok-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M448 209.91a210.06 210.06 0 01-122.77-39.25v178.72A162.55 162.55 0 11185 188.31v89.89a74.62 74.62 0 1052.23 71.18V0h88a121.18 121.18 0 001.86 22.17A122.18 122.18 0 00381 102.39a121.43 121.43 0 0067 20.14Z"/></svg></a>
+<!-- KARŞILAMA MODAL - İSTENEN METİN, SADE VE ŞIK TASARIM -->
+<div id="welcomeModal" class="welcome-modal">
+    <div class="modal-card">
+        <div class="modal-icon">
+            <img src="https://www.image2url.com/r2/default/images/1780852160014-833b5895-7426-482a-8fd4-4e2f09d286f9.webp" alt="Icon">
+        </div>
+        <div class="thanks">✨ SİTEYİ ZİYARET ETTİĞİNİZ İÇİN TEŞEKKÜRLER ✨</div>
+        <p>⚡ DAHA İYİ BİR DENEYİM İÇİN UĞRAŞIYORUZ ⚡</p>
+        <div class="modal-highlight">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M448 209.91a210.06 210.06 0 01-122.77-39.25v178.72A162.55 162.55 0 11185 188.31v89.89a74.62 74.62 0 1052.23 71.18V0h88a121.18 121.18 0 001.86 22.17A122.18 122.18 0 00381 102.39a121.43 121.43 0 0067 20.14Z"/></svg>
+            <span>BUNUN GİBİ SİTELERE MERAKINIZ VAR İSE SAĞ ÜSTEKİ KUTUCUĞA TIKLAYIN.</span>
+        </div>
+        <button class="close-modal" id="closeModalBtn">🚀 DEVAM ET</button>
+        <div class="modal-smallnote">(Bu mesaj sadece bir kez görünür)</div>
+    </div>
+</div>
+
+<!-- TOAST -->
+<div id="welcomeToast" class="toast-notify">
+    <span>✨</span>
+    <span>Hoş geldin! Zar at, renkleri keşfet, 100 atışta OG temasını aç!</span>
+    <button id="toastCloseBtn">Kapat</button>
+</div>
+
+<!-- TikTok Butonu (sağ üst kutucuk) -->
+<a href="https://www.tiktok.com/@bencezalarlaevliyimbebkk" target="_blank" rel="noopener noreferrer" class="tiktok-btn">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+        <path d="M448 209.91a210.06 210.06 0 01-122.77-39.25v178.72A162.55 162.55 0 11185 188.31v89.89a74.62 74.62 0 1052.23 71.18V0h88a121.18 121.18 0 001.86 22.17A122.18 122.18 0 00381 102.39a121.43 121.43 0 0067 20.14Z"/>
+    </svg>
+</a>
 
 <script>
     (function() {
-        // ---------- KORUMA ----------
+        // Engellemeler
         document.addEventListener('contextmenu', e => e.preventDefault());
         document.addEventListener('selectstart', e => e.preventDefault());
         document.addEventListener('dragstart', e => e.preventDefault());
 
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'F12' || 
-                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) ||
-                (e.ctrlKey && e.key === 'u') || 
-                (e.ctrlKey && e.key === 's') ||
-                (e.ctrlKey && e.key === 'c') ||
-                (e.metaKey && e.key === 'c')) {
-                e.preventDefault();
-                return false;
-            }
-        });
-
-        let devToolsOpen = false;
-        setInterval(() => {
-            const start = performance.now();
-            debugger;
-            const end = performance.now();
-            if (end - start > 5 && !devToolsOpen) {
-                devToolsOpen = true;
-                document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;background:#000;color:#fff;">🔒 Geliştirici araçları devre dışı bırakıldı.</div>';
-                setTimeout(() => location.reload(), 800);
-            }
-        }, 1500);
-
-        const noop = () => {};
-        if (window.console) {
-            console.log = noop; console.warn = noop; console.error = noop; console.table = noop;
-        }
-
-        // ---------- MODAL VE TOAST ----------
+        // Modal (sadece ilk ziyaret)
         if (!sessionStorage.getItem('erasWelcomeSeen')) {
             const modal = document.getElementById('welcomeModal');
             modal.classList.add('open');
-            document.getElementById('closeModalBtn').onclick = () => modal.classList.remove('open');
-            modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('open'); });
+            document.getElementById('closeModalBtn').onclick = () => {
+                modal.classList.remove('open');
+            };
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) modal.classList.remove('open');
+            });
             sessionStorage.setItem('erasWelcomeSeen', '1');
         }
+
+        // Toast
         if (!sessionStorage.getItem('erasDiceToast')) {
             const toast = document.getElementById('welcomeToast');
-            setTimeout(() => toast.classList.add('show'), 600);
+            setTimeout(() => toast.classList.add('show'), 800);
             document.getElementById('toastCloseBtn').onclick = () => toast.classList.remove('show');
-            setTimeout(() => toast.classList.remove('show'), 5000);
+            setTimeout(() => toast.classList.remove('show'), 6000);
             sessionStorage.setItem('erasDiceToast', '1');
         }
 
-        // ---------- RENK TANIMLARI ----------
+        // Online sayaç
+        const counterSpan = document.getElementById('onlineCounter');
+        function getRandomInt(min, max) { return Math.floor(Math.random() * (max - min + 1) + min); }
+        function updateCounter() { counterSpan.innerHTML = `🟢 ${getRandomInt(1, 10)} users online now`; }
+        updateCounter();
+        setInterval(updateCounter, 300000);
+
+        // Zar renkleri
         const COLOR_SET = [
             { name: "KIRMIZI", hex: "#dd0000", short: "🔴" },
             { name: "TURUNCU", hex: "#fd8b06", short: "🟠" },
@@ -647,324 +817,8 @@
             { name: "MAVİ",   hex: "#1e00d9", short: "🔵" },
             { name: "MOR",    hex: "#430083", short: "🟣" }
         ];
-
-        // ================================================================
-        // ⚛️ KUANTUM RASTGELELİK MOTORU v9 - SON VERSİYON
-        // 15 KATMAN + TEKRAR ÖNLEYİCİ GÜVENLİK
-        // ================================================================
-
-        // ----- KATMAN 1: KRİPTOGRAFİK RASTGELE (CSPRNG) -----
-        function cryptoRandom(max) {
-            const array = new Uint32Array(4);
-            window.crypto.getRandomValues(array);
-            const combined = (array[0] ^ array[1] ^ array[2] ^ array[3]) >>> 0;
-            return combined % max;
-        }
-
-        // ----- KATMAN 2: KAOTİK HARİTA (Lojistik) -----
-        let chaos1 = 0.6180339887498949;
-        let chaos2 = 0.3819660112501051;
-        function chaosMap(max) {
-            const r1 = 3.99, r2 = 3.97;
-            chaos1 = r1 * chaos1 * (1 - chaos1);
-            chaos2 = r2 * chaos2 * (1 - chaos2);
-            const val = (chaos1 + chaos2) / 2;
-            return Math.floor(val * max);
-        }
-
-        // ----- KATMAN 3: LFSR (Doğrusal Geri Beslemeli Kaydırma) -----
-        let lfsr = 0xACE1;
-        function lfsrGen(max) {
-            const bit = ((lfsr >> 0) ^ (lfsr >> 2) ^ (lfsr >> 3) ^ (lfsr >> 5)) & 1;
-            lfsr = (lfsr >> 1) | (bit << 15);
-            return lfsr % max;
-        }
-
-        // ----- KATMAN 4: FIBONACCI KARIŞTIRICI -----
-        let fibA = 1, fibB = 1;
-        function fibMix(index, max) {
-            const fib = (fibA + fibB) % max;
-            fibA = fibB;
-            fibB = fib;
-            return (index + fib) % max;
-        }
-
-        // ----- KATMAN 5: ZAMAN TABANLI KAYDIRMA -----
-        function timeShift(max) {
-            const ms = Date.now() % 1000;
-            return Math.floor((ms / 1000) * max);
-        }
-
-        // ----- KATMAN 6: PERFORMANS TABANLI (high-res time) -----
-        function perfShift(max) {
-            const perf = performance.now() * 1000;
-            return Math.floor(perf % max);
-        }
-
-        // ----- KATMAN 7: FARE HAREKETLERİ (entropi) -----
-        let mouseData = [];
-        document.addEventListener('mousemove', (e) => {
-            mouseData.push({ x: e.clientX, y: e.clientY });
-            if (mouseData.length > 50) mouseData.shift();
-        });
-        function mouseEntropy(max) {
-            if (mouseData.length === 0) return 0;
-            const sum = mouseData.reduce((a, b) => a + b.x + b.y, 0);
-            return sum % max;
-        }
-
-        // ----- KATMAN 8: TIKLAMA ENTROPİSİ -----
-        let clicks = [];
-        document.addEventListener('click', () => {
-            clicks.push(Date.now());
-            if (clicks.length > 30) clicks.shift();
-        });
-        function clickEntropy(max) {
-            if (clicks.length === 0) return 0;
-            const sum = clicks.reduce((a, b) => a + b, 0);
-            return sum % max;
-        }
-
-        // ----- KATMAN 9: ADAPTİF FREKANS (öğrenme + unutma) -----
-        let colorFreq = Array(6).fill(1);
-
-        // ----- KATMAN 10: MARKOV ZİNCİRİ (2. derece) -----
-        let markov = Array.from({ length: 6 }, () => Array.from({ length: 6 }, () => 1));
-        let lastPair = [-1, -1];
-
-        // ----- KATMAN 11: ENTROPİ HAVUZU (son 200) -----
-        let entropyPool = [];
-
-        // ----- KATMAN 12: YAPAY SİNİR AĞI (basit) -----
-        let w1 = Array.from({ length: 6 }, () => Array.from({ length: 8 }, () => (cryptoRandom(100) / 100) - 0.5));
-        let w2 = Array.from({ length: 8 }, () => Array.from({ length: 6 }, () => (cryptoRandom(100) / 100) - 0.5));
-        let b1 = Array.from({ length: 8 }, () => (cryptoRandom(100) / 100) - 0.5);
-        let b2 = Array.from({ length: 6 }, () => (cryptoRandom(100) / 100) - 0.5);
-        let lr = 0.15;
-        let epoch = 0;
-
-        function sigmoid(x) { return 1 / (1 + Math.exp(-x)); }
-        function forward(input) {
-            const h = Array(8).fill(0);
-            for (let i = 0; i < 6; i++) for (let j = 0; j < 8; j++) h[j] += input[i] * w1[i][j];
-            for (let j = 0; j < 8; j++) h[j] = sigmoid(h[j] + b1[j]);
-            const out = Array(6).fill(0);
-            for (let i = 0; i < 8; i++) for (let j = 0; j < 6; j++) out[j] += h[i] * w2[i][j];
-            for (let j = 0; j < 6; j++) out[j] = sigmoid(out[j] + b2[j]);
-            return out;
-        }
-        function backprop(input, target) {
-            const h = Array(8).fill(0);
-            for (let i = 0; i < 6; i++) for (let j = 0; j < 8; j++) h[j] += input[i] * w1[i][j];
-            for (let j = 0; j < 8; j++) h[j] = sigmoid(h[j] + b1[j]);
-            const out = Array(6).fill(0);
-            for (let i = 0; i < 8; i++) for (let j = 0; j < 6; j++) out[j] += h[i] * w2[i][j];
-            for (let j = 0; j < 6; j++) out[j] = sigmoid(out[j] + b2[j]);
-            const outErr = out.map((o, i) => (target[i] - o) * o * (1 - o));
-            const hErr = Array(8).fill(0);
-            for (let i = 0; i < 8; i++) {
-                let sum = 0;
-                for (let j = 0; j < 6; j++) sum += outErr[j] * w2[i][j];
-                hErr[i] = sum * h[i] * (1 - h[i]);
-            }
-            for (let i = 0; i < 6; i++) for (let j = 0; j < 8; j++) w1[i][j] += lr * hErr[j] * input[i];
-            for (let i = 0; i < 8; i++) for (let j = 0; j < 6; j++) w2[i][j] += lr * outErr[j] * h[i];
-            for (let i = 0; i < 8; i++) b1[i] += lr * hErr[i];
-            for (let i = 0; i < 6; i++) b2[i] += lr * outErr[i];
-        }
-
-        // ----- ANA SEÇİCİ (15 KATMAN BİRLEŞİMİ) -----
-        let last3 = [-1, -1, -1];
-        let historyAI = [];
-
-        function selectUltimateColor() {
-            epoch++;
-            lr = Math.max(0.01, 0.15 - epoch * 0.0001);
-
-            // Girdi vektörü
-            const inputs = [
-                last3[0] !== -1 ? last3[0] / 5 : 0.5,
-                last3[1] !== -1 ? last3[1] / 5 : 0.5,
-                last3[2] !== -1 ? last3[2] / 5 : 0.5,
-                mouseEntropy(6) / 5,
-                clickEntropy(6) / 5,
-                (Date.now() % 10000) / 10000
-            ];
-
-            // 1. Yapay sinir ağı çıktısı
-            const nnOutput = forward(inputs);
-
-            // 2. Kuantum, kaos, LFSR, zaman, performans
-            const q = cryptoRandom(6);
-            const c = chaosMap(6);
-            const l = lfsrGen(6);
-            const t = timeShift(6);
-            const p = perfShift(6);
-            const m = mouseEntropy(6);
-            const cl = clickEntropy(6);
-
-            // 3. Markov zinciri
-            let markovIdx = 0;
-            if (lastPair[0] >= 0 && lastPair[1] >= 0) {
-                const row = markov[lastPair[0]];
-                const total = row.reduce((a, b) => a + b, 0);
-                let r = cryptoRandom(10000) / 10000;
-                let cum = 0;
-                for (let i = 0; i < 6; i++) {
-                    cum += row[i] / total;
-                    if (r <= cum) { markovIdx = i; break; }
-                }
-            }
-
-            // 4. Frekans baskısı
-            const freqWeight = colorFreq.map(f => 1 / (f + 0.5));
-
-            // 5. Tüm skorları birleştir
-            let scores = nnOutput.map((v, i) => {
-                let score = v * 0.25;
-                score += (q === i ? 0.2 : 0) + (c === i ? 0.15 : 0) + (l === i ? 0.1 : 0);
-                score += (t === i ? 0.05 : 0) + (p === i ? 0.05 : 0);
-                score += (m === i ? 0.1 : 0) + (cl === i ? 0.05 : 0);
-                score += (markovIdx === i ? 0.1 : 0);
-                score *= freqWeight[i];
-                return score;
-            });
-
-            // 6. Entropi havuzundan karıştır
-            if (entropyPool.length > 0) {
-                const poolIdx = cryptoRandom(entropyPool.length);
-                const poolVal = entropyPool[poolIdx];
-                scores[poolVal] += 0.15;
-            }
-
-            // 7. Softmax ile olasılık
-            const maxS = Math.max(...scores);
-            const expS = scores.map(s => Math.exp(s - maxS));
-            const sumExp = expS.reduce((a, b) => a + b, 0);
-            const probs = expS.map(e => e / sumExp);
-
-            let rand = cryptoRandom(10000) / 10000;
-            let cumProb = 0;
-            let selected = 0;
-            for (let i = 0; i < probs.length; i++) {
-                cumProb += probs[i];
-                if (rand <= cumProb) { selected = i; break; }
-            }
-
-            // ----- GÜVENLİK KATMANLARI (tekrar önleme) -----
-            // 1. Aynı renk 3 kez üst üste gelmesin
-            if (last3[0] === selected && last3[1] === selected && last3[2] === selected) {
-                const alt = [];
-                for (let i = 0; i < 6; i++) if (i !== selected) alt.push(i);
-                selected = alt[cryptoRandom(alt.length)];
-            }
-
-            // 2. Son 5 atışta 4 kez aynı renk varsa frekansı artır ve zorla değiştir
-            if (historyAI.length >= 5) {
-                const last5 = historyAI.slice(-5);
-                const cnt = {};
-                for (let c of last5) cnt[c] = (cnt[c] || 0) + 1;
-                for (let c in cnt) {
-                    if (cnt[c] >= 4) {
-                        colorFreq[parseInt(c)] = Math.min(colorFreq[parseInt(c)] + 10, 100);
-                        // Zorla başka bir renk seç
-                        const alternatives = [];
-                        for (let i = 0; i < 6; i++) if (i !== parseInt(c)) alternatives.push(i);
-                        if (alternatives.length > 0) {
-                            selected = alternatives[cryptoRandom(alternatives.length)];
-                        }
-                    }
-                }
-            }
-
-            // 3. Aynı renk iki kez üst üste gelme ihtimalini düşür (%15 şansla değiştir)
-            if (last3[1] === selected && last3[2] === selected && cryptoRandom(100) < 15) {
-                const alt = [];
-                for (let i = 0; i < 6; i++) if (i !== selected) alt.push(i);
-                selected = alt[cryptoRandom(alt.length)];
-            }
-
-            // ----- ÖĞRENME (geri yayılım) -----
-            const target = Array(6).fill(0);
-            target[selected] = 0.9 + (cryptoRandom(100) / 1000);
-            for (let i = 0; i < 6; i++) if (i !== selected) target[i] = (cryptoRandom(100) / 100) * 0.1;
-            backprop(inputs, target);
-
-            // ----- VERİLERİ GÜNCELLE -----
-            last3 = [last3[1], last3[2], selected];
-            historyAI.push(selected);
-            if (historyAI.length > 100) historyAI.shift();
-            colorFreq[selected] = Math.min(colorFreq[selected] + 1, 100);
-            for (let i = 0; i < 6; i++) if (i !== selected) colorFreq[i] = Math.max(1, colorFreq[i] - 0.3);
-
-            // Markov zincirini güncelle
-            if (lastPair[0] >= 0 && lastPair[1] >= 0) {
-                markov[lastPair[0]][lastPair[1]] = Math.min(markov[lastPair[0]][lastPair[1]] + 1, 100);
-            }
-            lastPair[0] = lastPair[1];
-            lastPair[1] = selected;
-
-            entropyPool.push(selected);
-            if (entropyPool.length > 200) entropyPool.shift();
-
-            return selected;
-        }
-
-        // ----- TEKRAR ÖNLEYİCİ SET OLUŞTURUCU -----
-        function generateColorSet(count) {
-            const results = [];
-            const usedCount = {};
-            
-            for (let i = 0; i < count; i++) {
-                let selected = selectUltimateColor();
-                
-                // Eğer bu set içinde 2'den fazla aynı renk varsa, farklı renk seç
-                let attempts = 0;
-                while (attempts < 20) {
-                    const currentCount = usedCount[selected] || 0;
-                    // Maksimum 2 aynı renk (4 zar için), 3 için max 2, 6 için max 3
-                    const maxAllowed = count >= 6 ? 3 : (count >= 4 ? 2 : 2);
-                    
-                    if (currentCount < maxAllowed) {
-                        break;
-                    }
-                    // Farklı bir renk seç (en az kullanılanlardan)
-                    const minUsed = Math.min(...Object.values(usedCount));
-                    const candidates = [];
-                    for (let j = 0; j < 6; j++) {
-                        if ((usedCount[j] || 0) === minUsed) candidates.push(j);
-                    }
-                    selected = candidates[cryptoRandom(candidates.length)];
-                    attempts++;
-                }
-                
-                results.push({ ...COLOR_SET[selected] });
-                usedCount[selected] = (usedCount[selected] || 0) + 1;
-            }
-            
-            return results;
-        }
-
-        function selectAINumber() {
-            return cryptoRandom(6) + 1;
-        }
-
-        function generateNumberSet(count) {
-            const results = [];
-            for (let i = 0; i < count; i++) {
-                results.push(selectAINumber());
-            }
-            return results;
-        }
-
-        // ---------- GÖRSELLER VE ZAR MEKANİĞİ ----------
-        const DEFAULT_LOGO = "https://www.image2url.com/r2/default/images/1781420466501-07a1c3e4-3c78-4685-b876-7e2081ad52b1.jpg";
-        const AKIDE_LOGO = "https://www.image2url.com/r2/default/images/1781395434590-608945c2-fa4d-407f-98aa-966d3e1be22a.png";
-        const LOS_IMAGE_URL = "https://user13567.na.imgto.link/public/20260610/ekran-g-r-nt-s-2026-06-10-200913.avif";
+        const LOS_IMAGE_URL = "https://www.image2url.com/r2/default/images/1780783552979-9d6290c8-daaa-4edb-b5f5-29bb9e2ef726.png";
         const OG_IMAGE_URL = "https://www.image2url.com/r2/default/images/1780831184010-25ed2da6-254e-4168-9d41-8b518db61173.png";
-        const SKIBIDI_DICE_IMG = "https://www.image2url.com/r2/default/images/1781103357777-be8c7a3b-02d8-4d5f-962e-c039b40266f6.webp";
-        const MEOWL_DICE_IMG = "https://www.image2url.com/r2/default/images/1781103502397-1ffbcbb8-7248-41b4-ad0a-bbccf0b5385d.webp";
-        const AKIDE_DICE_IMG = "https://www.image2url.com/r2/default/images/1781395434590-608945c2-fa4d-407f-98aa-966d3e1be22a.png";
 
         let totalRolls = 0;
         let colorHistory = [];
@@ -982,28 +836,20 @@
             rollAudio.play().then(() => { rollAudio.pause(); rollAudio.currentTime = 0; audioUnlocked = true; }).catch(()=>{});
         }
         document.body.addEventListener('click', unlockAudio, { once: true });
-        function playSound() {
-            if (audioUnlocked) {
-                rollAudio.currentTime = 0;
-                rollAudio.play().catch(() => {});
-            }
-        }
+        function playSound() { if(audioUnlocked) { rollAudio.currentTime = 0; rollAudio.play().catch(e=>console.log); } }
 
         const themes = [
-            { id: "blue", name: "BLUE", unlock: 0, emoji: "💙" },
+            { id: "blue", name: "BLUE", unlock: 0, emoji: "🔵" },
+            { id: "green", name: "GREEN", unlock: 0, emoji: "🟢" },
+            { id: "red", name: "RED", unlock: 0, emoji: "🔴" },
             { id: "pink", name: "PINK", unlock: 0, emoji: "💗" },
             { id: "bw", name: "B&W", unlock: 0, emoji: "☯️" },
-            { id: "akide", name: "AKİDE ŞEKERİ", unlock: 0, emoji: "🍈" },
             { id: "los", name: "Los Tralaleritos", unlock: 0, emoji: "🌊" },
-            { id: "skibidi", name: "Skibidi Toilet", unlock: 0, emoji: "🚽" },
-            { id: "meowl", name: "MEOWL", unlock: 0, emoji: "🐱" },
-            { id: "og", name: "elephant", unlock: 10, emoji: "🐘" }
+            { id: "og", name: "OG", unlock: 100, emoji: "🔮" }
         ];
 
         const themeSelect = document.getElementById('themeSelect');
         const themeHint = document.getElementById('themeHint');
-        const leftLogo = document.getElementById('brandLogoLeft');
-        const rightLogo = document.getElementById('brandLogoRight');
 
         function updateThemeSelect() {
             const currentVal = themeSelect.value;
@@ -1011,7 +857,7 @@
             for (let t of themes) {
                 const opt = document.createElement('option');
                 opt.value = t.id;
-                let label = t.emoji ? t.emoji + ' ' + t.name : t.name;
+                let label = t.emoji + ' ' + t.name;
                 if (t.unlock > 0 && totalRolls < t.unlock) {
                     label = '🔒 ' + label + ` (${t.unlock} rolls)`;
                     opt.disabled = true;
@@ -1020,48 +866,71 @@
                 themeSelect.appendChild(opt);
             }
             let found = false;
-            for (let i = 0; i < themeSelect.options.length; i++) {
+            for (let i=0;i<themeSelect.options.length;i++) {
                 if (themeSelect.options[i].value === currentVal && !themeSelect.options[i].disabled) {
-                    themeSelect.selectedIndex = i;
-                    found = true;
-                    break;
+                    themeSelect.selectedIndex = i; found = true; break;
                 }
             }
             if (!found) {
-                for (let i = 0; i < themeSelect.options.length; i++) {
-                    if (!themeSelect.options[i].disabled) {
-                        themeSelect.selectedIndex = i;
-                        break;
-                    }
+                for (let i=0;i<themeSelect.options.length;i++) {
+                    if (!themeSelect.options[i].disabled) { themeSelect.selectedIndex = i; break; }
                 }
             }
             document.body.className = themeSelect.value;
-            if (themeSelect.value === 'akide') {
-                leftLogo.src = AKIDE_LOGO;
-                rightLogo.src = AKIDE_LOGO;
-            } else {
-                leftLogo.src = DEFAULT_LOGO;
-                rightLogo.src = DEFAULT_LOGO;
-            }
             renderActiveDice(false);
-            themeHint.innerText = totalRolls < 10 ? "🐘 10 rolls to unlock elephant theme" : "🎉 ALL THEMES UNLOCKED! 🎉";
+            if (totalRolls < 100) themeHint.innerText = "🔮 100 rolls to unlock OG theme";
+            else themeHint.innerText = "🎉 ALL THEMES UNLOCKED! 🎉";
         }
 
         themeSelect.addEventListener('change', (e) => {
             document.body.className = e.target.value;
-            updateThemeSelect();
             renderActiveDice(false);
         });
 
         const diceCountInput = document.getElementById('diceCountInput');
         function updateDiceCount() {
-            let val = parseInt(diceCountInput.value, 10);
+            let val = parseInt(diceCountInput.value,10);
             if (isNaN(val)) val = 4;
-            val = Math.min(80, Math.max(1, val));
+            val = Math.min(80,Math.max(1,val));
             diceCountInput.value = val;
         }
         diceCountInput.addEventListener('input', updateDiceCount);
         diceCountInput.addEventListener('change', updateDiceCount);
+
+        // ================================================================
+        // ⚛️ SAF KRİPTOGRAFİK RASTGELE ALGORİTMASI (SADECE BU DEĞİŞTİ)
+        // ================================================================
+
+        function cryptoRandom(max) {
+            const array = new Uint32Array(1);
+            window.crypto.getRandomValues(array);
+            return array[0] % max;
+        }
+
+        function getRandomColor() {
+            const idx = cryptoRandom(COLOR_SET.length);
+            return { ...COLOR_SET[idx] };
+        }
+
+        function getRandomNumber() {
+            return cryptoRandom(6) + 1;
+        }
+
+        function generateColorSet(cnt) {
+            const results = [];
+            for (let i = 0; i < cnt; i++) {
+                results.push(getRandomColor());
+            }
+            return results;
+        }
+
+        function generateNumberSet(cnt) {
+            const results = [];
+            for (let i = 0; i < cnt; i++) {
+                results.push(getRandomNumber());
+            }
+            return results;
+        }
 
         const diceTypeSelect = document.getElementById('diceTypeSelect');
         const diceGrid = document.getElementById('diceGrid');
@@ -1070,32 +939,24 @@
             const activeType = diceTypeSelect.value;
             const currentTheme = document.body.className;
             if (activeType === 'color') {
-                if (!currentColorSet.length) {
-                    diceGrid.innerHTML = '<div style="width:100%;text-align:center;">⚡</div>';
-                    return;
-                }
+                if (!currentColorSet.length) { diceGrid.innerHTML = '<div style="width:100%;text-align:center;">⚡</div>'; return; }
                 let html = '';
                 for (let d of currentColorSet) {
                     if (currentTheme === 'los') {
-                        html += `<div class="premium-die color-premium" style="--die-color: ${d.hex};"><img src="${LOS_IMAGE_URL}" style="width:50px; height:50px; object-fit:contain; border-radius:12px;"></div>`;
+                        html += `<div class="premium-die color-premium" style="--die-color: ${d.hex};">
+                                    <img src="${LOS_IMAGE_URL}" style="width:55px; height:55px; object-fit:contain; border-radius:12px;">
+                                </div>`;
                     } else if (currentTheme === 'og') {
-                        html += `<div class="premium-die color-premium" style="--die-color: ${d.hex};"><img src="${OG_IMAGE_URL}" style="width:50px; height:50px; object-fit:contain; border-radius:12px;"></div>`;
-                    } else if (currentTheme === 'skibidi') {
-                        html += `<div class="premium-die color-premium" style="--die-color: ${d.hex};"><img src="${SKIBIDI_DICE_IMG}" style="width:50px; height:50px; object-fit:contain; border-radius:12px;"></div>`;
-                    } else if (currentTheme === 'meowl') {
-                        html += `<div class="premium-die color-premium" style="--die-color: ${d.hex};"><img src="${MEOWL_DICE_IMG}" style="width:50px; height:50px; object-fit:contain; border-radius:12px;"></div>`;
-                    } else if (currentTheme === 'akide') {
-                        html += `<div class="premium-die color-premium" style="--die-color: ${d.hex};"><img src="${AKIDE_DICE_IMG}" style="width:50px; height:50px; object-fit:contain; border-radius:12px;"></div>`;
+                        html += `<div class="premium-die color-premium" style="--die-color: ${d.hex};">
+                                    <img src="${OG_IMAGE_URL}" style="width:55px; height:55px; object-fit:contain; border-radius:12px;">
+                                </div>`;
                     } else {
                         html += `<div class="premium-die color-premium" style="--die-color: ${d.hex};"></div>`;
                     }
                 }
                 diceGrid.innerHTML = html;
             } else {
-                if (!currentNumberSet.length) {
-                    diceGrid.innerHTML = '<div style="width:100%;text-align:center;">⚡</div>';
-                    return;
-                }
+                if (!currentNumberSet.length) { diceGrid.innerHTML = '<div style="width:100%;text-align:center;">⚡</div>'; return; }
                 let html = '';
                 for (let num of currentNumberSet) {
                     html += `<div class="premium-die number-premium">${num}</div>`;
@@ -1105,29 +966,26 @@
             if (withSpin) {
                 document.querySelectorAll('.premium-die').forEach(die => {
                     die.classList.add('spinning');
-                    setTimeout(() => die.classList.remove('spinning'), 400);
+                    setTimeout(() => die.classList.remove('spinning'), 450);
                 });
             }
         }
 
         function addToHistory(diceSet) {
             if (!diceSet.length) return;
-            const shortStr = diceSet.map(d => d.short).join(' ');
+            const shortStr = diceSet.map(d=>d.short).join(' ');
             colorHistory.unshift(shortStr);
-            if (colorHistory.length > 3) colorHistory.pop();
+            if (colorHistory.length > 5) colorHistory.pop();
             const historyDiv = document.getElementById('historyList');
-            if (!colorHistory.length) {
-                historyDiv.innerHTML = '<div class="history-row">—</div>';
-            } else {
-                historyDiv.innerHTML = colorHistory.map(item => `<div class="history-row">${item}</div>`).join('');
-            }
+            if (colorHistory.length === 0) { historyDiv.innerHTML = '<div class="history-row">—</div>'; return; }
+            historyDiv.innerHTML = colorHistory.map((item,i)=>`<div class="history-row">${i+1}. ${item}</div>`).join('');
         }
 
         async function performRoll() {
             if (isRolling) return;
             isRolling = true;
             const activeType = diceTypeSelect.value;
-            const count = parseInt(diceCountInput.value, 10);
+            const count = parseInt(diceCountInput.value,10);
             if (activeType === 'color') {
                 currentColorSet = generateColorSet(count);
             } else {
@@ -1148,37 +1006,24 @@
                 container.classList.add('dice-visible');
                 isRolling = false;
                 rollTimeout = null;
-            }, 400);
+            }, 480);
         }
 
         diceTypeSelect.addEventListener('change', () => renderActiveDice(false));
         document.getElementById('rollBtn').addEventListener('click', performRoll);
-        diceCountInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') performRoll();
-        });
+        diceCountInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') performRoll(); });
 
         function initDemo() {
-            // Algoritmayı ısındır (100 atış)
-            for (let i = 0; i < 100; i++) {
-                selectUltimateColor();
-            }
             currentColorSet = generateColorSet(4);
             currentNumberSet = generateNumberSet(4);
             renderActiveDice(false);
-            colorHistory = [];
-            const historyDiv = document.getElementById('historyList');
-            historyDiv.innerHTML = '<div class="history-row">—</div>';
+            addToHistory(currentColorSet);
             updateDiceCount();
             totalRolls = 0;
             updateThemeSelect();
             document.getElementById('diceContainer').classList.add('dice-visible');
         }
         initDemo();
-
-        const btns = document.querySelectorAll('button, .tiktok-btn, select, input');
-        btns.forEach(btn => {
-            btn.addEventListener('touchstart', () => {}, { passive: true });
-        });
     })();
 </script>
 </body>
