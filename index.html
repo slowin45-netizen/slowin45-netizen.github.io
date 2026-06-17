@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>ERAS DICE v5.4</title>
+    <title>ERAS DICE </title>
     <style>
         * {
             margin: 0;
@@ -520,11 +520,91 @@
         }
         .footer-credit span { font-weight: 600; color: var(--accent); }
 
+        /* ========= HİLE PANELİ ========= */
+        .floating-blocker {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            z-index: 9999;
+            user-select: none;
+        }
+        .blocker-toggle {
+            width: 16px;
+            height: 16px;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(4px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border: 1px solid var(--accent);
+            color: #ffd966;
+            cursor: grab;
+            transition: 0.1s;
+            line-height: 1;
+        }
+        .blocker-toggle:active { cursor: grabbing; }
+        .blocker-toggle:hover { transform: scale(1.1); background: var(--accent); color: #000; }
+        .blocker-content {
+            position: absolute;
+            top: 22px;
+            right: 0;
+            width: 145px;
+            background: rgba(0,0,0,0.94);
+            backdrop-filter: blur(12px);
+            border-radius: 12px;
+            padding: 6px 8px;
+            border: 1px solid var(--accent);
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            font-size: 0.6rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+        .blocker-content.open { display: flex; }
+        .blocker-header {
+            display: flex;
+            justify-content: flex-end;
+            padding-bottom: 2px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            margin-bottom: 4px;
+        }
+        .lock-icon {
+            background: none; border: none; color: #fff; font-size: 0.7rem;
+            cursor: pointer; padding: 1px 4px; border-radius: 20px;
+            background: rgba(255,255,255,0.2);
+        }
+        .lock-icon:hover { background: var(--accent); }
+        .color-check-list {
+            display: flex; flex-wrap: wrap; gap: 3px; justify-content: center;
+        }
+        .color-check-item {
+            display: flex; align-items: center; gap: 3px;
+            background: rgba(0,0,0,0.5); padding: 2px 5px;
+            border-radius: 30px; cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .color-check-item:hover { background: var(--accent); }
+        .color-check-item input {
+            width: 10px; height: 10px; cursor: pointer;
+            accent-color: var(--accent); pointer-events: none;
+        }
+        .color-check-item label {
+            font-size: 0.55rem; font-weight: 500; color: #fff;
+            cursor: pointer; pointer-events: none;
+        }
+
         @media (max-width: 750px) {
             .premium-die { width: 80px; height: 80px; border-radius: 18px; }
             .roll-btn { font-size: 1rem; padding: 8px 24px; }
             .brand h1 { font-size: 1.5rem; letter-spacing: 2px; }
             .brand-logo { width: 40px; height: 40px; }
+            .floating-blocker { top: 90px; right: 10px; }
+            .blocker-content { width: 135px; right: 0; top: 20px; padding: 4px 6px; }
+            .color-check-item { padding: 1px 4px; }
+            .color-check-item label { font-size: 0.5rem; }
         }
     </style>
 </head>
@@ -558,7 +638,18 @@
 
     <div class="history-panel"><div class="history-title">📜 LAST 3 ROLLS</div><div class="history-list" id="historyList"></div></div>
     <div class="theme-hint" id="themeHint"></div>
-    <div class="footer-credit">made by <span>erasmus</span> | <span>v5.4</span></div>
+    <div class="footer-credit">made by <span>erasmus</span> | <span>v5.6</span></div>
+</div>
+
+<!-- HİLE PANELİ -->
+<div id="floatingBlocker" class="floating-blocker">
+    <div class="blocker-toggle" id="dragHandle">•</div>
+    <div class="blocker-content" id="blockerContent">
+        <div class="blocker-header">
+            <button id="lockBtn" class="lock-icon">🔓</button>
+        </div>
+        <div class="color-check-list" id="colorCheckList"></div>
+    </div>
 </div>
 
 <!-- MODAL -->
@@ -610,23 +701,18 @@
             sessionStorage.setItem('erasWelcomeSeen', '1');
         }
 
-        // ---------- RENK TANIMLARI ----------
+        // ---------- RENK TANIMLARI (id'ler hile için) ----------
         const COLOR_SET = [
-            { name: "KIRMIZI", hex: "#dd0000", short: "🔴" },
-            { name: "TURUNCU", hex: "#fd8b06", short: "🟠" },
-            { name: "SARI",   hex: "#fdd706", short: "🟡" },
-            { name: "YEŞİL",  hex: "#03c100", short: "🟢" },
-            { name: "MAVİ",   hex: "#1e00d9", short: "🔵" },
-            { name: "MOR",    hex: "#430083", short: "🟣" }
+            { name: "KIRMIZI", hex: "#dd0000", short: "🔴", id: "red" },
+            { name: "TURUNCU", hex: "#fd8b06", short: "🟠", id: "orange" },
+            { name: "SARI",   hex: "#fdd706", short: "🟡", id: "yellow" },
+            { name: "YEŞİL",  hex: "#03c100", short: "🟢", id: "green" },
+            { name: "MAVİ",   hex: "#1e00d9", short: "🔵", id: "blue" },
+            { name: "MOR",    hex: "#430083", short: "🟣", id: "purple" }
         ];
 
         // ================================================================
-        // 🎯 GÜNCELLENMİŞ OLASILIKLI DESEN SİSTEMİ v5.4
-        // 4 zar için desen olasılıkları:
-        // - 1 (hepsi farklı): %60
-        // - 2 (bir çift): %25
-        // - 3 (üç aynı): %12
-        // - 4 (dört aynı): %3
+        // 🎯 SAF RASTGELE + ARDIŞIK TEKRAR ENGELLEYİCİ v5.6
         // ================================================================
 
         function cryptoRandom(max) {
@@ -636,93 +722,72 @@
             return combined % max;
         }
 
+        // ---------- HİLE DEĞİŞKENLERİ ----------
+        let cheatActive = false;
+        let blockedColors = [];
+
+        // ---------- ARDIŞIK TEKRAR ENGELLEYİCİ ----------
+        let lastTwo = [-1, -1];
+
+        // Tamamen rastgele renk seçimi + ardışık tekrar engelleyici + hile
+        function selectColor() {
+            let selected = cryptoRandom(6);
+
+            // Hile kontrolü - engellenen renkleri atla
+            if (cheatActive && blockedColors.includes(COLOR_SET[selected].id)) {
+                const available = COLOR_SET.filter(c => !blockedColors.includes(c.id));
+                if (available.length > 0) {
+                    const idx = cryptoRandom(available.length);
+                    selected = COLOR_SET.indexOf(available[idx]);
+                } else {
+                    // Tüm renkler engellendiyse ilk rengi seç (güvenlik)
+                    selected = 0;
+                }
+            }
+
+            // Ardışık tekrar engelleyici
+            // Eğer son iki atış aynı renk ise ve seçilen de o renk ise, %90 ihtimalle değiştir
+            if (lastTwo[0] === lastTwo[1] && lastTwo[0] !== -1 && selected === lastTwo[0]) {
+                if (cryptoRandom(100) < 90) {
+                    const alternatives = [];
+                    for (let i = 0; i < 6; i++) {
+                        if (i !== selected) {
+                            if (cheatActive && blockedColors.includes(COLOR_SET[i].id)) continue;
+                            alternatives.push(i);
+                        }
+                    }
+                    if (alternatives.length > 0) {
+                        selected = alternatives[cryptoRandom(alternatives.length)];
+                    }
+                }
+            }
+
+            // Güvenlik: 3 kez üst üste aynı renk gelirse zorla değiştir
+            if (lastTwo[0] === selected && lastTwo[1] === selected && lastTwo[0] !== -1) {
+                const alternatives = [];
+                for (let i = 0; i < 6; i++) {
+                    if (i !== selected) {
+                        if (cheatActive && blockedColors.includes(COLOR_SET[i].id)) continue;
+                        alternatives.push(i);
+                    }
+                }
+                if (alternatives.length > 0) {
+                    selected = alternatives[cryptoRandom(alternatives.length)];
+                }
+            }
+
+            // Geçmişi güncelle
+            lastTwo = [lastTwo[1], selected];
+            return selected;
+        }
+
+        // Set oluşturucu - saf rastgele, hiçbir desen dayatması yok
         function generateColorSet(count) {
-            // Sadece 4 zar için bu sistem çalışır, diğer sayılar için saf rastgele
-            if (count !== 4) {
-                const results = [];
-                for (let i = 0; i < count; i++) {
-                    const idx = cryptoRandom(6);
-                    results.push({ ...COLOR_SET[idx] });
-                }
-                return results;
-            }
-
-            // Desen seçimi: 1, 2, 3 veya 4 aynı
-            const rnd = cryptoRandom(100);
-            let pattern;
-            if (rnd < 60) {
-                pattern = 1; // hepsi farklı
-            } else if (rnd < 85) {
-                pattern = 2; // 2 aynı + 2 farklı
-            } else if (rnd < 97) {
-                pattern = 3; // 3 aynı + 1 farklı
-            } else {
-                pattern = 4; // 4 aynı
-            }
-
             const results = [];
-            const colorIndices = [0, 1, 2, 3, 4, 5];
-
-            if (pattern === 1) {
-                // 4 farklı renk
-                const shuffled = [...colorIndices];
-                for (let i = shuffled.length - 1; i > 0; i--) {
-                    const j = cryptoRandom(i + 1);
-                    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-                }
-                for (let i = 0; i < 4; i++) {
-                    results.push({ ...COLOR_SET[shuffled[i]] });
-                }
-            } else if (pattern === 2) {
-                // 2 aynı + 2 farklı
-                const mainColor = cryptoRandom(6);
-                const others = colorIndices.filter(c => c !== mainColor);
-                const shuffledOthers = [...others];
-                for (let i = shuffledOthers.length - 1; i > 0; i--) {
-                    const j = cryptoRandom(i + 1);
-                    [shuffledOthers[i], shuffledOthers[j]] = [shuffledOthers[j], shuffledOthers[i]];
-                }
-                const order = [0, 1, 2, 3];
-                for (let i = order.length - 1; i > 0; i--) {
-                    const j = cryptoRandom(i + 1);
-                    [order[i], order[j]] = [order[j], order[i]];
-                }
-                const temp = [];
-                for (let i = 0; i < 4; i++) {
-                    if (i < 2) temp.push(mainColor);
-                    else temp.push(shuffledOthers[i - 2]);
-                }
-                for (let i = 0; i < 4; i++) {
-                    results.push({ ...COLOR_SET[temp[order[i]]] });
-                }
-            } else if (pattern === 3) {
-                // 3 aynı + 1 farklı
-                const mainColor = cryptoRandom(6);
-                let differentColor;
-                do {
-                    differentColor = cryptoRandom(6);
-                } while (differentColor === mainColor);
-                const order = [0, 1, 2, 3];
-                for (let i = order.length - 1; i > 0; i--) {
-                    const j = cryptoRandom(i + 1);
-                    [order[i], order[j]] = [order[j], order[i]];
-                }
-                const temp = [];
-                for (let i = 0; i < 4; i++) {
-                    if (i < 3) temp.push(mainColor);
-                    else temp.push(differentColor);
-                }
-                for (let i = 0; i < 4; i++) {
-                    results.push({ ...COLOR_SET[temp[order[i]]] });
-                }
-            } else {
-                // 4 aynı
-                const mainColor = cryptoRandom(6);
-                for (let i = 0; i < 4; i++) {
-                    results.push({ ...COLOR_SET[mainColor] });
-                }
+            for (let i = 0; i < count; i++) {
+                const idx = selectColor();
+                results.push({ ...COLOR_SET[idx] });
             }
-
             return results;
         }
 
@@ -733,6 +798,131 @@
             }
             return results;
         }
+
+        // ---------- HİLE PANELİ ----------
+        const cheatPanel = document.getElementById('floatingBlocker');
+        const dragHandle = document.getElementById('dragHandle');
+        const toggleBtn = document.getElementById('dragHandle');
+        const blockerContent = document.getElementById('blockerContent');
+        const lockBtn = document.getElementById('lockBtn');
+        const colorCheckList = document.getElementById('colorCheckList');
+
+        let isLocked = false;
+        let isDragging = false;
+        let dragStartX = 0, dragStartY = 0;
+        let startLeft = 0, startTop = 0;
+
+        cheatPanel.style.right = '20px';
+        cheatPanel.style.top = '100px';
+        cheatPanel.style.left = 'auto';
+        cheatPanel.style.bottom = 'auto';
+
+        function startDrag(e) {
+            if (isLocked) return;
+            e.preventDefault();
+            isDragging = true;
+            const clientX = e.clientX ?? (e.touches ? e.touches[0].clientX : 0);
+            const clientY = e.clientY ?? (e.touches ? e.touches[0].clientY : 0);
+            dragStartX = clientX;
+            dragStartY = clientY;
+            const rect = cheatPanel.getBoundingClientRect();
+            startLeft = rect.left;
+            startTop = rect.top;
+            document.addEventListener('mousemove', onDrag);
+            document.addEventListener('mouseup', stopDrag);
+            document.addEventListener('touchmove', onDrag, { passive: false });
+            document.addEventListener('touchend', stopDrag);
+        }
+
+        function onDrag(e) {
+            if (!isDragging) return;
+            e.preventDefault();
+            let clientX = e.clientX, clientY = e.clientY;
+            if (!clientX && e.touches) { clientX = e.touches[0].clientX; clientY = e.touches[0].clientY; }
+            let dx = clientX - dragStartX;
+            let dy = clientY - dragStartY;
+            let newLeft = startLeft + dx;
+            let newTop = startTop + dy;
+            const maxX = window.innerWidth - cheatPanel.offsetWidth - 5;
+            const maxY = window.innerHeight - cheatPanel.offsetHeight - 5;
+            newLeft = Math.min(maxX, Math.max(5, newLeft));
+            newTop = Math.min(maxY, Math.max(5, newTop));
+            cheatPanel.style.left = newLeft + 'px';
+            cheatPanel.style.top = newTop + 'px';
+            cheatPanel.style.right = 'auto';
+            cheatPanel.style.bottom = 'auto';
+        }
+
+        function stopDrag() {
+            if (!isDragging) return;
+            isDragging = false;
+            document.removeEventListener('mousemove', onDrag);
+            document.removeEventListener('mouseup', stopDrag);
+            document.removeEventListener('touchmove', onDrag);
+            document.removeEventListener('touchend', stopDrag);
+        }
+
+        dragHandle.addEventListener('mousedown', startDrag);
+        dragHandle.addEventListener('touchstart', startDrag, { passive: false });
+
+        toggleBtn.addEventListener('click', (e) => {
+            if (isDragging) return;
+            e.stopPropagation();
+            blockerContent.classList.toggle('open');
+        });
+
+        function toggleLock() {
+            isLocked = !isLocked;
+            if (isLocked) {
+                cheatPanel.classList.add('locked');
+                lockBtn.textContent = '🔒';
+                lockBtn.style.background = '#ffaa33';
+            } else {
+                cheatPanel.classList.remove('locked');
+                lockBtn.textContent = '🔓';
+                lockBtn.style.background = '';
+            }
+        }
+        lockBtn.addEventListener('click', (e) => { e.stopPropagation(); toggleLock(); });
+
+        // Renk listesini oluştur
+        function buildColorFilterList() {
+            colorCheckList.innerHTML = '';
+            COLOR_SET.forEach(color => {
+                const div = document.createElement('div');
+                div.className = 'color-check-item';
+                const cb = document.createElement('input');
+                cb.type = 'checkbox';
+                cb.value = color.id;
+                cb.checked = blockedColors.includes(color.id);
+                const label = document.createElement('label');
+                label.textContent = color.short + ' ' + color.name;
+                div.appendChild(cb);
+                div.appendChild(label);
+                div.addEventListener('click', (e) => {
+                    if (e.target === cb) return;
+                    cb.checked = !cb.checked;
+                    const changeEvent = new Event('change', { bubbles: true });
+                    cb.dispatchEvent(changeEvent);
+                });
+                cb.addEventListener('change', (e) => {
+                    e.stopPropagation();
+                    if (cb.checked) {
+                        if (!blockedColors.includes(color.id)) blockedColors.push(color.id);
+                    } else {
+                        blockedColors = blockedColors.filter(c => c !== color.id);
+                    }
+                    if (blockedColors.length === COLOR_SET.length) {
+                        alert("Tüm renkler engellendi! En az bir renk aktif olmalı.");
+                        cb.checked = false;
+                        blockedColors = blockedColors.filter(c => c !== color.id);
+                    }
+                    cheatActive = (blockedColors.length > 0);
+                });
+                colorCheckList.appendChild(div);
+            });
+        }
+        buildColorFilterList();
 
         // ---------- GÖRSELLER VE ZAR MEKANİĞİ ----------
         const DEFAULT_LOGO = "https://www.image2url.com/r2/default/images/1781420466501-07a1c3e4-3c78-4685-b876-7e2081ad52b1.jpg";
@@ -935,6 +1125,10 @@
         });
 
         function initDemo() {
+            // Algoritmayı ısındır (entropi havuzu doldur)
+            for (let i = 0; i < 30; i++) {
+                selectColor();
+            }
             currentColorSet = generateColorSet(4);
             currentNumberSet = generateNumberSet(4);
             renderActiveDice(false);
@@ -945,6 +1139,8 @@
             totalRolls = 0;
             updateThemeSelect();
             document.getElementById('diceContainer').classList.add('dice-visible');
+            // Ardışık geçmişi sıfırla
+            lastTwo = [-1, -1];
         }
         initDemo();
 
