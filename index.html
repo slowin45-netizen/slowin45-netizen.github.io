@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>ERAS DICE v4.3</title>
+    <title>ERAS DICE</title>
     <style>
         * {
             margin: 0;
@@ -563,7 +563,7 @@
     </div>
 
     <div class="dice-container" id="diceContainer"><div class="dice-grid" id="diceGrid"></div></div>
-    <div class="action"><button class="roll-btn" id="rollBtn"><span class="roll-btn-icon">🎲</span> <span>ROLL AGAIN!</span></button></div>
+    <div class="action"><button class="roll-btn" id="rollBtn"><span class="roll-btn-icon"></span> <span>ROLL AGAIN!</span></button></div>
     
     <div class="color-section">
         <div class="color-list">
@@ -578,12 +578,12 @@
 
     <div class="history-panel"><div class="history-title">📜 LAST 3 ROLLS</div><div class="history-list" id="historyList"></div></div>
     <div class="theme-hint" id="themeHint"></div>
-    <div class="footer-credit">made by <span>erasmus</span> | version <span>v4.3</span></div>
+    <div class="footer-credit">made by <span>erasmus</span> | <span>v4.3</span></div>
 </div>
 
 <!-- MODAL VE TOAST -->
-<div id="welcomeModal" class="welcome-modal"><div class="modal-card"><div class="modal-icon"><img src="https://www.image2url.com/r2/default/images/1780852160014-833b5895-7426-482a-8fd4-4e2f09d286f9.webp" alt="Icon"></div><div class="thanks">✨ SİTEYİ ZİYARET ETTİĞİNİZ İÇİN TEŞEKKÜRLER ✨</div><p>🎲 v4.3 DENGELİ RASTGELE MOTORU AKTİF 🎲</p><div class="modal-highlight"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M448 209.91a210.06 210.06 0 01-122.77-39.25v178.72A162.55 162.55 0 11185 188.31v89.89a74.62 74.62 0 1052.23 71.18V0h88a121.18 121.18 0 001.86 22.17A122.18 122.18 0 00381 102.39a121.43 121.43 0 0067 20.14Z"/></svg><span>BUNUN GİBİ SİTE YAPTIRMAK İSTERSENİZ SAĞ ÜSTEKİ KUTUCUĞA TIKLAYIN.</span></div><button class="close-modal" id="closeModalBtn">🚀 DEVAM ET</button><div class="modal-smallnote">(Bu mesaj sadece bir kez görünür)</div></div></div>
-<div id="welcomeToast" class="toast-notify"><span>🎲</span><span>v4.3 Aktif! Dengeli renk dağılımı, %12 ihtimalle 3 aynı renk.</span><button id="toastCloseBtn">Kapat</button></div>
+<div id="welcomeModal" class="welcome-modal"><div class="modal-card"><div class="modal-icon"><img src="https://www.image2url.com/r2/default/images/1780852160014-833b5895-7426-482a-8fd4-4e2f09d286f9.webp" alt="Icon"></div><div class="thanks">✨ SİTEYİ ZİYARET ETTİĞİNİZ İÇİN TEŞEKKÜRLER ✨</div><p>🎲 EN İYİ RASTGELELİK SİSTEMİ AKTİF 🎲</p><div class="modal-highlight"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M448 209.91a210.06 210.06 0 01-122.77-39.25v178.72A162.55 162.55 0 11185 188.31v89.89a74.62 74.62 0 1052.23 71.18V0h88a121.18 121.18 0 001.86 22.17A122.18 122.18 0 00381 102.39a121.43 121.43 0 0067 20.14Z"/></svg><span>BUNUN GİBİ SİTE YAPTIRMAK İSTERSENİZ SAĞ ÜSTEKİ KUTUCUĞA TIKLAYIN.</span></div><button class="close-modal" id="closeModalBtn">🚀 DEVAM ET</button><div class="modal-smallnote">(Bu mesaj sadece bir kez görünür)</div></div></div>
+<div id="welcomeToast" class="toast-notify"><span>🎯</span><span>Dengeli ve tahmin edilemez rastgelelik aktif!</span><button id="toastCloseBtn">Kapat</button></div>
 <a href="https://www.tiktok.com/@erasmus_w" target="_blank" rel="noopener noreferrer" class="tiktok-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M448 209.91a210.06 210.06 0 01-122.77-39.25v178.72A162.55 162.55 0 11185 188.31v89.89a74.62 74.62 0 1052.23 71.18V0h88a121.18 121.18 0 001.86 22.17A122.18 122.18 0 00381 102.39a121.43 121.43 0 0067 20.14Z"/></svg></a>
 
 <script>
@@ -649,7 +649,7 @@
         ];
 
         // ================================================================
-        // 🎲 v4.3 DENGELİ RASTGELE MOTORU
+        // 🎯 DENGELİ RASTGELE ALGORİTMASI v4.3
         // ================================================================
 
         // ----- KRİPTOGRAFİK RASTGELE -----
@@ -660,101 +660,102 @@
             return combined % max;
         }
 
-        // ----- KAOTİK HARİTA -----
-        let chaosX = 0.6180339887498949;
-        function chaosMap(max) {
-            const r = 3.99;
-            chaosX = r * chaosX * (1 - chaosX);
-            return Math.floor(chaosX * max);
-        }
-
-        // ----- ADAPTİF FREKANS (mor baskılamak için) -----
+        // ----- ADAPTİF FREKANS (renkleri dengelemek için) -----
         let colorFreq = Array(6).fill(1);
-        let lastColors = [];
+        let totalSelections = 0;
 
-        // ----- ANA SEÇİM -----
-        function selectUltimateColor() {
-            // 1. Temel rastgele
-            let base = cryptoRandom(6);
-            
-            // 2. Kaotik karıştır
-            let chaos = chaosMap(6);
-            let mixed = (base + chaos) % 6;
-            
-            // 3. Adaptif frekans (çok gelen renkleri baskıla)
-            const probs = colorFreq.map(f => 1 / (f + 0.5));
-            const sumProbs = probs.reduce((a, b) => a + b, 0);
-            const normProbs = probs.map(p => p / sumProbs);
-            
+        // ----- SON 3 ATIŞ (ardışık tekrarları kontrol etmek için) -----
+        let lastThree = [-1, -1, -1];
+
+        // ----- ANA SEÇİM FONKSİYONU -----
+        function selectBalancedColor() {
+            totalSelections++;
+
+            // 1. Adaptif frekans ağırlıkları (çok gelen renkleri baskıla)
+            const weights = colorFreq.map(f => 1 / (f + 0.5));
+            const sumWeights = weights.reduce((a, b) => a + b, 0);
+            const normWeights = weights.map(w => w / sumWeights);
+
+            // 2. Ağırlıklı rastgele seçim
             let rnd = cryptoRandom(10000) / 10000;
             let cum = 0;
-            let freqIdx = 0;
+            let selected = 0;
             for (let i = 0; i < 6; i++) {
-                cum += normProbs[i];
-                if (rnd <= cum) { freqIdx = i; break; }
+                cum += normWeights[i];
+                if (rnd <= cum) { selected = i; break; }
             }
-            
-            let selected = (mixed + freqIdx) % 6;
-            
-            // 4. %12 ihtimalle 3 aynı renk gelmesini sağla (özel mekanizma)
-            // Bunu yapmak için, eğer son iki renk aynı ise, %30 ihtimalle aynı rengi seç
-            if (lastColors.length >= 2 && lastColors[lastColors.length-1] === lastColors[lastColors.length-2]) {
-                if (cryptoRandom(100) < 30) {
-                    // Aynı rengi devam ettir (3 aynı renk gelme ihtimalini artır)
-                    selected = lastColors[lastColors.length-1];
+
+            // 3. ARDIŞIK TEKRAR ENGELLEYİCİ
+            // Eğer seçilen renk son iki atışla aynıysa, değiştirme şansı %40
+            if (lastThree[1] === selected && lastThree[2] === selected) {
+                if (cryptoRandom(100) < 40) {
+                    const alternatives = [];
+                    for (let i = 0; i < 6; i++) {
+                        if (i !== selected) alternatives.push(i);
+                    }
+                    selected = alternatives[cryptoRandom(alternatives.length)];
                 }
             }
-            
-            // 5. Frekansı güncelle
+
+            // Eğer 3 kez üst üste aynı renk gelmişse, zorla değiştir (güvenlik)
+            if (lastThree[0] === selected && lastThree[1] === selected && lastThree[2] === selected) {
+                const alternatives = [];
+                for (let i = 0; i < 6; i++) {
+                    if (i !== selected) alternatives.push(i);
+                }
+                selected = alternatives[cryptoRandom(alternatives.length)];
+            }
+
+            // 4. Frekansları güncelle (öğrenme)
             colorFreq[selected] = Math.min(colorFreq[selected] + 1, 50);
             for (let i = 0; i < 6; i++) {
-                if (i !== selected) colorFreq[i] = Math.max(1, colorFreq[i] - 0.2);
+                if (i !== selected) colorFreq[i] = Math.max(1, colorFreq[i] - 0.3);
             }
-            
-            // 6. Geçmişi güncelle
-            lastColors.push(selected);
-            if (lastColors.length > 20) lastColors.shift();
-            
+
+            // 5. Geçmişi güncelle
+            lastThree = [lastThree[1], lastThree[2], selected];
+
             return selected;
         }
 
-        // ----- SET OLUŞTURUCU (4 aynı renk gelmesini engelle) -----
+        // ----- SET OLUŞTURUCU (aynı anda aynı renkten çok fazla gelmesini engeller) -----
         function generateColorSet(count) {
             const results = [];
-            const used = Array(6).fill(0);
-            
+            const usedInSet = Array(6).fill(0);
+
             for (let i = 0; i < count; i++) {
-                let selected = selectUltimateColor();
-                
-                // 4 aynı renk gelmesini engelle (çok nadir zaten, ama garanti)
+                let selected = selectBalancedColor();
+
+                // Set içinde aynı renkten çok fazla olmasını engelle
+                // count 4 için max 2, count 6 için max 3, count 8 için max 4
                 const maxAllowed = count >= 6 ? 3 : (count >= 4 ? 2 : 2);
                 let attempts = 0;
-                while (used[selected] >= maxAllowed && attempts < 30) {
-                    const minUsed = Math.min(...used);
+                while (usedInSet[selected] >= maxAllowed && attempts < 20) {
+                    const minUsed = Math.min(...usedInSet);
                     const candidates = [];
                     for (let j = 0; j < 6; j++) {
-                        if (used[j] === minUsed) candidates.push(j);
+                        if (usedInSet[j] === minUsed) candidates.push(j);
                     }
                     selected = candidates[cryptoRandom(candidates.length)];
                     attempts++;
                 }
-                
+
                 results.push({ ...COLOR_SET[selected] });
-                used[selected]++;
+                usedInSet[selected]++;
             }
-            
+
             return results;
         }
 
-        // Sayı zarları için
-        function selectAINumber() {
+        // ----- SAYI ZARLARI -----
+        function getRandomNumber() {
             return cryptoRandom(6) + 1;
         }
 
         function generateNumberSet(count) {
             const results = [];
             for (let i = 0; i < count; i++) {
-                results.push(selectAINumber());
+                results.push(getRandomNumber());
             }
             return results;
         }
@@ -960,9 +961,9 @@
         });
 
         function initDemo() {
-            // Algoritmayı ısındır
-            for (let i = 0; i < 30; i++) {
-                selectUltimateColor();
+            // Algoritmayı ısındır (50 atış)
+            for (let i = 0; i < 50; i++) {
+                selectBalancedColor();
             }
             currentColorSet = generateColorSet(4);
             currentNumberSet = generateNumberSet(4);
