@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>ERAS DICE </title>
+    <title>ERAS DICE v4.7</title>
     <style>
         * {
             margin: 0;
@@ -24,7 +24,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* ========== TEMA RENKLERİ (kısa) ========== */
+        /* ========== TEMA RENKLERİ ========== */
         body.blue {
             --accent: #0ea5e9;
             --accent-glow: #0ea5e9cc;
@@ -274,25 +274,6 @@
             text-shadow: 0 0 15px var(--accent-glow);
         }
 
-        .toast-notify {
-            position: fixed; bottom: 20px; left: 50%;
-            transform: translateX(-50%) translateY(30px);
-            background: rgba(0,0,0,0.85);
-            backdrop-filter: blur(16px);
-            border-left: 4px solid var(--accent);
-            border-radius: 40px;
-            padding: 6px 18px;
-            color: #fff;
-            font-weight: 500;
-            font-size: 0.75rem;
-            z-index: 1000;
-            transition: 0.2s;
-            opacity: 0;
-            visibility: hidden;
-        }
-        .toast-notify.show { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
-        .toast-notify button { background: var(--accent); border: none; padding: 2px 8px; border-radius: 40px; color: #000; margin-left: 8px; cursor: pointer; }
-
         .welcome-modal {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.85);
@@ -315,7 +296,6 @@
         @keyframes modalFadeUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         .modal-icon img { width: 48px; height: 48px; object-fit: contain; margin-bottom: 0.8rem; }
         .modal-card .thanks { font-size: 1.2rem; font-weight: 800; background: var(--title-gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .modal-card p { font-size: 0.85rem; margin: 0.5rem 0; }
         .modal-highlight { background: rgba(255,255,255,0.1); border-radius: 50px; padding: 0.3rem 0.8rem; display: inline-flex; align-items: center; gap: 6px; margin: 0.6rem auto; font-size: 0.75rem; border: 1px solid var(--accent); }
         .modal-highlight svg { width: 16px; height: 16px; fill: var(--accent); }
         .close-modal { background: linear-gradient(135deg, var(--btn-start), var(--btn-end)); border: none; padding: 6px 24px; border-radius: 60px; font-weight: 600; color: white; cursor: pointer; margin-top: 0.6rem; }
@@ -563,7 +543,7 @@
     </div>
 
     <div class="dice-container" id="diceContainer"><div class="dice-grid" id="diceGrid"></div></div>
-    <div class="action"><button class="roll-btn" id="rollBtn"><span class="roll-btn-icon"></span> <span>ROLL AGAIN!</span></button></div>
+    <div class="action"><button class="roll-btn" id="rollBtn"><span class="roll-btn-icon">🎲</span> <span>ROLL AGAIN!</span></button></div>
     
     <div class="color-section">
         <div class="color-list">
@@ -578,12 +558,11 @@
 
     <div class="history-panel"><div class="history-title">📜 LAST 3 ROLLS</div><div class="history-list" id="historyList"></div></div>
     <div class="theme-hint" id="themeHint"></div>
-    <div class="footer-credit">made by <span>erasmus</span> | <span>v4.6</span></div>
+    <div class="footer-credit">made by <span>erasmus</span> | <span>v4.7</span></div>
 </div>
 
-<!-- MODAL VE TOAST -->
-<div id="welcomeModal" class="welcome-modal"><div class="modal-card"><div class="modal-icon"><img src="https://www.image2url.com/r2/default/images/1780852160014-833b5895-7426-482a-8fd4-4e2f09d286f9.webp" alt="Icon"></div><div class="thanks">✨ SİTEYİ ZİYARET ETTİĞİNİZ İÇİN TEŞEKKÜRLER ✨</div><p>🎲 HOŞ GELDİNİZ 🎲</p><div class="modal-highlight"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M448 209.91a210.06 210.06 0 01-122.77-39.25v178.72A162.55 162.55 0 11185 188.31v89.89a74.62 74.62 0 1052.23 71.18V0h88a121.18 121.18 0 001.86 22.17A122.18 122.18 0 00381 102.39a121.43 121.43 0 0067 20.14Z"/></svg><span>BUNUN GİBİ SİTE YAPTIRMAK İSTERSENİZ SAĞ ÜSTEKİ KUTUCUĞA TIKLAYIN.</span></div><button class="close-modal" id="closeModalBtn">🚀 DEVAM ET</button><div class="modal-smallnote">(Bu mesaj sadece bir kez görünür)</div></div></div>
-<div id="welcomeToast" class="toast-notify"><span>🎯</span><span>En iyi rastgelelik deneyimi!</span><button id="toastCloseBtn">Kapat</button></div>
+<!-- MODAL -->
+<div id="welcomeModal" class="welcome-modal"><div class="modal-card"><div class="modal-icon"><img src="https://www.image2url.com/r2/default/images/1780852160014-833b5895-7426-482a-8fd4-4e2f09d286f9.webp" alt="Icon"></div><div class="thanks">✨ SİTEYİ ZİYARET ETTİĞİNİZ İÇİN TEŞEKKÜRLER ✨</div><div class="modal-highlight"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M448 209.91a210.06 210.06 0 01-122.77-39.25v178.72A162.55 162.55 0 11185 188.31v89.89a74.62 74.62 0 1052.23 71.18V0h88a121.18 121.18 0 001.86 22.17A122.18 122.18 0 00381 102.39a121.43 121.43 0 0067 20.14Z"/></svg><span>BUNUN GİBİ SİTE YAPTIRMAK İSTERSENİZ SAĞ ÜSTEKİ KUTUCUĞA TIKLAYIN.</span></div><button class="close-modal" id="closeModalBtn">🚀 DEVAM ET</button><div class="modal-smallnote">(Bu mesaj sadece bir kez görünür)</div></div></div>
 <a href="https://www.tiktok.com/@erasmus_w" target="_blank" rel="noopener noreferrer" class="tiktok-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M448 209.91a210.06 210.06 0 01-122.77-39.25v178.72A162.55 162.55 0 11185 188.31v89.89a74.62 74.62 0 1052.23 71.18V0h88a121.18 121.18 0 001.86 22.17A122.18 122.18 0 00381 102.39a121.43 121.43 0 0067 20.14Z"/></svg></a>
 
 <script>
@@ -622,20 +601,13 @@
             console.log = noop; console.warn = noop; console.error = noop; console.table = noop;
         }
 
-        // ---------- MODAL VE TOAST ----------
+        // ---------- MODAL ----------
         if (!sessionStorage.getItem('erasWelcomeSeen')) {
             const modal = document.getElementById('welcomeModal');
             modal.classList.add('open');
             document.getElementById('closeModalBtn').onclick = () => modal.classList.remove('open');
             modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('open'); });
             sessionStorage.setItem('erasWelcomeSeen', '1');
-        }
-        if (!sessionStorage.getItem('erasDiceToast')) {
-            const toast = document.getElementById('welcomeToast');
-            setTimeout(() => toast.classList.add('show'), 600);
-            document.getElementById('toastCloseBtn').onclick = () => toast.classList.remove('show');
-            setTimeout(() => toast.classList.remove('show'), 5000);
-            sessionStorage.setItem('erasDiceToast', '1');
         }
 
         // ---------- RENK TANIMLARI ----------
@@ -649,7 +621,7 @@
         ];
 
         // ================================================================
-        // 🎯 DENGELİ RASTGELE ALGORİTMASI v4.6
+        // 🎯 DENGELİ RASTGELE ALGORİTMASI v4.7
         // ================================================================
 
         function cryptoRandom(max) {
@@ -659,16 +631,13 @@
             return combined % max;
         }
 
-        // Adaptif frekans - daha hassas
+        // Adaptif frekans (renkleri uzun vadede dengelemek için - mor baskılayıcı)
         let colorFreq = Array(6).fill(1);
         let lastThree = [-1, -1, -1];
-        let totalSelections = 0;
 
         function selectColor() {
-            totalSelections++;
-
-            // 1. Adaptif ağırlıklar (çok gelen renkleri baskıla, az gelenleri öne çıkar)
-            const weights = colorFreq.map(f => 1 / (f + 0.5));
+            // 1. Adaptif ağırlıklar (çok gelen renkleri güçlü şekilde baskıla)
+            const weights = colorFreq.map(f => 1 / (f * f + 0.5)); // Kare ile daha sert baskı
             const sumWeights = weights.reduce((a, b) => a + b, 0);
             const normWeights = weights.map(w => w / sumWeights);
 
@@ -680,10 +649,11 @@
                 if (rnd <= cum) { selected = i; break; }
             }
 
-            // 2. Ardışık tekrar kontrolü - daha hassas
-            // Eğer son iki atış aynı renk ise, bu rengin tekrar gelme ihtimalini %80 azalt
+            // 2. ARDIŞIK TEKRAR ENGELLEYİCİ (10 atışta max 1-2 kez ardışık)
+            // Eğer son iki atış aynı renk ise, bu rengin gelme ihtimalini %90 azalt
             if (lastThree[1] === lastThree[2] && lastThree[1] !== -1 && selected === lastThree[1]) {
-                if (cryptoRandom(100) < 80) {
+                // %90 ihtimalle değiştir
+                if (cryptoRandom(100) < 90) {
                     const alternatives = [];
                     for (let i = 0; i < 6; i++) {
                         if (i !== selected) alternatives.push(i);
@@ -701,7 +671,7 @@
                 selected = alternatives[cryptoRandom(alternatives.length)];
             }
 
-            // 3. Frekansları güncelle - daha agresif
+            // 3. Frekansları güncelle (çok gelen renkleri daha fazla baskıla)
             colorFreq[selected] = Math.min(colorFreq[selected] + 1.5, 50);
             for (let i = 0; i < 6; i++) {
                 if (i !== selected) colorFreq[i] = Math.max(1, colorFreq[i] - 0.5);
@@ -712,7 +682,7 @@
             return selected;
         }
 
-        // Set oluşturucu - daha esnek
+        // Set oluşturucu (aynı anda aynı renkten çok fazla gelmesini engeller)
         function generateColorSet(count) {
             const results = [];
             const used = Array(6).fill(0);
@@ -954,7 +924,7 @@
         });
 
         function initDemo() {
-            for (let i = 0; i < 30; i++) {
+            for (let i = 0; i < 50; i++) {
                 selectColor();
             }
             currentColorSet = generateColorSet(4);
